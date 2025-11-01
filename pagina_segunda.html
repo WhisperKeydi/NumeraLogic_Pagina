@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingeniería en computación - NumeraLogic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --text: #1e293b;
+      --muted: #64748b;
+      --card: #ffffff;
+      --gray-bg: #f8fafc;
+      --shadow: 0 4px 14px rgba(0,0,0,0.08);
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--gray-bg);
+      color: var(--text);
+    }
+
+    header {
+      background: white;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      background: #e2e8f0;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 2rem;
+    }
+
+    .courses-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      align-content: start;
+    }
+
+    .course-card {
+      background: #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .course-icon {
+      width: 100px;
+      height: 100px;
+      background: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 3rem;
+    }
+
+    .course-card h3 {
+      font-size: 1rem;
+      color: var(--text);
+      background: #93c5fd;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+
+    .sidebar {
+      background: #dbeafe;
+      border-radius: 12px;
+      padding: 2rem;
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar p {
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1100px) {
+      .content-wrapper {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        position: relative;
+        top: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .courses-section {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">N</div>
+      <h2>NumeraLogic</h2>
+    </div>
+    <nav>
+      <a href="index.html">🏠 Inicio</a>
+      <a href="logros.html">🏆 Logros</a>
+    </nav>
+    <div class="right">
+      <img src="https://cdn-icons-png.flaticon.com/512/1827/1827272.png" width="22" alt="Notificaciones">
+      <div class="avatar">D</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="content-wrapper">
+      <div class="courses-section">
+        <div class="course-card">
+          <div class="course-icon">💻</div>
+          <h3>Sistemas Digitales</h3>
+        </div>
+
+        <div class="course-card">
+          <div class="course-icon">🗄️</div>
+          <h3>Bases de datos</h3>
+        </div>
+
+        <div class="course-card">
+          <div class="course-icon">🔷</div>
+          <h3>Programación Orientada a Objetos</h3>
+        </div>
+
+        <div class="course-card">
+          <div class="course-icon">🔧</div>
+          <h3>Microcontroladores</h3>
+        </div>
+
+        <div class="course-card">
+          <div class="course-icon">🖥️</div>
+          <h3>Arquitectura de computadoras</h3>
+        </div>
+
+        <div class="course-card">
+          <div class="course-icon">📱</div>
+          <h3>Sistemas operativos</h3>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <h2>🔍 Explora los cursos</h2>
+        <p>¡Más material en camino!</p>
+        <p>Estamos trabajando para que puedas acceder a nuevos cursos</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

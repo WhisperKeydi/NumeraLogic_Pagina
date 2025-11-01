@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - NumeraLogic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+    /* HEADER - Fondo gris claro */
+    header {
+      background: #e2e8f0;
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      width: 45px;
+      height: 45px;
+      background: #1e40af;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .brand h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #94a3b8;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      background: #64748b;
+    }
+
+    nav a.active {
+      background: #64748b;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .bell-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .bell-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #94a3b8;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* HERO CARD - Rosa con mensaje de bienvenida */
+    .hero-card {
+      background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .hero-left h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-left p {
+      color: #475569;
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 550px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-left button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .hero-left button:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .hero-right {
+      text-align: right;
+    }
+
+    .hero-right h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-right .label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-right .sublabel {
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+
+    /* GRID - Cursos y sidebar */
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .course-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .course-content {
+      padding: 1.75rem;
+      text-align: center;
+    }
+
+    .course-content h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 1.25rem;
+    }
+
+    .course-content button {
+      width: 100%;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.85rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .course-content button:hover {
+      background: #2563eb;
+    }
+
+    /* SIDEBAR */
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Card de nivel con gradiente morado/rosa */
+    .level-card {
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      color: white;
+      box-shadow: 0 8px 20px rgba(167, 139, 250, 0.4);
+    }
+
+    .level-card h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .level-card .subtitle {
+      font-size: 1rem;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .xp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .xp-header .number {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .progress-bar-container {
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 14px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 70%;
+      height: 100%;
+      background: white;
+      border-radius: 10px;
+      transition: width 0.6s ease;
+    }
+
+    .xp-text {
+      font-size: 0.85rem;
+      text-align: right;
+      opacity: 0.95;
+      margin-top: 0.5rem;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat {
+      background: white;
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.2s;
+    }
+
+    .stat:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .stat-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat h4 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat p {
+      font-size: 0.9rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        flex-direction: column;
+      }
+
+      .hero-right {
+        margin-top: 1.5rem;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      nav a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding: 1.5rem 1rem;
+      }
+
+      .courses {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">N</div>
+      <h2>NumeraLogic</h2>
+    </div>
+    <nav>
+      <a href="index.html" class="active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        Inicio
+      </a>
+      <a href="logros.html">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+        </svg>
+        Logros
+      </a>
+    </nav>
+    <div class="right">
+      <svg class="bell-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e293b" stroke-width="2">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+      </svg>
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Diego" class="avatar" alt="Diego">
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-card">
+      <div class="hero-left">
+        <h2>🎓 ¡Bienvenido de vuelta Diego!</h2>
+        <p>¡Continúa con tu racha! Hoy tienes 3 nuevos ejercicios y 1 retroalimentación de tu profesor(a) esperándote</p>
+        <button onclick="window.location.href='areas_disponibles.html'">Áreas disponibles</button>
+      </div>
+      <div class="hero-right">
+        <div class="label">85%</div>
+        <div class="label">Completado</div>
+        <div class="sublabel" style="margin-top: 1rem;">10</div>
+        <div class="sublabel">Esta semana</div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <div class="courses">
+        <div class="course-card">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop" alt="Programación Estructurada" class="course-image">
+          <div class="course-content">
+            <h4>Programación Estructurada</h4>
+            <button>Ir al curso</button>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop" alt="Introducción al cálculo" class="course-image">
+          <div class="course-content">
+            <h4>Introducción al cálculo</h4>
+            <button>Ir al curso</button>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop" alt="Sistemas digitales" class="course-image">
+          <div class="course-content">
+            <h4>Sistemas digitales</h4>
+            <button>Ir al curso</button>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="level-card">
+          <h3>Nivel 12</h3>
+          <p class="subtitle">Desarrollador en Ascenso</p>
+          
+          <div class="xp-header">
+            <span>XP Total</span>
+            <span class="number">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+              </svg>
+              2,450
+            </span>
+          </div>
+
+          <div class="progress-bar-container">
+            <div class="progress-label">Progreso al Nivel 13</div>
+            <div class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+            <div class="xp-text">850/1,200 XP</div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-icon">🔥</div>
+            <h4>7</h4>
+            <p>Días de racha</p>
+          </div>
+          <div class="stat">
+            <div class="stat-icon">🏆</div>
+            <h4>24</h4>
+            <p>Victorias</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    setTimeout(() => {
+      document.querySelector('.progress-fill').style.width = '70%';
+    }, 300);
+  </script>
+</body>
+</html>
