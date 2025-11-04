@@ -4,211 +4,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matemáticas aplicadas - NumeraLogic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #2563eb;
-      --text: #1e293b;
-      --muted: #64748b;
-      --card: #ffffff;
-      --gray-bg: #f8fafc;
-      --shadow: 0 4px 14px rgba(0,0,0,0.08);
-      --radius: 10px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--gray-bg);
-      color: var(--text);
-    }
-
-    header {
-      background: white;
-      box-shadow: var(--shadow);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-      background: var(--primary);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-
-    nav a:hover {
-      background: #e2e8f0;
-    }
-
-    .right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #94a3b8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-    }
-
-    main {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .content-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 350px;
-      gap: 2rem;
-    }
-
-    .courses-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
-      align-content: start;
-    }
-
-    .course-card {
-      background: #e2e8f0;
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.2s;
-      cursor: pointer;
-    }
-
-    .course-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .course-icon {
-      width: 100px;
-      height: 100px;
-      background: white;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-      font-size: 3rem;
-    }
-
-    .course-card h3 {
-      font-size: 1rem;
-      color: var(--text);
-      background: #93c5fd;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      margin-top: 0.5rem;
-      width: 100%;
-    }
-
-    .sidebar {
-      background: #dbeafe;
-      border-radius: 12px;
-      padding: 2rem;
-      height: fit-content;
-      position: sticky;
-      top: 100px;
-    }
-
-    .sidebar h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .sidebar p {
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 1100px) {
-      .content-wrapper {
-        grid-template-columns: 1fr;
-      }
-      
-      .sidebar {
-        position: relative;
-        top: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .courses-section {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/principal_cuarta.css">
 </head>
 <body>
   <header>
     <div class="brand">
-      <div class="logo">N</div>
-      <h2>NumeraLogic</h2>
+      <a href="pagina_principal.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+        <div class="logo" style="width: 45px; height: 45px; border-radius: 50%; overflow: hidden;">
+          <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <h2>NumeraLogic</h2>
+      </a>
     </div>
+
     <nav>
-      <a href="index.html">🏠 Inicio</a>
-      <a href="logros.html">🏆 Logros</a>
+      <a href="pagina_principal.html">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        Inicio
+      </a>
+      <a href="logros.html">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+        </svg>
+        Logros
+      </a>
     </nav>
+
+    <!-- SISTEMA DE NOTIFICACIONES COMPLETO -->
     <div class="right">
-      <img src="https://cdn-icons-png.flaticon.com/512/1827/1827272.png" width="22" alt="Notificaciones">
-      <div class="avatar">D</div>
+      <div class="notifications-container">
+        <div class="notifications-icon">
+          <svg class="bell-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e293b" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <div class="notification-badge">3</div>
+        </div>
+        <div class="notifications-panel">
+          <div class="notifications-header">
+            <h3>Notificaciones</h3>
+            <button class="mark-read">Marcar todas como leídas</button>
+          </div>
+          <div class="notifications-list">
+            <div class="notification-item unread">
+              <div class="notification-icon achievement">🏆</div>
+              <div class="notification-content">
+                <div class="notification-title">¡Nuevo logro desbloqueado!</div>
+                <div class="notification-message">Has completado 10 ejercicios de cálculo.</div>
+                <div class="notification-time">Hace 2 horas</div>
+              </div>
+              <div class="notification-dot"></div>
+            </div>
+            <div class="notification-item unread">
+              <div class="notification-icon course">📚</div>
+              <div class="notification-content">
+                <div class="notification-title">Nuevo contenido disponible</div>
+                <div class="notification-message">Se ha añadido un nuevo módulo a Programación Estructurada.</div>
+                <div class="notification-time">Hace 1 día</div>
+              </div>
+              <div class="notification-dot"></div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-icon system">🔔</div>
+              <div class="notification-content">
+                <div class="notification-title">Recordatorio de estudio</div>
+                <div class="notification-message">No olvides practicar hoy para mantener tu racha.</div>
+                <div class="notification-time">Hace 3 días</div>
+              </div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-icon achievement">⭐</div>
+              <div class="notification-content">
+                <div class="notification-title">Has subido de nivel</div>
+                <div class="notification-message">Felicidades, ahora eres Nivel 12.</div>
+                <div class="notification-time">Hace 5 días</div>
+              </div>
+            </div>
+          </div>
+          <div class="notifications-footer">
+            <a href="#" class="view-all">Ver todas las notificaciones</a>
+          </div>
+        </div>
+      </div>
+      <img src="imagenes/perfil.jpg" class="avatar" alt="Diego">
     </div>
   </header>
+
+  <!-- OVERLAY PARA NOTIFICACIONES -->
+  <div class="notifications-overlay"></div>
 
   <main>
     <div class="content-wrapper">
@@ -229,7 +115,7 @@
         </div>
 
         <div class="course-card">
-          <div class="course-icon" style="font-size: 5rem; color: #10b981;">4</div>
+          <div class="course-icon" style="font-size: 6rem; font-weight: 700; color: #10b981;">4</div>
           <h3>Cálculo IV</h3>
         </div>
 
@@ -246,10 +132,66 @@
 
       <div class="sidebar">
         <h2>🔍 Explora los cursos</h2>
-        <p>¡Más material en camino!</p>
+        <p><strong>¡Más material en camino!</strong></p>
         <p>Estamos trabajando para que puedas acceder a nuevos cursos</p>
       </div>
     </div>
   </main>
+
+  <script>
+    // Sistema de notificaciones
+    document.addEventListener('DOMContentLoaded', function() {
+      const notificationsIcon = document.querySelector('.notifications-icon');
+      const notificationsPanel = document.querySelector('.notifications-panel');
+      const notificationsOverlay = document.querySelector('.notifications-overlay');
+      const markReadButton = document.querySelector('.mark-read');
+      const notificationItems = document.querySelectorAll('.notification-item');
+      const notificationBadge = document.querySelector('.notification-badge');
+      
+      // Mostrar/ocultar panel de notificaciones
+      notificationsIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        notificationsPanel.classList.toggle('active');
+        notificationsOverlay.style.display = notificationsPanel.classList.contains('active') ? 'block' : 'none';
+      });
+      
+      // Cerrar panel al hacer clic fuera
+      notificationsOverlay.addEventListener('click', function() {
+        notificationsPanel.classList.remove('active');
+        notificationsOverlay.style.display = 'none';
+      });
+      
+      // Marcar todas como leídas
+      markReadButton.addEventListener('click', function() {
+        notificationItems.forEach(item => {
+          item.classList.remove('unread');
+          const dot = item.querySelector('.notification-dot');
+          if (dot) dot.remove();
+        });
+        
+        // Actualizar contador
+        notificationBadge.textContent = '0';
+        notificationBadge.style.display = 'none';
+      });
+      
+      // Marcar notificación leída una por una
+      notificationItems.forEach(item => {
+        item.addEventListener('click', function() {
+          if (this.classList.contains('unread')) {
+            this.classList.remove('unread');
+            const dot = this.querySelector('.notification-dot');
+            if (dot) dot.remove();
+            
+            // Actualizar el contador
+            const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+            notificationBadge.textContent = unreadCount;
+            if (unreadCount === 0) {
+              notificationBadge.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

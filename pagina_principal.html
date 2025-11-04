@@ -5,401 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio - NumeraLogic</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <link rel="stylesheet" href="css/pagina_principal.css">
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f8fafc;
-      color: #1e293b;
-    }
-
-    /* HEADER - Fondo gris claro */
-    header {
-      background: #e2e8f0;
-      padding: 1rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .logo {
-      width: 45px;
-      height: 45px;
-      background: #1e40af;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 1.4rem;
-    }
-
-    .brand h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1e293b;
-    }
-
-    nav {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    nav a {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: #94a3b8;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.2s;
-    }
-
-    nav a:hover {
-      background: #64748b;
-    }
-
-    nav a.active {
-      background: #64748b;
-    }
-
-    .right {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-
-    .bell-icon {
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .bell-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #94a3b8;
-    }
-
-    /* MAIN */
-    main {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    /* HERO CARD - Rosa con mensaje de bienvenida */
-    .hero-card {
-      background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
-      border-radius: 20px;
-      padding: 2.5rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .hero-left h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-left p {
-      color: #475569;
-      font-size: 1rem;
-      line-height: 1.6;
-      max-width: 550px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-left button {
-      background: #3b82f6;
-      color: white;
-      border: none;
-      padding: 0.85rem 2rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .hero-left button:hover {
-      background: #2563eb;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-    }
-
-    .hero-right {
-      text-align: right;
-    }
-
-    .hero-right h3 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 0.25rem;
-    }
-
-    .hero-right .label {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-right .sublabel {
-      font-size: 0.95rem;
-      color: #64748b;
-    }
-
-    /* GRID - Cursos y sidebar */
-    .grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2.5rem;
-    }
-
-    .courses {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .course-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .course-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-
-    .course-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .course-content {
-      padding: 1.75rem;
-      text-align: center;
-    }
-
-    .course-content h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 1.25rem;
-    }
-
-    .course-content button {
-      width: 100%;
-      background: #3b82f6;
-      color: white;
-      border: none;
-      padding: 0.85rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .course-content button:hover {
-      background: #2563eb;
-    }
-
-    /* SIDEBAR */
-    aside {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    /* Card de nivel con gradiente morado/rosa */
-    .level-card {
-      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
-      border-radius: 16px;
-      padding: 2rem;
-      color: white;
-      box-shadow: 0 8px 20px rgba(167, 139, 250, 0.4);
-    }
-
-    .level-card h3 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    .level-card .subtitle {
-      font-size: 1rem;
-      opacity: 0.95;
-      margin-bottom: 1.5rem;
-    }
-
-    .xp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-
-    .xp-header .number {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1rem;
-    }
-
-    .progress-bar-container {
-      margin-bottom: 0.5rem;
-    }
-
-    .progress-label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 14px;
-      background: rgba(0,0,0,0.2);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      width: 70%;
-      height: 100%;
-      background: white;
-      border-radius: 10px;
-      transition: width 0.6s ease;
-    }
-
-    .xp-text {
-      font-size: 0.85rem;
-      text-align: right;
-      opacity: 0.95;
-      margin-top: 0.5rem;
-    }
-
-    /* Stats */
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .stat {
-      background: white;
-      border-radius: 16px;
-      padding: 1.75rem 1.5rem;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: all 0.2s;
-    }
-
-    .stat:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-    }
-
-    .stat-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat h4 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 0.25rem;
-    }
-
-    .stat p {
-      font-size: 0.9rem;
-      color: #64748b;
-      font-weight: 500;
-    }
-
-    @media (max-width: 1100px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card {
-        flex-direction: column;
-      }
-
-      .hero-right {
-        margin-top: 1.5rem;
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 1rem 1.5rem;
-      }
-
-      nav a {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
-      }
-
-      main {
-        padding: 1.5rem 1rem;
-      }
-
-      .courses {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
   <header>
     <div class="brand">
-      <div class="logo">N</div>
-      <h2>NumeraLogic</h2>
+      <a href="pagina_principal.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+        <div class="logo">
+          <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 50%;">
+        </div>
+        <h2>NumeraLogic</h2>
+      </a>
     </div>
+    
     <nav>
-      <a href="index.html" class="active">
+      <a href="pagina_principal.html" class="active">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
         </svg>
@@ -412,14 +33,67 @@
         Logros
       </a>
     </nav>
+    
     <div class="right">
-      <svg class="bell-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e293b" stroke-width="2">
-        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-      </svg>
-      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Diego" class="avatar" alt="Diego">
+      <div class="notifications-container">
+        <div class="notifications-icon">
+          <svg class="bell-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e293b" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <div class="notification-badge">3</div>
+        </div>
+        <div class="notifications-panel">
+          <div class="notifications-header">
+            <h3>Notificaciones</h3>
+            <button class="mark-read">Marcar todas como leídas</button>
+          </div>
+          <div class="notifications-list">
+            <div class="notification-item unread">
+              <div class="notification-icon achievement">🏆</div>
+              <div class="notification-content">
+                <div class="notification-title">¡Nuevo logro desbloqueado!</div>
+                <div class="notification-message">Has completado 10 ejercicios de cálculo.</div>
+                <div class="notification-time">Hace 2 horas</div>
+              </div>
+              <div class="notification-dot"></div>
+            </div>
+            <div class="notification-item unread">
+              <div class="notification-icon course">📚</div>
+              <div class="notification-content">
+                <div class="notification-title">Nuevo contenido disponible</div>
+                <div class="notification-message">Se ha añadido un nuevo módulo a Programación Estructurada.</div>
+                <div class="notification-time">Hace 1 día</div>
+              </div>
+              <div class="notification-dot"></div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-icon system">🔔</div>
+              <div class="notification-content">
+                <div class="notification-title">Recordatorio de estudio</div>
+                <div class="notification-message">No olvides practicar hoy para mantener tu racha.</div>
+                <div class="notification-time">Hace 3 días</div>
+              </div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-icon achievement">⭐</div>
+              <div class="notification-content">
+                <div class="notification-title">Has subido de nivel</div>
+                <div class="notification-message">Felicidades, ahora eres Nivel 12.</div>
+                <div class="notification-time">Hace 5 días</div>
+              </div>
+            </div>
+          </div>
+          <div class="notifications-footer">
+            <a href="#" class="view-all">Ver todas las notificaciones</a>
+          </div>
+        </div>
+      </div>
+      <img src="imagenes/perfil.jpg" class="avatar" alt="Diego">
     </div>
   </header>
+
+  <div class="notifications-overlay"></div>
 
   <main>
     <section class="hero-card">
@@ -507,6 +181,60 @@
     setTimeout(() => {
       document.querySelector('.progress-fill').style.width = '70%';
     }, 300);
+
+    // Sistema de notificaciones
+    document.addEventListener('DOMContentLoaded', function() {
+      const notificationsIcon = document.querySelector('.notifications-icon');
+      const notificationsPanel = document.querySelector('.notifications-panel');
+      const notificationsOverlay = document.querySelector('.notifications-overlay');
+      const markReadButton = document.querySelector('.mark-read');
+      const notificationItems = document.querySelectorAll('.notification-item');
+      const notificationBadge = document.querySelector('.notification-badge');
+      
+      // Mostrar/ocultar panel de notificaciones
+      notificationsIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        notificationsPanel.classList.toggle('active');
+        notificationsOverlay.style.display = notificationsPanel.classList.contains('active') ? 'block' : 'none';
+      });
+      
+      // Cerrar panel al hacer clic fuera
+      notificationsOverlay.addEventListener('click', function() {
+        notificationsPanel.classList.remove('active');
+        notificationsOverlay.style.display = 'none';
+      });
+      
+      // Marcar todas como leídas
+      markReadButton.addEventListener('click', function() {
+        notificationItems.forEach(item => {
+          item.classList.remove('unread');
+          const dot = item.querySelector('.notification-dot');
+          if (dot) dot.remove();
+        });
+        
+        // Actualizar contador
+        notificationBadge.textContent = '0';
+        notificationBadge.style.display = 'none';
+      });
+      
+      // Marcar notificación leída una por una
+      notificationItems.forEach(item => {
+        item.addEventListener('click', function() {
+          if (this.classList.contains('unread')) {
+            this.classList.remove('unread');
+            const dot = this.querySelector('.notification-dot');
+            if (dot) dot.remove();
+            
+            // Actualizar el contador
+            const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+            notificationBadge.textContent = unreadCount;
+            if (unreadCount === 0) {
+              notificationBadge.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
