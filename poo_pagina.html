@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Orientada a Objetos - NumeraLogic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a7a95 0%, #5bc0de 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #1a7a95;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #1a7a95;
+            padding-bottom: 10px;
+        }
+        
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .topic-card {
+            background: linear-gradient(135deg, #f5fcff 0%, #c3e7f5 100%);
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(26, 122, 149, 0.3);
+        }
+        
+        .topic-card h3 {
+            color: #1a7a95;
+            margin-bottom: 10px;
+        }
+        
+        .topic-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: #1a7a95;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+        
+        .back-btn:hover {
+            background: #156378;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">◆</div>
+            <h1>Programación Orientada a Objetos</h1>
+            <p>Paradigma de programación moderno y eficiente</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📚 Temas del Curso</h2>
+                <div class="topics">
+                    <div class="topic-card">
+                        <h3>Conceptos Básicos POO</h3>
+                        <p>Paradigmas, abstracción y pensamiento orientado a objetos</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Clases y Objetos</h3>
+                        <p>Definición, instanciación, atributos y métodos</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Encapsulamiento</h3>
+                        <p>Modificadores de acceso, getters, setters y ocultamiento</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Herencia</h3>
+                        <p>Jerarquías de clases, superclases y subclases</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Polimorfismo</h3>
+                        <p>Sobrecarga, sobreescritura e interfaces</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Patrones de Diseño</h3>
+                        <p>Singleton, Factory, Observer y mejores prácticas</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>🎯 Objetivos de Aprendizaje</h2>
+                <p>Al finalizar este curso serás capaz de:</p>
+                <ul style="margin-top: 15px; line-height: 2; margin-left: 20px;">
+                    <li>Diseñar y desarrollar aplicaciones usando POO</li>
+                    <li>Aplicar los pilares de POO: encapsulamiento, herencia y polimorfismo</li>
+                    <li>Implementar patrones de diseño en proyectos reales</li>
+                    <li>Crear código modular, reutilizable y mantenible</li>
+                </ul>
+            </div>
+            
+            <a href="pagina_segunda.html" class="back-btn">← Volver al Inicio</a>
+        </div>
+    </div>
+</body>
+</html>

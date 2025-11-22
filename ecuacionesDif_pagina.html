@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecuaciones Diferenciales - NumeraLogic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #f7fafc;
+            color: #2d3748;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        
+        .course-hero {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .course-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #2d3748;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .course-description {
+            color: #4a5568;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .course-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #718096;
+        }
+        
+        .enroll-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .enroll-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .module {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .module h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .module p {
+            color: #718096;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                📐 NumeraLogic
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="window.location.href='index.html'">🏠 Inicio</button>
+                <button class="nav-btn">⭐ Logros</button>
+            </div>
+        </header>
+        
+        <div class="course-hero">
+            <div class="course-icon">📐</div>
+            <h1>Ecuaciones Diferenciales</h1>
+            <p class="course-description">
+                Domina las ecuaciones diferenciales desde sus fundamentos hasta aplicaciones avanzadas. 
+                Aprende a resolver problemas del mundo real utilizando técnicas analíticas y numéricas.
+            </p>
+            <div class="course-stats">
+                <div class="stat">⏱️ 40 horas</div>
+                <div class="stat">📚 12 módulos</div>
+                <div class="stat">⭐ 4.8/5.0</div>
+            </div>
+            <button class="enroll-btn">Comenzar Curso</button>
+        </div>
+        
+        <div class="content-section">
+            <h2>📋 Contenido del Curso</h2>
+            
+            <div class="module">
+                <h3>Módulo 1: Introducción a las Ecuaciones Diferenciales</h3>
+                <p>Conceptos básicos, clasificación y aplicaciones en física e ingeniería.</p>
+            </div>
+            
+            <div class="module">
+                <h3>Módulo 2: Ecuaciones de Primer Orden</h3>
+                <p>Métodos de separación de variables, ecuaciones exactas y factores integrantes.</p>
+            </div>
+            
+            <div class="module">
+                <h3>Módulo 3: Ecuaciones Lineales de Orden Superior</h3>
+                <p>Soluciones homogéneas y particulares, método de coeficientes indeterminados.</p>
+            </div>
+            
+            <div class="module">
+                <h3>Módulo 4: Transformada de Laplace</h3>
+                <p>Aplicación de la transformada de Laplace para resolver EDOs.</p>
+            </div>
+            
+            <div class="module">
+                <h3>Módulo 5: Sistemas de Ecuaciones Diferenciales</h3>
+                <p>Análisis de sistemas lineales y no lineales, plano fase y estabilidad.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
