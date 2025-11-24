@@ -72,12 +72,19 @@
             margin-top: 20px;
         }
         
+        /* --- AQUÍ ESTÁ EL TRUCO (FLEXBOX) --- */
         .topic-card {
             background: linear-gradient(135deg, #f5fcff 0%, #c3e7f5 100%);
             padding: 25px;
             border-radius: 15px;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+
+            /* Flexbox para estructura vertical */
+            display: flex;
+            flex-direction: column;
+            height: 100%;       /* Ocupar todo el alto disponible */
+            text-align: center; /* Centrar texto */
         }
         
         .topic-card:hover {
@@ -93,6 +100,25 @@
         .topic-card p {
             color: #555;
             line-height: 1.6;
+        }
+
+        .topic-btn {
+            display: inline-block;
+            margin-top: auto; 
+            align-self: center;
+            
+            background: #1a7a95; 
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .topic-btn:hover {
+            background: #156378;
+            transform: translateY(-3px);
         }
         
         .back-btn {
@@ -127,26 +153,32 @@
                     <div class="topic-card">
                         <h3>Conceptos Básicos POO</h3>
                         <p>Paradigmas, abstracción y pensamiento orientado a objetos</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Clases y Objetos</h3>
                         <p>Definición, instanciación, atributos y métodos</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Encapsulamiento</h3>
                         <p>Modificadores de acceso, getters, setters y ocultamiento</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Herencia</h3>
                         <p>Jerarquías de clases, superclases y subclases</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Polimorfismo</h3>
                         <p>Sobrecarga, sobreescritura e interfaces</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Patrones de Diseño</h3>
                         <p>Singleton, Factory, Observer y mejores prácticas</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                 </div>
             </div>
