@@ -78,6 +78,10 @@
             border-radius: 15px;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-align: center;
         }
         
         .topic-card:hover {
@@ -93,6 +97,26 @@
         .topic-card p {
             color: #555;
             line-height: 1.6;
+        }
+
+
+        .topic-btn {
+            display: inline-block;
+            margin-top: auto;
+            align-self: center;
+            
+            background: #3d43a8;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .topic-btn:hover {
+            background: #2d3388;
+            transform: translateY(-3px);
         }
         
         .back-btn {
@@ -127,26 +151,32 @@
                     <div class="topic-card">
                         <h3>Modelo de Von Neumann</h3>
                         <p>Arquitectura básica, CPU, memoria y buses de datos</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Unidad Central de Proceso</h3>
                         <p>ALU, registros, unidad de control y ciclo de instrucción</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Ensamblador</h3>
                         <p>Lenguaje máquina, instrucciones y programación en bajo nivel</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Jerarquía de Memoria</h3>
                         <p>Cache, RAM, memoria virtual y gestión de memoria</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Segmentación y Pipeline</h3>
                         <p>Procesamiento paralelo, hazards y optimización</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Entrada/Salida</h3>
                         <p>Dispositivos periféricos, DMA y controladores</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                 </div>
             </div>
