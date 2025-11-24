@@ -78,6 +78,10 @@
             border-radius: 15px;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-align: center;
         }
         
         .topic-card:hover {
@@ -93,6 +97,25 @@
         .topic-card p {
             color: #555;
             line-height: 1.6;
+        }
+
+        .topic-btn {
+            display: inline-block;
+            margin-top: auto; 
+            align-self: center;
+            
+            background: #d43d15;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .topic-btn:hover {
+            background: #b33212;
+            transform: translateY(-3px);
         }
         
         .back-btn {
@@ -127,26 +150,32 @@
                     <div class="topic-card">
                         <h3>Introducción a MCU</h3>
                         <p>Arquitectura, familias de microcontroladores y aplicaciones</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Puertos de E/S</h3>
                         <p>Configuración de pines digitales, lectura y escritura</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Interrupciones</h3>
                         <p>Vectores de interrupción, prioridades y manejo de eventos</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Timers y Contadores</h3>
                         <p>Temporizadores, PWM y generación de señales</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Comunicación Serial</h3>
                         <p>UART, SPI, I2C y protocolos de comunicación</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                     <div class="topic-card">
                         <h3>Conversión A/D y D/A</h3>
                         <p>ADC, DAC y procesamiento de señales analógicas</p>
+                        <a href="#" class="topic-btn">Acceder al tema</a>
                     </div>
                 </div>
             </div>
