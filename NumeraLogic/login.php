@@ -32,9 +32,14 @@
           <input type="text" id="matricula" name="matricula" required>
         </div>
         
-        <div class="form-group">
+        <div class="form-group password-group">
           <label for="contrasena">Contraseña</label>
-          <input type="password" id="contrasena" name="contrasena" required>
+          <div class="password-wrapper">
+            <input type="password" id="contrasena" name="contrasena" required>
+            <button type="button" class="toggle-password" onclick="togglePassword()">
+              <span class="eye-icon">👁️</span>
+            </button>
+          </div>
         </div>
         
         <div class="button-group">
@@ -43,5 +48,20 @@
       </form>
     </div>
   </main>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('contrasena');
+      const eyeIcon = document.querySelector('.eye-icon');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.textContent = '🙈';
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.textContent = '👁️';
+      }
+    }
+  </script>
 </body>
 </html>

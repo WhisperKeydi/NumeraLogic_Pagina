@@ -133,7 +133,7 @@ if (!isset($_SESSION['usuario_id'])) {
     </section>
 
     <div class="areas-grid">
-      <div class="area-card blue" onclick="window.location.href='pagina_tres.php'">
+      <div class="area-card green" onclick="window.location.href='pagina_tres.php'">
         <div class="area-icon">👨‍🏫</div>
         <h3>Formación<br>inicial</h3>
         <button onclick="event.stopPropagation(); window.location.href='pagina_tres.php'">Comenzar</button>
@@ -145,7 +145,7 @@ if (!isset($_SESSION['usuario_id'])) {
         <button onclick="event.stopPropagation(); window.location.href='principal_cuarta.php'">Comenzar</button>
       </div>
 
-      <div class="area-card green" onclick="window.location.href='pagina_segunda.php'">
+      <div class="area-card blue" onclick="window.location.href='pagina_segunda.php'">
         <div class="area-icon">💻</div>
         <h3>Ingeniería en computación</h3>
         <button onclick="event.stopPropagation(); window.location.href='pagina_segunda.php'">Comenzar</button>

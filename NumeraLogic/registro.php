@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crear cuenta - NumeraLogic</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/crear_cuenta.css">
+  <link rel="stylesheet" href="css/registro.css">
 </head>
 <body>
   <header>
@@ -84,7 +84,7 @@
       toggleButton.addEventListener('click', function() {
         if (passwordInput.type === 'password') {
           passwordInput.type = 'text';
-          toggleButton.textContent = '🔒';
+          toggleButton.textContent = '🙈';
         } else {
           passwordInput.type = 'password';
           toggleButton.textContent = '👁️';
