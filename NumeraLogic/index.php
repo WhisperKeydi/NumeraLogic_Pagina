@@ -27,25 +27,6 @@
       <a href="login.php" class="btn btn-primary">Iniciar sesión</a>
       <a href="registro.php" class="btn btn-secondary">Crear cuenta nueva</a>
     </div>
-
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">📚</div>
-        <div class="feature-text">Cursos variados</div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🏆</div>
-        <div class="feature-text">Sistema de logros</div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">📊</div>
-        <div class="feature-text">Seguimiento de progreso</div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🎯</div>
-        <div class="feature-text">Aprendizaje personalizado</div>
-      </div>
-    </div>
   </div>
 </body>
 </html>
