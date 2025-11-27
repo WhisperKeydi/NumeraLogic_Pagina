@@ -96,7 +96,6 @@ if (!isset($_SESSION['usuario_id'])) {
       </div>
     </div>
     
-    <!-- MENÚ DE USUARIO -->
     <div class="user-menu">
       <div class="user-avatar" id="userMenuButton">
         <img src="imagenes/perfil.jpg" class="avatar" alt="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
@@ -127,27 +126,29 @@ if (!isset($_SESSION['usuario_id'])) {
 
   <main>
     <section class="hero-section">
-      <h1>🧠 Áreas disponibles</h1>
-      <p>Elige un área para filtrar el catálogo y mostrar los cursos relevantes para tu ruta de aprendizaje</p>
+      <div class="hero-container">
+        <h1>🧠 Áreas disponibles</h1>
+        <p>Elige un área para filtrar el catálogo y mostrar los cursos relevantes para tu ruta de aprendizaje</p>
+      </div>
     </section>
 
     <div class="areas-grid">
-      <div class="area-card blue" onclick="window.location.href='formacion-inicial.php'">
+      <div class="area-card blue" onclick="window.location.href='pagina_tres.php'">
         <div class="area-icon">👨‍🏫</div>
-        <h3>Formación inicial</h3>
-        <button onclick="event.stopPropagation(); window.location.href='pagina_tres.php'">Comenzar aprendizaje</button>
+        <h3>Formación<br>inicial</h3>
+        <button onclick="event.stopPropagation(); window.location.href='pagina_tres.php'">Comenzar</button>
       </div>
 
-      <div class="area-card red" onclick="window.location.href='matematicas-aplicadas.php'">
+      <div class="area-card red" onclick="window.location.href='principal_cuarta.php'">
         <div class="area-icon">📐</div>
         <h3>Matemáticas aplicadas</h3>
-        <button onclick="event.stopPropagation(); window.location.href='principal_cuarta.php'">Comenzar aprendizaje</button>
+        <button onclick="event.stopPropagation(); window.location.href='principal_cuarta.php'">Comenzar</button>
       </div>
 
-      <div class="area-card orange" onclick="window.location.href='ingenieria-computacion.php'">
+      <div class="area-card green" onclick="window.location.href='pagina_segunda.php'">
         <div class="area-icon">💻</div>
         <h3>Ingeniería en computación</h3>
-        <button onclick="event.stopPropagation(); window.location.href='pagina_segunda.php'">Comenzar aprendizaje</button>
+        <button onclick="event.stopPropagation(); window.location.href='pagina_segunda.php'">Comenzar</button>
       </div>
     </div>
   </main>

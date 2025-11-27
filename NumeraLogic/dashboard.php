@@ -73,13 +73,14 @@ if (!isset($_SESSION['usuario_id'])) {
               </div>
               <div class="notification-dot"></div>
             </div>
-            <div class="notification-item">
+            <div class="notification-item unread">
               <div class="notification-icon system">🔔</div>
               <div class="notification-content">
                 <div class="notification-title">Recordatorio de estudio</div>
                 <div class="notification-message">No olvides practicar hoy para mantener tu racha.</div>
                 <div class="notification-time">Hace 3 días</div>
               </div>
+              <div class="notification-dot"></div>
             </div>
             <div class="notification-item">
               <div class="notification-icon achievement">⭐</div>
@@ -96,7 +97,7 @@ if (!isset($_SESSION['usuario_id'])) {
         </div>
       </div>
       
-      <!-- MENÚ DE USUARIO MEJORADO -->
+      <!-- MENÚ DE USUARIO -->
       <div class="user-menu">
         <div class="user-avatar" id="userMenuButton">
           <img src="imagenes/perfil.jpg" class="avatar" alt="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
@@ -226,37 +227,33 @@ if (!isset($_SESSION['usuario_id'])) {
       const notificationItems = document.querySelectorAll('.notification-item');
       const notificationBadge = document.querySelector('.notification-badge');
       
-      if (notificationsIcon && notificationsPanel) {
-        notificationsIcon.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const isActive = notificationsPanel.classList.contains('active');
-          notificationsPanel.classList.toggle('active');
-          notificationsOverlay.style.display = isActive ? 'none' : 'block';
-        });
-      }
+      // Mostrar/ocultar panel de notificaciones
+      notificationsIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        notificationsPanel.classList.toggle('active');
+        notificationsOverlay.style.display = notificationsPanel.classList.contains('active') ? 'block' : 'none';
+      });
       
-      if (notificationsOverlay) {
-        notificationsOverlay.addEventListener('click', function() {
-          notificationsPanel.classList.remove('active');
-          notificationsOverlay.style.display = 'none';
-        });
-      }
+      // Cerrar panel al hacer clic fuera
+      notificationsOverlay.addEventListener('click', function() {
+        notificationsPanel.classList.remove('active');
+        notificationsOverlay.style.display = 'none';
+      });
       
-      if (markReadButton) {
-        markReadButton.addEventListener('click', function() {
-          notificationItems.forEach(item => {
-            item.classList.remove('unread');
-            const dot = item.querySelector('.notification-dot');
-            if (dot) dot.remove();
-          });
-          
-          if (notificationBadge) {
-            notificationBadge.textContent = '0';
-            notificationBadge.style.display = 'none';
-          }
+      // Marcar todas como leídas
+      markReadButton.addEventListener('click', function() {
+        notificationItems.forEach(item => {
+          item.classList.remove('unread');
+          const dot = item.querySelector('.notification-dot');
+          if (dot) dot.remove();
         });
-      }
+        
+        // Actualizar contador
+        notificationBadge.textContent = '0';
+        notificationBadge.style.display = 'none';
+      });
       
+      // Marcar notificación leída una por una
       notificationItems.forEach(item => {
         item.addEventListener('click', function() {
           if (this.classList.contains('unread')) {
@@ -264,18 +261,17 @@ if (!isset($_SESSION['usuario_id'])) {
             const dot = this.querySelector('.notification-dot');
             if (dot) dot.remove();
             
+            // Actualizar el contador
             const unreadCount = document.querySelectorAll('.notification-item.unread').length;
-            if (notificationBadge) {
-              notificationBadge.textContent = unreadCount;
-              if (unreadCount === 0) {
-                notificationBadge.style.display = 'none';
-              }
+            notificationBadge.textContent = unreadCount;
+            if (unreadCount === 0) {
+              notificationBadge.style.display = 'none';
             }
           }
         });
       });
 
-      // MENÚ DE USUARIO - CÓDIGO MEJORADO
+      // MENÚ DE USUARIO
       const userMenuButton = document.getElementById('userMenuButton');
       const userDropdown = document.getElementById('userDropdown');
       

@@ -12,7 +12,7 @@ if (!isset($_SESSION['usuario_id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ingeniería en computación - NumeraLogic</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/pagina_segunda.css">
+  <link rel="stylesheet" href="css/pagina_segunda.css?v=2">
 </head>
 <body>
   <header>
@@ -123,9 +123,15 @@ if (!isset($_SESSION['usuario_id'])) {
 
   <div class="notifications-overlay"></div>
 
-  <main>
+<main>
     <div class="content-wrapper">
       <div class="courses-section">
+        <div class="page-header">
+          <div class="header-icon">💻</div>
+          <h1>Ingeniería en Computación</h1>
+          <p>Desarrolla habilidades en programación, sistemas y tecnología</p>
+        </div>
+
         <div class="course-card">
           <div class="course-icon">💻</div>
           <h3>Sistemas Digitales</h3>
@@ -161,9 +167,40 @@ if (!isset($_SESSION['usuario_id'])) {
         <h2>🔍 Explora los cursos</h2>
         <p><strong>¡Más material en camino!</strong></p>
         <p>Estamos trabajando para que puedas acceder a nuevos cursos</p>
+        
+        <div class="navigation-buttons">
+          <h3 style="margin-top: 2rem; margin-bottom: 1.5rem; color: #1e293b; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🌐 Otras áreas de estudio</h3>
+          
+          <button class="nav-button initial-button" onclick="window.location.href='pagina_tres.php'">
+            <div class="button-icon">📚</div>
+            <div class="button-content">
+              <div class="button-title">Formación Inicial</div>
+              <div class="button-description">Talleres de matemáticas, algoritmos, cálculo básico</div>
+            </div>
+            <div class="button-arrow">→</div>
+          </button>
+
+          <button class="nav-button math-button" onclick="window.location.href='principal_cuarta.php'">
+            <div class="button-icon">📐</div>
+            <div class="button-content">
+              <div class="button-title">Matemáticas Aplicadas</div>
+              <div class="button-description">Ecuaciones diferenciales, cálculo avanzado, estadística</div>
+            </div>
+            <div class="button-arrow">→</div>
+          </button>
+
+          <button class="nav-button areas-button" onclick="window.location.href='areas_disponibles.php'">
+            <div class="button-icon">🧠</div>
+            <div class="button-content">
+              <div class="button-title">Ver todas las áreas</div>
+              <div class="button-description">Explora todas nuestras categorías de estudio</div>
+            </div>
+            <div class="button-arrow">→</div>
+          </button>
+        </div>
       </div>
     </div>
-  </main>
+</main>
 
   <script>
     // Sistema de notificaciones

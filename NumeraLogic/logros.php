@@ -226,6 +226,29 @@ if (!isset($_SESSION['usuario_id'])) {
           }
         });
       });
+
+          // MENÚ DE USUARIO
+      const userMenuButton = document.getElementById('userMenuButton');
+      const userDropdown = document.getElementById('userDropdown');
+      
+      if (userMenuButton && userDropdown) {
+        userMenuButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+          userDropdown.classList.toggle('show');
+        });
+        
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(event) {
+          if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+            userDropdown.classList.remove('show');
+          }
+        });
+        
+        // Prevenir que el clic en el menú lo cierre
+        userDropdown.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
     });
   </script>
 </body>

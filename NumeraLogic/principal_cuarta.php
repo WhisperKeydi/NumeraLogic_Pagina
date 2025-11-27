@@ -12,9 +12,12 @@ if (!isset($_SESSION['usuario_id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matemáticas aplicadas - NumeraLogic</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/principal_cuarta.css">
+  <link rel="stylesheet" href="css/principal_cuarta.css?v=2">
 </head>
 <body>
+<!-- Indicador de carga (Ley de Feedback) -->
+<div class="loading-indicator" id="loadingIndicator"></div>
+
   <header>
     <div class="brand">
       <a href="dashboard.php" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
@@ -94,38 +97,48 @@ if (!isset($_SESSION['usuario_id'])) {
             <a href="#" class="view-all">Ver todas las notificaciones</a>
           </div>
         </div>
-  </div>
-  <div class="user-menu">
-    <div class="user-avatar" id="userMenuButton">
-      <img src="imagenes/perfil.jpg" class="avatar" alt="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
-      <span class="user-name"><?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M7 10l5 5 5-5z"></path>
-      </svg>
+      </div>
+      
+      <div class="user-menu">
+        <div class="user-avatar" id="userMenuButton">
+          <img src="imagenes/perfil.jpg" class="avatar" alt="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
+          <span class="user-name"><?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 10l5 5 5-5z"></path>
+          </svg>
+        </div>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="editar_perfil.php" class="dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            Cambiar datos
+          </a>
+          <a href="logout.php" class="dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+            </svg>
+            Cerrar sesión
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="user-dropdown" id="userDropdown">
-      <a href="editar_perfil.php" class="dropdown-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
-        Cambiar datos
-      </a>
-      <a href="logout.php" class="dropdown-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
-        </svg>
-        Cerrar sesión
-      </a>
-    </div>
-  </div>
-</div>
   </header>
 
   <div class="notifications-overlay"></div>
 
-  <main>
+<main>
     <div class="content-wrapper">
       <div class="courses-section">
+        <!-- ENCABEZADO MEJORADO CON PARTÍCULAS MATEMÁTICAS -->
+        <div class="page-header">
+          <!-- Partículas matemáticas flotantes -->
+          
+          <div class="header-icon">📐</div>
+          <h1>Matemáticas Aplicadas</h1>
+          <p>Domina conceptos avanzados para resolver problemas complejos del mundo real</p>
+        </div>
+
         <div class="course-card">
           <div class="course-icon">📐</div>
           <h3>Ecuaciones diferenciales</h3>
@@ -161,12 +174,52 @@ if (!isset($_SESSION['usuario_id'])) {
         <h2>🔍 Explora los cursos</h2>
         <p><strong>¡Más material en camino!</strong></p>
         <p>Estamos trabajando para que puedas acceder a nuevos cursos</p>
+        
+        <div class="navigation-buttons">
+          <h3 style="margin-top: 2rem; margin-bottom: 1.5rem; color: #1e293b; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🌐 Otras áreas de estudio</h3>
+          
+          <button class="nav-button initial-button" onclick="window.location.href='pagina_tres.php'">
+            <div class="button-icon">📚</div>
+            <div class="button-content">
+              <div class="button-title">Formación Inicial</div>
+              <div class="button-description">Talleres de matemáticas, algoritmos, cálculo básico</div>
+            </div>
+            <div class="button-arrow">→</div>
+          </button>
+
+          <button class="nav-button engineering-button" onclick="window.location.href='pagina_segunda.php'">
+            <div class="button-icon">💻</div>
+            <div class="button-content">
+              <div class="button-title">Ingeniería en Computación</div>
+              <div class="button-description">Programación, bases de datos, sistemas operativos</div>
+            </div>
+            <div class="button-arrow">→</div>
+          </button>
+
+          <button class="nav-button areas-button" onclick="window.location.href='areas_disponibles.php'">
+            <div class="button-icon">🧠</div>
+            <div class="button-content">
+              <div class="button-title">Ver todas las áreas</div>
+              <div class="button-description">Explora todas nuestras categorías de estudio</div>
+            </div>
+            <div class="button-arrow">→</div>
+          </button>
+        </div>
       </div>
     </div>
-  </main>
+</main>
 
   <script>
-    // Sistema de notificaciones
+        // Ley de Feedback: Mostrar indicador de carga
+    function navigateTo(url) {
+      const loadingIndicator = document.getElementById('loadingIndicator');
+      loadingIndicator.style.display = 'block';
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    }
+    // Sistema de notificaciones 
     document.addEventListener('DOMContentLoaded', function() {
       const notificationsIcon = document.querySelector('.notifications-icon');
       const notificationsPanel = document.querySelector('.notifications-panel');
@@ -175,33 +228,27 @@ if (!isset($_SESSION['usuario_id'])) {
       const notificationItems = document.querySelectorAll('.notification-item');
       const notificationBadge = document.querySelector('.notification-badge');
       
-      // Mostrar/ocultar panel de notificaciones
       notificationsIcon.addEventListener('click', function(e) {
         e.stopPropagation();
         notificationsPanel.classList.toggle('active');
         notificationsOverlay.style.display = notificationsPanel.classList.contains('active') ? 'block' : 'none';
       });
       
-      // Cerrar panel al hacer clic fuera
       notificationsOverlay.addEventListener('click', function() {
         notificationsPanel.classList.remove('active');
         notificationsOverlay.style.display = 'none';
       });
       
-      // Marcar todas como leídas
       markReadButton.addEventListener('click', function() {
         notificationItems.forEach(item => {
           item.classList.remove('unread');
           const dot = item.querySelector('.notification-dot');
           if (dot) dot.remove();
         });
-        
-        // Actualizar contador
         notificationBadge.textContent = '0';
         notificationBadge.style.display = 'none';
       });
       
-      // Marcar notificación leída una por una
       notificationItems.forEach(item => {
         item.addEventListener('click', function() {
           if (this.classList.contains('unread')) {
@@ -209,7 +256,6 @@ if (!isset($_SESSION['usuario_id'])) {
             const dot = this.querySelector('.notification-dot');
             if (dot) dot.remove();
             
-            // Actualizar el contador
             const unreadCount = document.querySelectorAll('.notification-item.unread').length;
             notificationBadge.textContent = unreadCount;
             if (unreadCount === 0) {
@@ -219,7 +265,6 @@ if (!isset($_SESSION['usuario_id'])) {
         });
       });
 
-      // Sistema de menú de usuario
       const userMenuButton = document.getElementById('userMenuButton');
       const userDropdown = document.getElementById('userDropdown');
       

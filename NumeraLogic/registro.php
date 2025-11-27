@@ -33,12 +33,18 @@
 
         <div class="form-group">
           <label for="contrasena">contraseña</label>
-          <input type="password" id="contrasena" name="contrasena" required>
+          <div class="password-container">
+            <input type="password" id="contrasena" name="contrasena" required>
+            <span class="toggle-password" id="toggleContrasena">👁️</span>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="confirmar_contrasena">confirmar contraseña</label>
-          <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required>
+          <div class="password-container">
+            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required>
+            <span class="toggle-password" id="toggleConfirmar">👁️</span>
+          </div>
           <small id="mensajeContrasena" class="mensaje-error"></small>
         </div>
 
@@ -69,6 +75,26 @@
         return true;
       }
     }
+
+    // Función para mostrar/ocultar contraseña
+    function setupPasswordToggle(passwordId, toggleId) {
+      const passwordInput = document.getElementById(passwordId);
+      const toggleButton = document.getElementById(toggleId);
+
+      toggleButton.addEventListener('click', function() {
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          toggleButton.textContent = '🔒';
+        } else {
+          passwordInput.type = 'password';
+          toggleButton.textContent = '👁️';
+        }
+      });
+    }
+
+    // Configurar los toggles para ambos campos de contraseña
+    setupPasswordToggle('contrasena', 'toggleContrasena');
+    setupPasswordToggle('confirmar_contrasena', 'toggleConfirmar');
     
     // Validación en tiempo real
     document.getElementById('confirmar_contrasena').addEventListener('input', function() {
