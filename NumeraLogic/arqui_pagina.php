@@ -62,7 +62,7 @@
                 </ul>
             </div>
             
-            <a href="pagina_segunda.html" class="back-btn">← Volver al Inicio</a>
+            <a href="pagina_segunda.php" class="back-btn">← Explorar más cursos</a>
         </div>
     </div>
 </body>

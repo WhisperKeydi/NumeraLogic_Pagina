@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geometría - NumeraLogic</title>
-    <link rel="stylesheet" href="../css/geometria_pagina.css">
+    <link rel="stylesheet" href="css/geometria_pagina.css">
 </head>
 <body>
     <div class="container">
@@ -67,7 +67,7 @@
                 </ul>
             </div>
 
-            <a href="principal_cuarta.html" class="back-btn">← Volver al Inicio</a>
+            <a href="principal_cuarta.php" class="back-btn">← Explorar más cursos</a>
         </div>
     </div>
 </body>

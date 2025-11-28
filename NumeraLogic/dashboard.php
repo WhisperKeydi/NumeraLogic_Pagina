@@ -147,7 +147,7 @@ if (!isset($_SESSION['usuario_id'])) {
           <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop" alt="Programación Estructurada" class="course-image">
           <div class="course-content">
             <h4>Programación Estructurada</h4>
-            <button>Ir al curso</button>
+            <button onclick="window.location.href='estructurada_pagina.php'">Ir al curso</button>
           </div>
         </div>
 
@@ -155,7 +155,7 @@ if (!isset($_SESSION['usuario_id'])) {
           <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop" alt="Introducción al cálculo" class="course-image">
           <div class="course-content">
             <h4>Introducción al cálculo</h4>
-            <button>Ir al curso</button>
+            <button onclick="window.location.href='intro_calculo_pagina.php'">Ir al curso</button>
           </div>
         </div>
 
@@ -163,7 +163,7 @@ if (!isset($_SESSION['usuario_id'])) {
           <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop" alt="Sistemas digitales" class="course-image">
           <div class="course-content">
             <h4>Sistemas digitales</h4>
-            <button>Ir al curso</button>
+            <button onclick="window.location.href='sistemasDigitales_pagina.php'">Ir al curso</button>
           </div>
         </div>
       </div>

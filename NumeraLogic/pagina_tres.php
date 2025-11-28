@@ -13,6 +13,21 @@ if (!isset($_SESSION['usuario_id'])) {
   <title>Formación Inicial - NumeraLogic</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/pagina_tres.css?v=2">
+  <style>
+    /* Estilos adicionales para enlaces */
+    .course-card {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+  </style>
 </head>
 <body>
  <header>

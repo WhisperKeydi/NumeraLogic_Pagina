@@ -13,6 +13,21 @@ if (!isset($_SESSION['usuario_id'])) {
   <title>Ingeniería en computación - NumeraLogic</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/pagina_segunda.css?v=2">
+  <style>
+    /* Estilos adicionales para enlaces */
+    .course-card {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -132,35 +147,35 @@ if (!isset($_SESSION['usuario_id'])) {
           <p>Desarrolla habilidades en programación, sistemas y tecnología</p>
         </div>
 
-        <div class="course-card">
+        <a href="sistemasDigitales_pagina.php" class="course-card">
           <div class="course-icon">💻</div>
           <h3>Sistemas Digitales</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="basesDatos_pagina.php" class="course-card">
           <div class="course-icon">🗄️</div>
           <h3>Bases de datos</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="poo_pagina.php" class="course-card">
           <div class="course-icon">🔷</div>
           <h3>Programación Orientada a Objetos</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="micro_pagina.php" class="course-card">
           <div class="course-icon">🔧</div>
           <h3>Microcontroladores</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="arqui_pagina.php" class="course-card">
           <div class="course-icon">🖥️</div>
           <h3>Arquitectura de computadoras</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="sistemaOp_pagina.php" class="course-card">
           <div class="course-icon">📱</div>
           <h3>Sistemas operativos</h3>
-        </div>
+        </a>
       </div>
 
       <div class="sidebar">

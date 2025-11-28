@@ -67,7 +67,7 @@
                 </ul>
             </div>
 
-            <a href="principal_cuarta.html" class="back-btn">← Volver al Inicio</a>
+            <a href="principal_cuarta.php" class="back-btn">← Explorar más cursos</a>
         </div>
     </div>
 </body>

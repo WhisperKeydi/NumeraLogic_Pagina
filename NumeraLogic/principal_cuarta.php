@@ -13,6 +13,21 @@ if (!isset($_SESSION['usuario_id'])) {
   <title>Matemáticas aplicadas - NumeraLogic</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/principal_cuarta.css?v=2">
+  <style>
+    /* Estilos adicionales para enlaces */
+    .course-card {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+  </style>
 </head>
 <body>
 <!-- Indicador de carga (Ley de Feedback) -->
@@ -139,35 +154,35 @@ if (!isset($_SESSION['usuario_id'])) {
           <p>Domina conceptos avanzados para resolver problemas complejos del mundo real</p>
         </div>
 
-        <div class="course-card">
+        <a href="ecuacionesDif_pagina.php" class="course-card">
           <div class="course-icon">📐</div>
           <h3>Ecuaciones diferenciales</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="prograLineal_pagina.php" class="course-card">
           <div class="course-icon">⚙️</div>
           <h3>Programación lineal</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="geometria_pagina.php" class="course-card">
           <div class="course-icon">📦</div>
           <h3>Geometría</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="calculoiv_pagina.php" class="course-card">
           <div class="course-icon" style="font-size: 6rem; font-weight: 700; color: #10b981;">4</div>
           <h3>Cálculo IV</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="probabilidad2_pagina.php" class="course-card">
           <div class="course-icon">🎲</div>
           <h3>Probabilidad II</h3>
-        </div>
+        </a>
 
-        <div class="course-card">
+        <a href="estadistica_pagina.php" class="course-card">
           <div class="course-icon">📊</div>
           <h3>Estadística II</h3>
-        </div>
+        </a>
       </div>
 
       <div class="sidebar">
