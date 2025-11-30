@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #331505 0%, #632508 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.header{
+    background: linear-gradient(135deg, #431407 0%, #9a3412 100%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.header h1{
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header p{
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.icon{
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.content{
+    padding: 40px;
+}
+
+.section{
+    margin-bottom: 40px;
+}
+
+.section h2{
+    color: #c2410c;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 3px solid #c2410c;
+    padding-bottom: 10px;
+}
+
+.topics{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.topic-card{
+    background: #ffffff; 
+    padding: 25px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.topic-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(194, 65, 12, 0.3);
+    border-color: #c2410c;
+}
+
+.topic-card h3{
+    color: #c2410c;
+    margin-bottom: 10px;
+}
+
+.topic-card p{
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.button-group{
+    display: flex;
+    gap: 10px;
+    margin-top: auto; 
+    width: 100%;
+}
+
+.topic-btn{
+    flex: 1; 
+    display: inline-block;
+    background: #c2410c;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.topic-btn:hover{
+    background: #7c2d12;
+    transform: translateY(-3px);
+}
+
+.back-btn{
+    display: inline-block;
+    background: #c2410c;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+.back-btn:hover{
+    background: #7c2d12;
+}
