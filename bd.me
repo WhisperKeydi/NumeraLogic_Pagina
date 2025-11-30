@@ -1,0 +1,29 @@
+Copia y pega esto en 
+http://localhost/phpmyadmin
+
+
+
+CREATE DATABASE numeralogic;
+USE numeralogic;
+
+CREATE TABLE usuarios (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    matricula VARCHAR(20) UNIQUE NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    nombre VARCHAR(100),
+    email VARCHAR(100),
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE progreso (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT(11),
+    curso VARCHAR(100),
+    progreso INT(3) DEFAULT 0,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- Insertar un usuario de prueba
+INSERT INTO usuarios (matricula, contrasena, nombre) 
+VALUES ('00', '123', 'user');
