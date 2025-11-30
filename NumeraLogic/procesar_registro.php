@@ -42,7 +42,7 @@ if ($_POST) {
             
             echo "<script>
                 alert('Cuenta creada exitosamente');
-                window.location.href = 'dashboard.php';
+                window.location.href = 'index.php';
             </script>";
         } else {
             echo "<script>
