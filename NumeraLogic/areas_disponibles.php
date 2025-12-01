@@ -168,18 +168,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="area-card green" onclick="window.location.href='Formación_Inicial.php'">
         <div class="area-icon">👨‍🏫</div>
         <h3>Formación<br>inicial</h3>
+        <p class="area-description">Cursos fundamentales de primero a cuarto trimestre comunes a ambas carreras. Base esencial para tu desarrollo académico.</p>
         <button onclick="event.stopPropagation(); window.location.href='Formación_Inicial.php'">Comenzar</button>
       </div>
 
       <div class="area-card red" onclick="window.location.href='Matemáticas_apli.php'">
         <div class="area-icon">📐</div>
         <h3>Matemáticas aplicadas</h3>
+        <p class="area-description">Enfócate en matemáticas avanzadas y aplicaciones específicas para ciencia de datos y análisis matemático.</p>
         <button onclick="event.stopPropagation(); window.location.href='Matemáticas_apli.php'">Comenzar</button>
       </div>
 
       <div class="area-card blue" onclick="window.location.href='Ingeniería.php'">
         <div class="area-icon">💻</div>
         <h3>Ingeniería en computación</h3>
+        <p class="area-description">Especialización en desarrollo de software, sistemas computacionales y tecnologías de la información.</p>
         <button onclick="event.stopPropagation(); window.location.href='Ingeniería.php'">Comenzar</button>
       </div>
     </div>

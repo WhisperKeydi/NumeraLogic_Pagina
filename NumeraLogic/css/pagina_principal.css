@@ -10,7 +10,7 @@ body {
   color: #1e293b;
 }
 
-/* HEADER - Fondo gris claro */
+/* HEADER */
 header {
   background: #e2e8f0;
   padding: 1rem 2.5rem;
@@ -82,51 +82,7 @@ nav a.active {
   gap: 1.25rem;
 }
 
-.user-menu {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.user-name {
-  font-weight: 500;
-  color: #1e293b;
-}
-
-.logout-btn {
-  padding: 0.5rem 1rem;
-  background: #ef4444;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: background 0.2s;
-}
-
-.logout-btn:hover {
-  background: #dc2626;
-}
-
-.bell-icon {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.bell-icon:hover {
-  transform: scale(1.1);
-}
-
-.avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #94a3b8;
-}
-/* NOTIFICATIONS - EXACTAMENTE IGUAL */
+/* NOTIFICATIONS */
 .notifications-container {
   position: relative;
 }
@@ -238,21 +194,6 @@ nav a.active {
   flex-shrink: 0;
 }
 
-.notification-icon.achievement {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.notification-icon.course {
-  background: #dbeafe;
-  color: #2563eb;
-}
-
-.notification-icon.system {
-  background: #f3e8ff;
-  color: #7c3aed;
-}
-
 .notification-content {
   flex: 1;
 }
@@ -312,7 +253,7 @@ nav a.active {
   display: none;
 }
 
-/* MENÚ DE USUARIO - EXACTAMENTE IGUAL */
+/* MENÚ DE USUARIO */
 .user-menu {
   position: relative;
   display: flex;
@@ -390,10 +331,6 @@ nav a.active {
   color: #1e293b;
 }
 
-.dropdown-item svg {
-  flex-shrink: 0;
-}
-
 @media (max-width: 768px) {
   header {
     padding: 1rem 1.5rem;
@@ -408,8 +345,6 @@ nav a.active {
     padding: 1.5rem 1rem;
   }
 }
-
-/* ========== A PARTIR DE AQUÍ SOLO ESTILOS DEL MAIN DE DASHBOARD ========== */
 
 /* MAIN CONTENT - ESTILOS ESPECÍFICOS DE DASHBOARD */
 main {
@@ -474,24 +409,29 @@ main {
   opacity: 0.9;
 }
 
-.grid {
+/* NUEVO GRID PRINCIPAL */
+.main-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
+  align-items: start;
 }
 
-.courses {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+/* SECCIÓN DE CURSOS */
+.courses-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .course-card {
-  background: white;
+  background: #f8fafc;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
 }
 
 .course-card:hover {
@@ -532,8 +472,8 @@ main {
   transform: translateY(-1px);
 }
 
-/* Sidebar */
-aside {
+/* BARRA LATERAL */
+.sidebar-section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -541,8 +481,8 @@ aside {
 
 .level-card {
   background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 16px;
+  padding: 2rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -606,7 +546,7 @@ aside {
   text-align: right;
 }
 
-.stats {
+.stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
@@ -614,8 +554,8 @@ aside {
 
 .stat {
   background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 16px;
+  padding: 2rem;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -668,12 +608,12 @@ aside {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 /* Enlace para ver todos los cursos */
 .all-courses-link {
   text-align: center;
-  margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid #e2e8f0;
 }
@@ -698,11 +638,11 @@ aside {
 
 /* Estilos para el mensaje cuando no hay cursos */
 .no-courses-message {
-  background: white;
+  background: #f8fafc;
   border-radius: 12px;
   padding: 3rem 2rem;
   text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
   margin-bottom: 1.5rem;
 }
 
@@ -743,14 +683,130 @@ aside {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+/* ========== ACCESO RÁPIDO A ÁREAS ========== */
+.quick-access {
+  margin-bottom: 2rem;
+}
+
+.areas-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.area-quick-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-left: 4px solid transparent;
+}
+
+.area-quick-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.area-quick-green {
+  border-left-color: #10b981;
+  background: linear-gradient(135deg, #f0fdf4, #ffffff);
+}
+
+.area-quick-red {
+  border-left-color: #ef4444;
+  background: linear-gradient(135deg, #fef2f2, #ffffff);
+}
+
+.area-quick-blue {
+  border-left-color: #3b82f6;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+}
+
+.area-quick-icon {
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.area-quick-green .area-quick-icon {
+  background: #10b981;
+  color: white;
+}
+
+.area-quick-red .area-quick-icon {
+  background: #ef4444;
+  color: white;
+}
+
+.area-quick-blue .area-quick-icon {
+  background: #3b82f6;
+  color: white;
+}
+
+.area-quick-content {
+  flex: 1;
+}
+
+.area-quick-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.area-quick-content p {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.area-quick-arrow {
+  font-size: 1.5rem;
+  color: #64748b;
+  transition: transform 0.3s ease;
+}
+
+.area-quick-card:hover .area-quick-arrow {
+  transform: translateX(4px);
+  color: #3b82f6;
+}
+
 /* Responsive específico del main */
 @media (max-width: 1024px) {
-  .grid {
+  .main-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .courses-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .areas-quick-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hero-card {
+    padding: 2rem;
+  }
+  
+  .sidebar-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
 }
 
@@ -764,6 +820,28 @@ aside {
   .courses-grid {
     grid-template-columns: 1fr;
   }
+  
+  .areas-quick-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .area-quick-card {
+    padding: 1.25rem;
+  }
+  
+  .area-quick-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .sidebar-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -772,10 +850,6 @@ aside {
   }
   
   .courses-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .stats {
     grid-template-columns: 1fr;
   }
   
@@ -789,5 +863,19 @@ aside {
   
   .hero-left p {
     font-size: 1rem;
+  }
+  
+  .areas-quick-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .courses-section,
+  .level-card,
+  .stat {
+    padding: 1.5rem;
   }
 }

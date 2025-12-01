@@ -5,18 +5,15 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
-// Incluir conexión y funciones
 include 'conexion.php';
 include 'funciones_notificaciones.php';
 
-// Obtener cursos recientes del usuario
+$racha_actual = actualizarRacha($conexion, $_SESSION['usuario_id']);
+$datos_racha = obtenerRacha($conexion, $_SESSION['usuario_id']);
 $cursos_recientes = obtenerCursosRecientes($conexion, $_SESSION['usuario_id']);
-
-// Obtener notificaciones no leídas
 $notificaciones = obtenerNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
 $total_notificaciones = contarNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
 
-// Procesar marcar como leídas si se envió el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['marcar_todas_leidas'])) {
         marcarTodasLeidas($conexion, $_SESSION['usuario_id']);
@@ -27,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['marcar_leida'])) {
         $notificacion_id = $_POST['notificacion_id'];
         marcarNotificacionLeida($conexion, $notificacion_id, $_SESSION['usuario_id']);
-        // Responder para AJAX
         if (isset($_POST['ajax'])) {
             echo json_encode(['success' => true]);
             exit();
@@ -132,7 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
       </div>
       
-      <!-- MENÚ DE USUARIO -->
       <div class="user-menu">
         <div class="user-avatar" id="userMenuButton">
           <img src="imagenes/perfil.jpg" class="avatar" alt="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
@@ -179,173 +174,240 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </section>
 
-    <div class="grid">
-      <div class="courses">
+    <section class="quick-access">
+      <div class="section-header">
+        <h3>🚀 Acceso Rápido a Áreas</h3>
+        <p>Elige un área para comenzar a aprender inmediatamente</p>
+      </div>
+      
+      <div class="areas-quick-grid">
+        <div class="area-quick-card area-quick-green" onclick="window.location.href='Formación_Inicial.php'">
+          <div class="area-quick-icon">👨‍🏫</div>
+          <div class="area-quick-content">
+            <h4>Formación Inicial</h4>
+            <p>Fundamentos y conceptos básicos</p>
+          </div>
+          <div class="area-quick-arrow">→</div>
+        </div>
+
+        <div class="area-quick-card area-quick-red" onclick="window.location.href='Matemáticas_apli.php'">
+          <div class="area-quick-icon">📐</div>
+          <div class="area-quick-content">
+            <h4>Matemáticas Aplicadas</h4>
+            <p>Matemáticas para la vida real</p>
+          </div>
+          <div class="area-quick-arrow">→</div>
+        </div>
+
+        <div class="area-quick-card area-quick-blue" onclick="window.location.href='Ingeniería.php'">
+          <div class="area-quick-icon">💻</div>
+          <div class="area-quick-content">
+            <h4>Ingeniería en Computación</h4>
+            <p>Tecnología y programación</p>
+          </div>
+          <div class="area-quick-arrow">→</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-grid">
+      <div class="courses-section">
         <div class="section-header">
-            <h3>Cursos Recientes</h3>
-            <p>Tus últimos cursos visitados</p>
+          <h3>Cursos Recientes</h3>
+          <p>Tus últimos cursos visitados</p>
         </div>
         
         <?php if (!empty($cursos_recientes)): ?>
-            <div class="courses-grid">
-                <?php foreach ($cursos_recientes as $curso): ?>
-                <div class="course-card">
-                    <img src="<?php echo htmlspecialchars($curso['curso_imagen']); ?>" 
-                         alt="<?php echo htmlspecialchars($curso['curso_nombre']); ?>" 
-                         class="course-image">
-                    <div class="course-content">
-                        <h4><?php echo htmlspecialchars($curso['curso_nombre']); ?></h4>
-                        <button onclick="window.location.href='<?php echo htmlspecialchars($curso['curso_pagina']); ?>'">
-                            Continuar estudiando
-                        </button>
-                    </div>
+          <div class="courses-grid">
+            <?php foreach ($cursos_recientes as $curso): ?>
+              <div class="course-card">
+                <img src="<?php echo htmlspecialchars($curso['curso_imagen']); ?>" 
+                     alt="<?php echo htmlspecialchars($curso['curso_nombre']); ?>" 
+                     class="course-image">
+                <div class="course-content">
+                  <h4><?php echo htmlspecialchars($curso['curso_nombre']); ?></h4>
+                  <button onclick="window.location.href='<?php echo htmlspecialchars($curso['curso_pagina']); ?>'">
+                    Continuar estudiando
+                  </button>
                 </div>
-                <?php endforeach; ?>
-            </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
         <?php else: ?>
-            <div class="no-courses-message">
-                <div class="no-courses-icon">📚</div>
-                <h3>Aún no has abierto ningún curso</h3>
-                <p>Comienza explorando nuestros materiales de estudio disponibles</p>
-                <button onclick="window.location.href='areas_disponibles.php'" class="primary-btn">
-                    Explorar Cursos Disponibles
-                </button>
-            </div>
+          <div class="no-courses-message">
+            <div class="no-courses-icon">📚</div>
+            <h3>Aún no has abierto ningún curso</h3>
+            <p>Comienza explorando nuestros materiales de estudio disponibles</p>
+            <button onclick="window.location.href='areas_disponibles.php'" class="primary-btn">
+              Explorar Cursos Disponibles
+            </button>
+          </div>
         <?php endif; ?>
         
         <div class="all-courses-link">
-            <a href="areas_disponibles.php" class="view-all-btn">
-                📚 Ver todos los materiales disponibles
-            </a>
+          <a href="areas_disponibles.php" class="view-all-btn">
+            📚 Ver todos los materiales disponibles
+          </a>
         </div>
       </div>
 
-      <aside>
-        <div class="level-card">
-          <h3>Nivel 12</h3>
-          <p class="subtitle">Desarrollador en Ascenso</p>
-          
-          <div class="xp-header">
-            <span>XP Total</span>
-            <span class="number">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-              </svg>
-              2,450
-            </span>
+      <div class="sidebar-section">
+          <div class="level-card">
+              <h3>Nivel <?php echo calcularNivel($datos_racha['racha_max']); ?></h3>
+              <p class="subtitle"><?php echo obtenerTituloNivel($datos_racha['racha_max']); ?></p>
+              
+              <div class="xp-header">
+                  <span>XP Total</span>
+                  <span class="number">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                      </svg>
+                      <?php echo $datos_racha['racha_actual'] * 100; ?>
+                  </span>
+              </div>
+
+              <div class="progress-bar-container">
+                  <div class="progress-label">Progreso al Nivel <?php echo calcularNivel($datos_racha['racha_max']) + 1; ?></div>
+                  <div class="progress-bar">
+                      <div class="progress-fill" style="width: <?php echo calcularProgresoNivel($datos_racha['racha_actual']); ?>%"></div>
+                  </div>
+                  <div class="xp-text"><?php echo $datos_racha['racha_actual'] * 100; ?>/<?php echo (calcularNivel($datos_racha['racha_max']) + 1) * 200; ?> XP</div>
+              </div>
           </div>
 
-          <div class="progress-bar-container">
-            <div class="progress-label">Progreso al Nivel 13</div>
-            <div class="progress-bar">
-              <div class="progress-fill"></div>
-            </div>
-            <div class="xp-text">850/1,200 XP</div>
+          <div class="stats-grid">
+              <div class="stat">
+                  <div class="stat-icon">🔥</div>
+                  <h4><?php echo $datos_racha['racha_actual']; ?></h4>
+                  <p>Días de racha</p>
+              </div>
+              <div class="stat">
+                  <div class="stat-icon">🏆</div>
+                  <h4><?php echo $datos_racha['racha_max']; ?></h4>
+                  <p>Mejor racha</p>
+              </div>
           </div>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-icon">🔥</div>
-            <h4>7</h4>
-            <p>Días de racha</p>
-          </div>
-          <div class="stat">
-            <div class="stat-icon">🏆</div>
-            <h4>24</h4>
-            <p>Victorias</p>
-          </div>
-        </div>
-      </aside>
+      </div>
     </div>
   </main>
 
   <script>
-    // Animación de progreso
-    setTimeout(() => {
-      const progressFill = document.querySelector('.progress-fill');
-      if (progressFill) {
-        progressFill.style.width = '70%';
-      }
-    }, 300);
-
-    // Sistema de notificaciones y menú de usuario MEJORADO
     document.addEventListener('DOMContentLoaded', function() {
-      // Notificaciones
-      const notificationsIcon = document.querySelector('.notifications-icon');
-      const notificationsPanel = document.querySelector('.notifications-panel');
-      const notificationsOverlay = document.querySelector('.notifications-overlay');
-      const notificationItems = document.querySelectorAll('.notification-item.unread');
-      const notificationBadge = document.querySelector('.notification-badge');
-      
-      // Mostrar/ocultar panel de notificaciones
-      notificationsIcon.addEventListener('click', function(e) {
-        e.stopPropagation();
-        notificationsPanel.classList.toggle('active');
-        notificationsOverlay.style.display = notificationsPanel.classList.contains('active') ? 'block' : 'none';
-      });
-      
-      // Cerrar panel al hacer clic fuera
-      notificationsOverlay.addEventListener('click', function() {
-        notificationsPanel.classList.remove('active');
-        notificationsOverlay.style.display = 'none';
-      });
-      
-      // Marcar notificación leída una por una (AJAX)
-      document.querySelectorAll('.notification-item.unread').forEach(item => {
-        item.addEventListener('click', function() {
-          const notificacionId = this.getAttribute('data-id');
-          
-          // Marcar como leída via AJAX
-          fetch('dashboard.php', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'marcar_leida=1&notificacion_id=' + notificacionId + '&ajax=1'
-          })
-          .then(response => response.json())
-          .then(data => {
-            if (data.success) {
-              this.classList.remove('unread');
-              const dot = this.querySelector('.notification-dot');
-              if (dot) dot.remove();
-              
-              // Actualizar el contador
-              const unreadCount = document.querySelectorAll('.notification-item.unread').length;
-              if (notificationBadge) {
-                notificationBadge.textContent = unreadCount;
-                if (unreadCount === 0) {
-                  notificationBadge.style.display = 'none';
-                }
-              }
-            }
+      const elements = {
+        notifications: {
+          icon: document.querySelector('.notifications-icon'),
+          panel: document.querySelector('.notifications-panel'),
+          overlay: document.querySelector('.notifications-overlay'),
+          badge: document.querySelector('.notification-badge'),
+          items: document.querySelectorAll('.notification-item.unread')
+        },
+        user: {
+          menuButton: document.getElementById('userMenuButton'),
+          dropdown: document.getElementById('userDropdown')
+        }
+      };
+
+      function initNotifications() {
+        const { icon, panel, overlay, items } = elements.notifications;
+        
+        if (!icon || !panel) return;
+
+        icon.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isActive = panel.classList.toggle('active');
+          overlay.style.display = isActive ? 'block' : 'none';
+        });
+
+        overlay.addEventListener('click', closeNotifications);
+
+        items.forEach(item => {
+          item.addEventListener('click', function() {
+            markNotificationAsRead(this);
           });
         });
-      });
 
-      // MENÚ DE USUARIO
-      const userMenuButton = document.getElementById('userMenuButton');
-      const userDropdown = document.getElementById('userDropdown');
-      
-      if (userMenuButton && userDropdown) {
-        userMenuButton.addEventListener('click', function(e) {
-          e.stopPropagation();
-          userDropdown.classList.toggle('show');
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') closeNotifications();
         });
+      }
+
+      function closeNotifications() {
+        elements.notifications.panel.classList.remove('active');
+        elements.notifications.overlay.style.display = 'none';
+      }
+
+      async function markNotificationAsRead(notificationElement) {
+        const notificacionId = notificationElement.getAttribute('data-id');
         
-        // Cerrar menú al hacer clic fuera
+        if (!notificacionId) return;
+
+        try {
+          const response = await fetch('dashboard.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `marcar_leida=1&notificacion_id=${notificacionId}&ajax=1`
+          });
+
+          const data = await response.json();
+          
+          if (data.success) {
+            notificationElement.style.opacity = '0.7';
+            notificationElement.classList.remove('unread');
+            
+            const dot = notificationElement.querySelector('.notification-dot');
+            if (dot) dot.remove();
+
+            updateNotificationBadge();
+            
+            setTimeout(() => {
+              notificationElement.style.opacity = '1';
+            }, 300);
+          }
+        } catch (error) {
+          console.error('Error marcando notificación:', error);
+        }
+      }
+
+      function updateNotificationBadge() {
+        const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+        const badge = elements.notifications.badge;
+        
+        if (badge) {
+          badge.textContent = unreadCount;
+          badge.style.display = unreadCount > 0 ? 'flex' : 'none';
+        }
+      }
+
+      function initUserMenu() {
+        const { menuButton, dropdown } = elements.user;
+        
+        if (!menuButton || !dropdown) return;
+
+        menuButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+          dropdown.classList.toggle('show');
+        });
+
         document.addEventListener('click', function(event) {
-          if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
-            userDropdown.classList.remove('show');
+          if (!menuButton.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.remove('show');
           }
         });
-        
-        // Prevenir que el clic en el menú lo cierre
-        userDropdown.addEventListener('click', function(e) {
+
+        dropdown.addEventListener('click', function(e) {
           e.stopPropagation();
         });
       }
+
+      initNotifications();
+      initUserMenu();
+
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.3s ease';
+      
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
     });
   </script>
 </body>

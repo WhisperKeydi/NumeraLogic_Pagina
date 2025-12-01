@@ -62,3 +62,13 @@ CREATE TABLE notificaciones (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
+-- Tabla de racha --
+CREATE TABLE usuario_rachas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    racha_actual INT DEFAULT 0,
+    racha_max INT DEFAULT 0,
+    ultima_visita DATE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);

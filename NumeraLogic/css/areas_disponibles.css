@@ -162,6 +162,10 @@ main {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 420px;
 }
 
 .area-card::after {
@@ -209,9 +213,20 @@ main {
 .area-card h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #1e293b;
   line-height: 1.4;
+}
+
+.area-description {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  max-width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-grow: 1;
 }
 
 .area-card button {
@@ -223,6 +238,10 @@ main {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: auto;
+  width: 100%;
+  max-width: 200px;
+  align-self: center;
 }
 
 .area-card button:hover {
@@ -525,5 +544,10 @@ main {
 
   .user-name {
     display: none;
+  }
+  
+  .area-card {
+    min-height: 380px;
+    padding: 2rem;
   }
 }
