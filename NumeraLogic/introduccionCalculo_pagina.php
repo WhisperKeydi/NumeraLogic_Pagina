@@ -6,14 +6,16 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 include 'conexion.php';
+include 'funciones_notificaciones.php';
 
-if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
-    $curso_nombre = "Introducción al Cálculo";
-    $curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
-    $curso_pagina = "introduccionCalculo_pagina.php";
-    
-    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
-}
+actualizarRacha($conexion, $_SESSION['usuario_id']);
+registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 2); // curso_id 2 para Cálculo
+
+$curso_nombre = "Introducción al cálculo";
+$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_pagina = "introduccionCalculo_pagina.php";
+
+registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
 ?>
 
 <!DOCTYPE html>

@@ -5,7 +5,15 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
+// Incluir conexión y funciones de notificaciones
 include 'conexion.php';
+include 'funciones_notificaciones.php';
+
+// Actualizar racha del usuario al acceder al curso
+actualizarRacha($conexion, $_SESSION['usuario_id']);
+
+// Registrar visita a este curso específico (curso_id 1 para POO)
+registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 1);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Programación Orientada a Objetos";

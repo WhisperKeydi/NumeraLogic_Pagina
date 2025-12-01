@@ -9,6 +9,16 @@ if (!isset($_SESSION['usuario_id'])) {
 include 'conexion.php';
 include 'funciones_notificaciones.php';
 
+// ===== AÑADIDO: Actualizar racha del usuario al acceder a la página =====
+actualizarRacha($conexion, $_SESSION['usuario_id']);
+// ========================================================================
+
+// Obtener estadísticas del usuario
+$estadisticas = obtenerEstadisticasUsuario($conexion, $_SESSION['usuario_id']);
+
+// Obtener logros del usuario
+$logros = obtenerLogrosUsuario($conexion, $_SESSION['usuario_id']);
+
 // Obtener notificaciones no leídas
 $notificaciones = obtenerNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
 $total_notificaciones = contarNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
@@ -65,57 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .achievement:nth-child(3) { animation-delay: 0.3s; }
     .achievement:nth-child(4) { animation-delay: 0.4s; }
     .achievement:nth-child(5) { animation-delay: 0.5s; }
-    
-    /* Efecto brillo en los logros */
-    .achievement::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        to right,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-      );
-      transform: rotate(30deg);
-      transition: all 0.6s ease;
-      opacity: 0;
-    }
-    
-    .achievement:hover::after {
-      opacity: 1;
-      left: 100%;
-    }
-    
-    /* Mejorar los iconos de navegación */
-    nav a svg {
-      transition: transform 0.3s ease;
-    }
-    
-    nav a:hover svg {
-      transform: scale(1.2) rotate(5deg);
-    }
-    
-    /* Efecto de brillo en el logo */
-    .logo::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.3) 1%, transparent 1%);
-      background-size: 10px 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .logo:hover::after {
-      opacity: 1;
-    }
+    .achievement:nth-child(6) { animation-delay: 0.6s; }
+    .achievement:nth-child(7) { animation-delay: 0.7s; }
     
     /* Puntos de conexión animados para el fondo del hero */
     .hero-card::after {
@@ -132,22 +93,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       0%, 100% { opacity: 0.3; }
       50% { opacity: 0.8; }
     }
-    
-    /* Efecto de partículas para estadísticas */
-    .stat::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 1%, transparent 20%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+
+    /* Estilos para logros bloqueados/desbloqueados */
+    .achievement.locked {
+      opacity: 0.7;
+      filter: grayscale(50%);
     }
-    
-    .stat:hover::after {
-      opacity: 1;
+
+    .achievement.locked .achievement-img-container {
+      position: relative;
+    }
+
+    .achievement-lock {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .achievement.unlocked {
+      animation: glowUnlock 0.5s ease forwards;
+    }
+
+    @keyframes glowUnlock {
+      0% { box-shadow: 0 4px 20px rgba(255, 215, 0, 0); }
+      50% { box-shadow: 0 4px 30px rgba(255, 215, 0, 0.6); }
+      100% { box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2); }
+    }
+
+    .achievement-progress {
+      margin: 10px 0;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 6px;
+    }
+
+    .achievement-progress-bar {
+      background: linear-gradient(90deg, #4CAF50, #8BC34A);
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+
+    .achievement-date {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .achievement-requirement {
+      font-size: 0.8rem;
+      color: #ff6b6b;
+      margin-top: 5px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .achievement-points {
+      background: #FFD700;
+      color: #333;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-left: 5px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -268,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="notifications-overlay"></div>
 
   <main>
-    <!-- Hero Card - Ahora con el mismo estilo rectangular rosa -->
+    <!-- Hero Card -->
     <section class="hero-card">
       <h2>🏆 Mis Logros y Recompensas</h2>
       <p>Tu registro de victorias. Mide tu dominio, mantén tu racha y desbloquea todas las medallas para subir de nivel</p>
@@ -276,44 +288,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Stats -->
     <section class="stats">
-      <div class="stat">⭐ <span>Nivel 12</span></div>
-      <div class="stat">🔥 <span>7 Días de racha</span></div>
-      <div class="stat">🏆 <span>24 Victorias</span></div>
+      <div class="stat">⭐ <span>Nivel <?php echo $estadisticas['nivel_actual']; ?></span></div>
+      <div class="stat">🔥 <span><?php echo $estadisticas['racha_actual']; ?> Días de racha</span></div>
+      <div class="stat">🏆 <span><?php echo $estadisticas['logros_desbloqueados']; ?> Logros</span></div>
     </section>
 
     <!-- Achievements -->
     <section class="achievements">
-      <div class="achievement">
-        <img src="https://img.icons8.com/color/96/medal.png" alt="Primer Byte">
-        <h3>Primer Byte</h3>
-        <p>Completó su primera lección</p>
+      <?php foreach ($logros as $logro): ?>
+      <div class="achievement <?php echo $logro['desbloqueado'] ? 'unlocked' : 'locked'; ?>" data-id="<?php echo $logro['id']; ?>">
+        <div class="achievement-img-container">
+          <img src="<?php echo htmlspecialchars($logro['imagen']); ?>" alt="<?php echo htmlspecialchars($logro['nombre']); ?>">
+          <?php if (!$logro['desbloqueado']): ?>
+            <div class="achievement-lock">🔒</div>
+          <?php endif; ?>
+        </div>
+        <h3><?php echo htmlspecialchars($logro['nombre']); ?></h3>
+        <p><?php echo htmlspecialchars($logro['descripcion']); ?></p>
+        <div class="achievement-progress">
+          <?php if ($logro['desbloqueado']): ?>
+            <div class="achievement-progress-bar" style="width: 100%"></div>
+            <div class="achievement-date">
+              <?php echo date('d M Y', strtotime($logro['fecha_desbloqueo'])); ?>
+            </div>
+          <?php else: ?>
+            <div class="achievement-progress-bar" style="width: 0%"></div>
+            <div class="achievement-requirement">
+              Requiere: <?php echo $logro['valor_requerido']; ?>
+            </div>
+          <?php endif; ?>
+        </div>
+        <span class="achievement-status <?php echo $logro['desbloqueado'] ? 'unlocked' : 'locked'; ?>">
+          <?php echo $logro['desbloqueado'] ? 'Desbloqueado' : 'Bloqueado'; ?>
+          <?php if ($logro['desbloqueado']): ?>
+            <span class="achievement-points">+<?php echo $logro['puntos']; ?> pts</span>
+          <?php endif; ?>
+        </span>
       </div>
-
-      <div class="achievement">
-        <img src="https://img.icons8.com/color/96/bug.png" alt="Bug Slyer">
-        <h3>Bug Slyer</h3>
-        <p>Detección y corrección de errores en código</p>
-      </div>
-
-      <div class="achievement">
-        <img src="https://cdn-icons-png.flaticon.com/512/1232/1232772.png" alt="Semilla del saber">
-        <h3>Semilla del saber</h3>
-        <p>Alcanzó el 50% de progreso</p>
-      </div>
-
-      <div class="achievement">
-        <img src="https://img.icons8.com/color/96/trophy.png" alt="Maestro de Algoritmos">
-        <h3>Maestro de Algoritmos</h3>
-        <p>Resolución de un desafío</p>
-      </div>
-
-      <div class="achievement">
-        <img src="https://img.icons8.com/color/96/idea.png" alt="Modo Avanzado">
-        <h3>Modo Avanzado</h3>
-        <p>Desbloqueó un nuevo módulo o nivel</p>
-      </div>
+      <?php endforeach; ?>
     </section>
   </main>
+
+  <!-- Modal para logros expandidos -->
+  <div class="achievement-modal" id="achievementModal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-body">
+        <div class="modal-header">
+          <div class="modal-icon">
+            <img id="modalIcon" src="" alt="Logro">
+          </div>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <p class="modal-description" id="modalDescription"></p>
+        </div>
+        <div class="modal-details">
+          <h4>Detalles del Logro</h4>
+          <p id="modalDetails"></p>
+          <div class="modal-date">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+            </svg>
+            <span id="modalDate"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -410,6 +450,111 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       document.querySelectorAll('.achievement').forEach(el => {
         observer.observe(el);
       });
+
+      // === MEJORAS PARA LOS LOGROS (MODAL Y EXPANSIÓN) ===
+      // Datos extendidos para cada logro (tomados de la base de datos)
+      const achievementData = {
+        <?php foreach ($logros as $logro): ?>
+        <?php echo $logro['id']; ?>: {
+          title: "<?php echo addslashes($logro['nombre']); ?>",
+          description: "<?php echo addslashes($logro['descripcion']); ?>",
+          details: "<?php echo addslashes($logro['descripcion']); ?> Logro de la categoría <?php echo $logro['categoria']; ?>. Requería alcanzar <?php echo $logro['valor_requerido']; ?> en <?php echo $logro['condicion']; ?>.",          date: "<?php echo $logro['desbloqueado'] ? 'Obtenido: ' . date('d M Y', strtotime($logro['fecha_desbloqueo'])) : 'Aún no desbloqueado'; ?>",
+          progress: <?php echo $logro['desbloqueado'] ? 100 : 0; ?>,
+          unlocked: <?php echo $logro['desbloqueado'] ? 'true' : 'false'; ?>,
+          points: <?php echo $logro['puntos']; ?>,
+          category: "<?php echo $logro['categoria']; ?>"
+        },
+        <?php endforeach; ?>
+      };
+
+      // Referencias a elementos del modal
+      const achievementModal = document.getElementById('achievementModal');
+      const modalClose = document.querySelector('.modal-close');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalDetails = document.getElementById('modalDetails');
+      const modalDate = document.getElementById('modalDate');
+      const modalIcon = document.getElementById('modalIcon');
+
+      // Abrir modal al hacer clic en un logro
+      document.querySelectorAll('.achievement').forEach((card) => {
+        card.addEventListener('click', function(e) {
+          e.stopPropagation();
+          
+          // Remover clase active de todas las tarjetas
+          document.querySelectorAll('.achievement').forEach(c => c.classList.remove('active'));
+          
+          // Agregar clase active a la tarjeta clickeada
+          this.classList.add('active');
+          
+          // Obtener datos del logro
+          const achievementId = this.getAttribute('data-id');
+          const data = achievementData[achievementId];
+          
+          if (data) {
+            // Obtener imagen de la tarjeta
+            const imgSrc = this.querySelector('img').src;
+            
+            // Llenar modal con datos
+            modalTitle.textContent = data.title;
+            modalDescription.textContent = data.description;
+            modalDetails.textContent = data.details;
+            modalDate.textContent = data.date;
+            modalIcon.src = imgSrc;
+            
+            // Mostrar modal
+            achievementModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+          }
+        });
+      });
+
+      // Cerrar modal
+      modalClose.addEventListener('click', function() {
+        achievementModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        document.querySelectorAll('.achievement').forEach(c => c.classList.remove('active'));
+      });
+
+      // Cerrar modal al hacer clic fuera
+      achievementModal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+          document.body.style.overflow = 'auto';
+          document.querySelectorAll('.achievement').forEach(c => c.classList.remove('active'));
+        }
+      });
+
+      // Cerrar modal con Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && achievementModal.classList.contains('active')) {
+          achievementModal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+          document.querySelectorAll('.achievement').forEach(c => c.classList.remove('active'));
+        }
+      });
+
+      // === CORREGIR BUG DE EFECTOS VISUALES ===
+      // Asegurar que los efectos no interfieran con el mouse
+      const fixVisualBug = () => {
+        // Remover efectos problemáticos en elementos específicos
+        const logo = document.querySelector('.logo');
+        if (logo) {
+          logo.style.overflow = 'hidden';
+        }
+        
+        // Asegurar que los pseudo-elementos no capturen eventos
+        document.querySelectorAll('*').forEach(el => {
+          const style = window.getComputedStyle(el, '::after');
+          if (style.content !== 'none') {
+            el.style.position = 'relative';
+            el.style.zIndex = '1';
+          }
+        });
+      };
+
+      // Ejecutar corrección después de que la página cargue completamente
+      setTimeout(fixVisualBug, 100);
     });
   </script>
 </body>
