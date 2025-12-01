@@ -6,12 +6,36 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 include 'conexion.php';
+include 'funciones_notificaciones.php'; // Añade esta línea
 
 $mensaje = '';
-$tipo_mensaje = ''; // success o error
+$tipo_mensaje = '';
+
+// Añade estas líneas para obtener notificaciones
+$notificaciones = obtenerNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
+$total_notificaciones = contarNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
 
 // Procesar actualización de datos
 if ($_POST) {
+    // Añade este bloque para manejar acciones de notificaciones
+    if (isset($_POST['marcar_todas_leidas'])) {
+        marcarTodasLeidas($conexion, $_SESSION['usuario_id']);
+        header("Location: editar_perfil.php");
+        exit();
+    }
+    
+    if (isset($_POST['marcar_leida'])) {
+        $notificacion_id = $_POST['notificacion_id'];
+        marcarNotificacionLeida($conexion, $notificacion_id, $_SESSION['usuario_id']);
+        if (isset($_POST['ajax'])) {
+            echo json_encode(['success' => true]);
+            exit();
+        }
+        header("Location: editar_perfil.php");
+        exit();
+    }
+    
+    // Tu código original continúa aquí...
     $nombre = $conexion->real_escape_string($_POST['nombre']);
     $contrasena_actual = $_POST['contrasena_actual'];
     $nueva_contrasena = $_POST['nueva_contrasena'];
@@ -69,7 +93,7 @@ $conexion->close();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Perfil - NumeraLogic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/editar_perfil.css">
 </head>
 <body>
@@ -77,7 +101,7 @@ $conexion->close();
     <div class="brand">
       <a href="dashboard.php" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
         <div class="logo">
-          <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 50%;">
+          <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 12px;">
         </div>
         <h2>NumeraLogic</h2>
       </a>
@@ -105,51 +129,54 @@ $conexion->close();
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
           </svg>
-          <div class="notification-badge">3</div>
+          <?php if ($total_notificaciones > 0): ?>
+            <div class="notification-badge"><?php echo $total_notificaciones; ?></div>
+          <?php endif; ?>
         </div>
         <div class="notifications-panel">
           <div class="notifications-header">
             <h3>Notificaciones</h3>
-            <button class="mark-read">Marcar todas como leídas</button>
+            <?php if ($total_notificaciones > 0): ?>
+              <form method="POST" style="display: inline;">
+                <button type="submit" name="marcar_todas_leidas" class="mark-read">
+                  Marcar todas como leídas
+                </button>
+              </form>
+            <?php endif; ?>
           </div>
           <div class="notifications-list">
-            <div class="notification-item unread">
-              <div class="notification-icon achievement">🏆</div>
-              <div class="notification-content">
-                <div class="notification-title">¡Nuevo logro desbloqueado!</div>
-                <div class="notification-message">Has completado 10 ejercicios de cálculo.</div>
-                <div class="notification-time">Hace 2 horas</div>
+            <?php if (!empty($notificaciones)): ?>
+              <?php foreach ($notificaciones as $notif): ?>
+                <div class="notification-item unread" data-id="<?php echo $notif['id']; ?>">
+                  <div class="notification-icon">
+                    <?php 
+                    switch($notif['tipo']) {
+                      case 'logro': echo '🏆'; break;
+                      case 'curso': echo '📚'; break;
+                      case 'sistema': echo '🔔'; break;
+                      case 'recordatorio': echo '⏰'; break;
+                      default: echo '🔔';
+                    }
+                    ?>
+                  </div>
+                  <div class="notification-content">
+                    <div class="notification-title"><?php echo htmlspecialchars($notif['titulo']); ?></div>
+                    <div class="notification-message"><?php echo htmlspecialchars($notif['mensaje']); ?></div>
+                    <div class="notification-time"><?php echo formatearTiempo($notif['fecha_creacion']); ?></div>
+                  </div>
+                  <div class="notification-dot"></div>
+                </div>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <div class="notification-item">
+                <div class="notification-content">
+                  <div class="notification-message">No tienes notificaciones nuevas</div>
+                </div>
               </div>
-              <div class="notification-dot"></div>
-            </div>
-            <div class="notification-item unread">
-              <div class="notification-icon course">📚</div>
-              <div class="notification-content">
-                <div class="notification-title">Nuevo contenido disponible</div>
-                <div class="notification-message">Se ha añadido un nuevo módulo a Programación Estructurada.</div>
-                <div class="notification-time">Hace 1 día</div>
-              </div>
-              <div class="notification-dot"></div>
-            </div>
-            <div class="notification-item">
-              <div class="notification-icon system">🔔</div>
-              <div class="notification-content">
-                <div class="notification-title">Recordatorio de estudio</div>
-                <div class="notification-message">No olvides practicar hoy para mantener tu racha.</div>
-                <div class="notification-time">Hace 3 días</div>
-              </div>
-            </div>
-            <div class="notification-item">
-              <div class="notification-icon achievement">⭐</div>
-              <div class="notification-content">
-                <div class="notification-title">Has subido de nivel</div>
-                <div class="notification-message">Felicidades, ahora eres Nivel 12.</div>
-                <div class="notification-time">Hace 5 días</div>
-              </div>
-            </div>
+            <?php endif; ?>
           </div>
           <div class="notifications-footer">
-            <a href="#" class="view-all">Ver todas las notificaciones</a>
+            <a href="todas_notificaciones.php" class="view-all">Ver todas las notificaciones</a>
           </div>
         </div>
       </div>
@@ -222,7 +249,6 @@ $conexion->close();
   </main>
 
   <script>
-    // Sistema de notificaciones y menú de usuario
     document.addEventListener('DOMContentLoaded', function() {
       // Sistema de notificaciones
       const notificationsIcon = document.querySelector('.notifications-icon');
@@ -258,16 +284,40 @@ $conexion->close();
         }
         
         notificationItems.forEach(item => {
-          item.addEventListener('click', function() {
+          item.addEventListener('click', async function() {
             if (this.classList.contains('unread')) {
-              this.classList.remove('unread');
-              const dot = this.querySelector('.notification-dot');
-              if (dot) dot.remove();
+              const notificationId = this.getAttribute('data-id');
               
-              const unreadCount = document.querySelectorAll('.notification-item.unread').length;
-              notificationBadge.textContent = unreadCount;
-              if (unreadCount === 0) {
-                notificationBadge.style.display = 'none';
+              if (notificationId) {
+                try {
+                  const formData = new FormData();
+                  formData.append('marcar_leida', '1');
+                  formData.append('notificacion_id', notificationId);
+                  formData.append('ajax', '1');
+                  
+                  const response = await fetch('editar_perfil.php', {
+                    method: 'POST',
+                    body: formData
+                  });
+                  
+                  const data = await response.json();
+                  
+                  if (data.success) {
+                    this.classList.remove('unread');
+                    const dot = this.querySelector('.notification-dot');
+                    if (dot) dot.remove();
+                    
+                    const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+                    if (notificationBadge) {
+                      notificationBadge.textContent = unreadCount;
+                      if (unreadCount === 0) {
+                        notificationBadge.style.display = 'none';
+                      }
+                    }
+                  }
+                } catch (error) {
+                  console.error('Error marcando notificación:', error);
+                }
               }
             }
           });

@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Áreas - NumeraLogic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/areas_disponibles.css">
 </head>
 <body>
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="brand">
     <a href="dashboard.php" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
       <div class="logo">
-        <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 50%;">
+        <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 12px;">
       </div>
       <h2>NumeraLogic</h2>
     </a>
@@ -189,7 +189,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </main>
 
   <script>
-    // Sistema de notificaciones y menú de usuario
     document.addEventListener('DOMContentLoaded', function() {
       const notificationsIcon = document.querySelector('.notifications-icon');
       const notificationsPanel = document.querySelector('.notifications-panel');
@@ -254,14 +253,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           userDropdown.classList.toggle('show');
         });
         
-        document.addEventListener('click', function() {
-          userDropdown.classList.remove('show');
+        document.addEventListener('click', function(event) {
+          if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+            userDropdown.classList.remove('show');
+          }
         });
         
         userDropdown.addEventListener('click', function(e) {
           e.stopPropagation();
         });
       }
+      
+      // Efecto de aparición para las tarjetas de áreas
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.area-card').forEach(el => {
+        observer.observe(el);
+      });
     });
   </script>
 </body>

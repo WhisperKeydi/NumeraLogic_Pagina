@@ -40,8 +40,116 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NumeraLogic - Mis Logros</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/logros.css">
+  <style>
+    /* Animación sutil de entrada para las tarjetas */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .achievement {
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+    }
+    
+    .achievement:nth-child(1) { animation-delay: 0.1s; }
+    .achievement:nth-child(2) { animation-delay: 0.2s; }
+    .achievement:nth-child(3) { animation-delay: 0.3s; }
+    .achievement:nth-child(4) { animation-delay: 0.4s; }
+    .achievement:nth-child(5) { animation-delay: 0.5s; }
+    
+    /* Efecto brillo en los logros */
+    .achievement::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
+      opacity: 0;
+    }
+    
+    .achievement:hover::after {
+      opacity: 1;
+      left: 100%;
+    }
+    
+    /* Mejorar los iconos de navegación */
+    nav a svg {
+      transition: transform 0.3s ease;
+    }
+    
+    nav a:hover svg {
+      transform: scale(1.2) rotate(5deg);
+    }
+    
+    /* Efecto de brillo en el logo */
+    .logo::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 1%, transparent 1%);
+      background-size: 10px 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .logo:hover::after {
+      opacity: 1;
+    }
+    
+    /* Puntos de conexión animados para el fondo del hero */
+    .hero-card::after {
+      content: '✦';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.3);
+      animation: twinkle 3s infinite;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+    
+    /* Efecto de partículas para estadísticas */
+    .stat::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 1%, transparent 20%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .stat:hover::after {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
 
@@ -50,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="brand">
       <a href="dashboard.php" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
         <div class="logo">
-          <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 50%;">
+          <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 12px;">
         </div>
         <h2>NumeraLogic</h2>
       </a>
@@ -284,6 +392,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           e.stopPropagation();
         });
       }
+      
+      // Efecto de aparición para las tarjetas de logros
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.achievement').forEach(el => {
+        observer.observe(el);
+      });
     });
   </script>
 </body>
