@@ -1,10 +1,28 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'conexion.php';
+
+if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
+    $curso_nombre = "Sistemas Operativos";
+    $curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+    $curso_pagina = "sistemaOp_pagina.php";
+    
+    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistemas Operativos - NumeraLogic</title>
-    <link rel="stylesheet" href="../css/sistemaOp_pagina.css">
+    <link rel="stylesheet" href="css/cursos_verde.css">
 </head>
 <body>
     <div class="container">
@@ -21,32 +39,50 @@
                     <div class="topic-card">
                         <h3>Introducción a SO</h3>
                         <p>Conceptos básicos, funciones y tipos de sistemas operativos</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t1_sisOp.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Gestión de Procesos</h3>
                         <p>Creación, estados, hilos y planificación de procesos</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t2_sisOp.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Concurrencia</h3>
                         <p>Semáforos, mutex, condiciones de carrera y deadlocks</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t3_sisOp.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Gestión de Memoria</h3>
                         <p>Paginación, segmentación y memoria virtual</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t4_sisOp.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Sistemas de Archivos</h3>
                         <p>Estructura, organización y gestión de archivos</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t5_sisOp.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Seguridad y Protección</h3>
                         <p>Autenticación, autorización y cifrado de datos</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t6_sisOp.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,7 +98,7 @@
                 </ul>
             </div>
             
-            <a href="pagina_segunda.php" class="back-btn">← Explorar más cursos</a>
+            <a href="Ingeniería.php" class="back-btn">← Explorar más cursos</a>
         </div>
     </div>
 </body>

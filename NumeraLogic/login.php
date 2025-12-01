@@ -1,4 +1,46 @@
-<?php session_start(); ?>
+<?php
+session_start();
+include 'conexion.php';
+
+// Procesar el formulario cuando se envía
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $matricula = trim($_POST['matricula']);
+    $contrasena = trim($_POST['contrasena']);
+    
+    // Validar campos vacíos
+    if (empty($matricula) || empty($contrasena)) {
+        $error = "Por favor, completa todos los campos";
+    } else {
+        // Buscar usuario en la base de datos
+        $stmt = $conexion->prepare("SELECT id, nombre, matricula, contrasena FROM usuarios WHERE matricula = ?");
+        $stmt->bind_param("s", $matricula);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows === 1) {
+            $usuario = $result->fetch_assoc();
+            
+            // Verificar contraseña (en texto plano para el ejemplo)
+            if ($contrasena === $usuario['contrasena']) {
+                // Iniciar sesión
+                $_SESSION['usuario_id'] = $usuario['id'];
+                $_SESSION['nombre'] = $usuario['nombre'];
+                $_SESSION['matricula'] = $usuario['matricula'];
+                
+                // Redirigir al dashboard
+                header("Location: dashboard.php");
+                exit();
+            } else {
+                $error = "Contraseña incorrecta";
+            }
+        } else {
+            $error = "Usuario no encontrado";
+        }
+        $stmt->close();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,18 +66,23 @@
     <div class="login-card">
       <h1>BIENVENIDO NUMERAL LOGIC</h1>
       <h2>Iniciar sesión</h2>
-              
       
-      <form id="loginForm" method="POST" action="validar_login.php">
+      <?php if (isset($error)): ?>
+        <div class="error-message">
+          <?php echo $error; ?>
+        </div>
+      <?php endif; ?>
+      
+      <form id="loginForm" method="POST" action="">
         <div class="form-group">
-          <label for="matricula">Matrícula</label>
-          <input type="text" id="matricula" name="matricula" required>
+          <label for="matricula">matrícula</label>
+          <input type="text" id="matricula" name="matricula" value="00" required>
         </div>
         
         <div class="form-group password-group">
-          <label for="contrasena">Contraseña</label>
+          <label for="contrasena">contraseña</label>
           <div class="password-wrapper">
-            <input type="password" id="contrasena" name="contrasena" required>
+            <input type="password" id="contrasena" name="contrasena" value="123" required>
             <button type="button" class="toggle-password" onclick="togglePassword()">
               <span class="eye-icon">👁️</span>
             </button>
@@ -46,6 +93,11 @@
           <button type="submit">Iniciar Sesión</button>
         </div>
       </form>
+
+      <div class="demo-info">
+        <p><strong>Credenciales de prueba:</strong></p>
+        <p>Matrícula: <strong>00</strong> | Contraseña: <strong>123</strong></p>
+      </div>
     </div>
   </main>
 
@@ -62,6 +114,18 @@
         eyeIcon.textContent = '👁️';
       }
     }
+
+    // Validación básica del formulario
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      const matricula = document.getElementById('matricula').value.trim();
+      const contrasena = document.getElementById('contrasena').value.trim();
+      
+      if (!matricula || !contrasena) {
+        e.preventDefault();
+        alert('Por favor, completa todos los campos');
+        return false;
+      }
+    });
   </script>
 </body>
 </html>

@@ -1,10 +1,28 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'conexion.php';
+
+if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
+    $curso_nombre = "Microcontroladores";
+    $curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+    $curso_pagina = "micro_pagina.php";
+    
+    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microcontroladores - NumeraLogic</title>
-    <link rel="stylesheet" href="css/micro_pagina.css">
+    <link rel="stylesheet" href="css/cursos_mor.css">
 </head>
 <body>
     <div class="container">
@@ -21,32 +39,50 @@
                     <div class="topic-card">
                         <h3>Introducción a MCU</h3>
                         <p>Arquitectura, familias de microcontroladores y aplicaciones</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t1_micro.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Puertos de E/S</h3>
                         <p>Configuración de pines digitales, lectura y escritura</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t2_micro.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Interrupciones</h3>
                         <p>Vectores de interrupción, prioridades y manejo de eventos</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t3_micro.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Timers y Contadores</h3>
                         <p>Temporizadores, PWM y generación de señales</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t4_micro.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Comunicación Serial</h3>
                         <p>UART, SPI, I2C y protocolos de comunicación</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t5_micro.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                     <div class="topic-card">
                         <h3>Conversión A/D y D/A</h3>
                         <p>ADC, DAC y procesamiento de señales analógicas</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t6_micro.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,7 +98,7 @@
                 </ul>
             </div>
             
-            <a href="pagina_segunda.php" class="back-btn">← Explorar más cursos</a>
+            <a href="Ingeniería.php" class="back-btn">← Explorar más cursos</a>
         </div>
     </div>
 </body>

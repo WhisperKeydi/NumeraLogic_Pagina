@@ -1,10 +1,30 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'conexion.php';
+
+// Verificar que el usuario existe antes de registrar el curso
+if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
+    // Registrar el acceso a este curso
+    $curso_nombre = "Arquitectura de Computadoras";
+    $curso_imagen = "https://i0.wp.com/architecnologia.es/wp-content/uploads/2019/05/microprocesador.redimensionado.jpg?resize=800%2C450";
+    $curso_pagina = "arqui_pagina.php";
+    
+    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arquitectura de Computadoras - NumeraLogic</title>
-    <link rel="stylesheet" href="../css/arqui_pagina.css">
+    <link rel="stylesheet" href="css/cursos_azul.css">
 </head>
 <body>
     <div class="container">
@@ -18,36 +38,61 @@
             <div class="section">
                 <h2>📚 Temas del Curso</h2>
                 <div class="topics">
+                    
                     <div class="topic-card">
                         <h3>Modelo de Von Neumann</h3>
-                        <p>Arquitectura básica, CPU, memoria y buses de datos</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <p>Arquitectura básica, CPU, memoria y buses de datos.</p>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t1_arqui.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
+
                     <div class="topic-card">
                         <h3>Unidad Central de Proceso</h3>
-                        <p>ALU, registros, unidad de control y ciclo de instrucción</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <p>ALU, registros, unidad de control y ciclo de instrucción.</p>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t2_arqui.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
+
                     <div class="topic-card">
                         <h3>Ensamblador</h3>
-                        <p>Lenguaje máquina, instrucciones y programación en bajo nivel</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <p>Lenguaje máquina, instrucciones y programación en bajo nivel.</p>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t3_arqui.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
+
                     <div class="topic-card">
                         <h3>Jerarquía de Memoria</h3>
-                        <p>Cache, RAM, memoria virtual y gestión de memoria</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <p>Cache, RAM, memoria virtual y gestión de memoria.</p>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t4_arqui.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
+
                     <div class="topic-card">
                         <h3>Segmentación y Pipeline</h3>
-                        <p>Procesamiento paralelo, hazards y optimización</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <p>Procesamiento paralelo, hazards y optimización.</p>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t5_arqui.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
+
                     <div class="topic-card">
                         <h3>Entrada/Salida</h3>
-                        <p>Dispositivos periféricos, DMA y controladores</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <p>Dispositivos periféricos, DMA y controladores.</p>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t6_arqui.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
+
                 </div>
             </div>
             
@@ -62,7 +107,7 @@
                 </ul>
             </div>
             
-            <a href="pagina_segunda.php" class="back-btn">← Explorar más cursos</a>
+            <a href="dashboard.php" class="back-btn">← Volver al Dashboard</a>
         </div>
     </div>
 </body>

@@ -4,15 +4,44 @@ if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");
     exit();
 }
+
+// Incluir conexión y funciones de notificaciones
+include 'conexion.php';
+include 'funciones_notificaciones.php';
+
+// Obtener notificaciones no leídas
+$notificaciones = obtenerNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
+$total_notificaciones = contarNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
+
+// Procesar marcar como leídas si se envió el formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['marcar_todas_leidas'])) {
+        marcarTodasLeidas($conexion, $_SESSION['usuario_id']);
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    }
+    
+    if (isset($_POST['marcar_leida'])) {
+        $notificacion_id = $_POST['notificacion_id'];
+        marcarNotificacionLeida($conexion, $notificacion_id, $_SESSION['usuario_id']);
+        // Responder para AJAX
+        if (isset($_POST['ajax'])) {
+            echo json_encode(['success' => true]);
+            exit();
+        }
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matemáticas aplicadas - NumeraLogic</title>
+  <title>Ingeniería en computación - NumeraLogic</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/principal_cuarta.css?v=2">
+  <link rel="stylesheet" href="css/ingeniería.css?v=2">
   <style>
     /* Estilos adicionales para enlaces */
     .course-card {
@@ -30,9 +59,6 @@ if (!isset($_SESSION['usuario_id'])) {
   </style>
 </head>
 <body>
-<!-- Indicador de carga (Ley de Feedback) -->
-<div class="loading-indicator" id="loadingIndicator"></div>
-
   <header>
     <div class="brand">
       <a href="dashboard.php" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
@@ -65,51 +91,54 @@ if (!isset($_SESSION['usuario_id'])) {
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
           </svg>
-          <div class="notification-badge">3</div>
+          <?php if ($total_notificaciones > 0): ?>
+            <div class="notification-badge"><?php echo $total_notificaciones; ?></div>
+          <?php endif; ?>
         </div>
         <div class="notifications-panel">
           <div class="notifications-header">
             <h3>Notificaciones</h3>
-            <button class="mark-read">Marcar todas como leídas</button>
+            <?php if ($total_notificaciones > 0): ?>
+              <form method="POST" style="display: inline;">
+                <button type="submit" name="marcar_todas_leidas" class="mark-read">
+                  Marcar todas como leídas
+                </button>
+              </form>
+            <?php endif; ?>
           </div>
           <div class="notifications-list">
-            <div class="notification-item unread">
-              <div class="notification-icon achievement">🏆</div>
-              <div class="notification-content">
-                <div class="notification-title">¡Nuevo logro desbloqueado!</div>
-                <div class="notification-message">Has completado 10 ejercicios de cálculo.</div>
-                <div class="notification-time">Hace 2 horas</div>
+            <?php if (!empty($notificaciones)): ?>
+              <?php foreach ($notificaciones as $notif): ?>
+                <div class="notification-item unread" data-id="<?php echo $notif['id']; ?>">
+                  <div class="notification-icon">
+                    <?php 
+                    switch($notif['tipo']) {
+                      case 'logro': echo '🏆'; break;
+                      case 'curso': echo '📚'; break;
+                      case 'sistema': echo '🔔'; break;
+                      case 'recordatorio': echo '⏰'; break;
+                      default: echo '🔔';
+                    }
+                    ?>
+                  </div>
+                  <div class="notification-content">
+                    <div class="notification-title"><?php echo htmlspecialchars($notif['titulo']); ?></div>
+                    <div class="notification-message"><?php echo htmlspecialchars($notif['mensaje']); ?></div>
+                    <div class="notification-time"><?php echo formatearTiempo($notif['fecha_creacion']); ?></div>
+                  </div>
+                  <div class="notification-dot"></div>
+                </div>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <div class="notification-item">
+                <div class="notification-content">
+                  <div class="notification-message">No tienes notificaciones nuevas</div>
+                </div>
               </div>
-              <div class="notification-dot"></div>
-            </div>
-            <div class="notification-item unread">
-              <div class="notification-icon course">📚</div>
-              <div class="notification-content">
-                <div class="notification-title">Nuevo contenido disponible</div>
-                <div class="notification-message">Se ha añadido un nuevo módulo a Programación Estructurada.</div>
-                <div class="notification-time">Hace 1 día</div>
-              </div>
-              <div class="notification-dot"></div>
-            </div>
-            <div class="notification-item">
-              <div class="notification-icon system">🔔</div>
-              <div class="notification-content">
-                <div class="notification-title">Recordatorio de estudio</div>
-                <div class="notification-message">No olvides practicar hoy para mantener tu racha.</div>
-                <div class="notification-time">Hace 3 días</div>
-              </div>
-            </div>
-            <div class="notification-item">
-              <div class="notification-icon achievement">⭐</div>
-              <div class="notification-content">
-                <div class="notification-title">Has subido de nivel</div>
-                <div class="notification-message">Felicidades, ahora eres Nivel 12.</div>
-                <div class="notification-time">Hace 5 días</div>
-              </div>
-            </div>
+            <?php endif; ?>
           </div>
           <div class="notifications-footer">
-            <a href="#" class="view-all">Ver todas las notificaciones</a>
+            <a href="todas_notificaciones.php" class="view-all">Ver todas las notificaciones</a>
           </div>
         </div>
       </div>
@@ -145,55 +174,52 @@ if (!isset($_SESSION['usuario_id'])) {
 <main>
     <div class="content-wrapper">
       <div class="courses-section">
-        <!-- ENCABEZADO MEJORADO CON PARTÍCULAS MATEMÁTICAS -->
         <div class="page-header">
-          <!-- Partículas matemáticas flotantes -->
-          
-          <div class="header-icon">📐</div>
-          <h1>Matemáticas Aplicadas</h1>
-          <p>Domina conceptos avanzados para resolver problemas complejos del mundo real</p>
+          <div class="header-icon">💻</div>
+          <h1>Ingeniería en Computación</h1>
+          <p>Desarrolla habilidades en programación, sistemas y tecnología</p>
         </div>
 
-        <a href="ecuacionesDif_pagina.php" class="course-card">
-          <div class="course-icon">📐</div>
-          <h3>Ecuaciones diferenciales</h3>
+        <a href="sistemasDigitales_pagina.php" class="course-card">
+          <div class="course-icon">💻</div>
+          <h3>Sistemas Digitales</h3>
         </a>
 
-        <a href="prograLineal_pagina.php" class="course-card">
-          <div class="course-icon">⚙️</div>
-          <h3>Programación lineal</h3>
+        <a href="basesDatos_pagina.php" class="course-card">
+          <div class="course-icon">🗄️</div>
+          <h3>Bases de Datos</h3>
         </a>
 
-        <a href="geometria_pagina.php" class="course-card">
-          <div class="course-icon">📦</div>
-          <h3>Geometría</h3>
+        <a href="poo_pagina.php" class="course-card">
+          <div class="course-icon">🔷</div>
+          <h3>Programación Orientada a Objetos</h3>
         </a>
 
-        <a href="calculoiv_pagina.php" class="course-card">
-          <div class="course-icon" style="font-size: 6rem; font-weight: 700; color: #10b981;">4</div>
-          <h3>Cálculo IV</h3>
+        <a href="micro_pagina.php" class="course-card">
+          <div class="course-icon">🔧</div>
+          <h3>Microcontroladores</h3>
         </a>
 
-        <a href="probabilidad2_pagina.php" class="course-card">
-          <div class="course-icon">🎲</div>
-          <h3>Probabilidad II</h3>
+        <a href="arqui_pagina.php" class="course-card">
+          <div class="course-icon">🖥️</div>
+          <h3>Arquitectura de Computadoras</h3>
         </a>
 
-        <a href="estadistica_pagina.php" class="course-card">
-          <div class="course-icon">📊</div>
-          <h3>Estadística II</h3>
+        <a href="sistemaOp_pagina.php" class="course-card">
+          <div class="course-icon">📱</div>
+          <h3>Sistemas Operativos</h3>
         </a>
       </div>
 
       <div class="sidebar">
         <h2>🔍 Explora los cursos</h2>
-        <p><strong>¡Más material en camino!</strong></p>
+        <p><strong>¡Más materias en camino!</strong></p>
         <p>Estamos trabajando para que puedas acceder a nuevos cursos</p>
         
         <div class="navigation-buttons">
           <h3 style="margin-top: 2rem; margin-bottom: 1.5rem; color: #1e293b; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🌐 Otras áreas de estudio</h3>
           
-          <button class="nav-button initial-button" onclick="window.location.href='pagina_tres.php'">
+          <button class="nav-button initial-button" onclick="window.location.href='Formación_inicial.php'">
             <div class="button-icon">📚</div>
             <div class="button-content">
               <div class="button-title">Formación Inicial</div>
@@ -202,11 +228,11 @@ if (!isset($_SESSION['usuario_id'])) {
             <div class="button-arrow">→</div>
           </button>
 
-          <button class="nav-button engineering-button" onclick="window.location.href='pagina_segunda.php'">
-            <div class="button-icon">💻</div>
+          <button class="nav-button math-button" onclick="window.location.href='Matemáticas_apli.php'">
+            <div class="button-icon">📐</div>
             <div class="button-content">
-              <div class="button-title">Ingeniería en Computación</div>
-              <div class="button-description">Programación, bases de datos, sistemas operativos</div>
+              <div class="button-title">Matemáticas Aplicadas</div>
+              <div class="button-description">Ecuaciones diferenciales, cálculo avanzado, estadística</div>
             </div>
             <div class="button-arrow">→</div>
           </button>
@@ -225,61 +251,62 @@ if (!isset($_SESSION['usuario_id'])) {
 </main>
 
   <script>
-        // Ley de Feedback: Mostrar indicador de carga
-    function navigateTo(url) {
-      const loadingIndicator = document.getElementById('loadingIndicator');
-      loadingIndicator.style.display = 'block';
-      
-      setTimeout(() => {
-        window.location.href = url;
-      }, 300);
-    }
-    // Sistema de notificaciones 
+    // Sistema de notificaciones
     document.addEventListener('DOMContentLoaded', function() {
       const notificationsIcon = document.querySelector('.notifications-icon');
       const notificationsPanel = document.querySelector('.notifications-panel');
       const notificationsOverlay = document.querySelector('.notifications-overlay');
-      const markReadButton = document.querySelector('.mark-read');
-      const notificationItems = document.querySelectorAll('.notification-item');
+      const notificationItems = document.querySelectorAll('.notification-item.unread');
       const notificationBadge = document.querySelector('.notification-badge');
       
+      // Mostrar/ocultar panel de notificaciones
       notificationsIcon.addEventListener('click', function(e) {
         e.stopPropagation();
         notificationsPanel.classList.toggle('active');
         notificationsOverlay.style.display = notificationsPanel.classList.contains('active') ? 'block' : 'none';
       });
       
+      // Cerrar panel al hacer clic fuera
       notificationsOverlay.addEventListener('click', function() {
         notificationsPanel.classList.remove('active');
         notificationsOverlay.style.display = 'none';
       });
       
-      markReadButton.addEventListener('click', function() {
-        notificationItems.forEach(item => {
-          item.classList.remove('unread');
-          const dot = item.querySelector('.notification-dot');
-          if (dot) dot.remove();
-        });
-        notificationBadge.textContent = '0';
-        notificationBadge.style.display = 'none';
-      });
-      
-      notificationItems.forEach(item => {
+      // Marcar notificación leída una por una (AJAX)
+      document.querySelectorAll('.notification-item.unread').forEach(item => {
         item.addEventListener('click', function() {
-          if (this.classList.contains('unread')) {
-            this.classList.remove('unread');
-            const dot = this.querySelector('.notification-dot');
-            if (dot) dot.remove();
-            
-            const unreadCount = document.querySelectorAll('.notification-item.unread').length;
-            notificationBadge.textContent = unreadCount;
-            if (unreadCount === 0) {
-              notificationBadge.style.display = 'none';
+          const notificacionId = this.getAttribute('data-id');
+          const currentFile = '<?php echo basename($_SERVER["PHP_SELF"]); ?>';
+          
+          // Marcar como leída via AJAX
+          fetch(currentFile, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'marcar_leida=1&notificacion_id=' + notificacionId + '&ajax=1'
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              this.classList.remove('unread');
+              const dot = this.querySelector('.notification-dot');
+              if (dot) dot.remove();
+              
+              // Actualizar el contador
+              const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+              if (notificationBadge) {
+                notificationBadge.textContent = unreadCount;
+                if (unreadCount === 0) {
+                  notificationBadge.style.display = 'none';
+                }
+              }
             }
-          }
+          });
         });
       });
 
+      // Sistema de menú de usuario
       const userMenuButton = document.getElementById('userMenuButton');
       const userDropdown = document.getElementById('userDropdown');
       

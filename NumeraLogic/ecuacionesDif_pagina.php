@@ -1,11 +1,31 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'conexion.php';
+
+if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
+    $curso_nombre = "Ecuaciones Diferenciales";
+    $curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+    $curso_pagina = "ecuacionesDif_pagina.php";
+    
+    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecuaciones Diferenciales - NumeraLogic</title>
-    <link rel="stylesheet" href="../css/ecuacionesDif_pagina.css">
+    <link rel="stylesheet" href="css/cursos_verde.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -18,41 +38,61 @@
             <div class="section">
                 <h2>📚 Temas del Curso</h2>
                 <div class="topics">
+                    
                     <div class="topic-card">
                         <h3>Introducción a EDOs</h3>
                         <p>Conceptos básicos, tipos y aplicaciones en ciencias e ingeniería.</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t1_ecDif.php" class="topic-btn">📄 Textos</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
                         <h3>EDOs de primer orden</h3>
                         <p>Métodos de solución: variables separables, lineales y exactas.</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t2_ecDif.php" class="topic-btn">📄 Textos</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
                         <h3>EDOs de segundo orden</h3>
                         <p>Solución de ecuaciones lineales con coeficientes constantes y homogéneas.</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t3_ecDif.php" class="topic-btn">📄 Textos</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
                         <h3>EDOs de orden n</h3>
                         <p>Extensión de métodos para ecuaciones lineales de orden superior.</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t4_ecDif.php" class="topic-btn">📄 Textos</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
-                        <h3>Sistemas de ecuaciones diferenciales</h3>
+                        <h3>Sistemas de ecuaciones</h3>
                         <p>Análisis y solución de sistemas lineales usando métodos matriciales.</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t5_ecDif.php" class="topic-btn">📄 Textos</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
-                        <h3>Introducción a las ecuaciones en derivadas parciales (EDP)</h3>
-                        <p>Concepto básico, diferencias con EDO y ejemplos típicos en ciencias e ingeniería.</p>
-                        <a href="#" class="topic-btn">Acceder al tema</a>
+                        <h3>Introducción a EDP</h3>
+                        <p>Concepto básico, diferencias con EDO y ejemplos típicos.</p>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t6_ecDif.php" class="topic-btn">📄 Textos</a>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -67,8 +107,9 @@
                 </ul>
             </div>
 
-            <a href="principal_cuarta.php" class="back-btn">← Explorar más cursos</a>
+            <a href="Matemáticas_apli.php" class="back-btn">← Explorar más cursos</a>
         </div>
     </div>
 </body>
+
 </html>

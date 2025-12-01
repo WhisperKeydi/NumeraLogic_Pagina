@@ -4,7 +4,40 @@ if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");
     exit();
 }
+
+// Incluir conexión y funciones
+include 'conexion.php';
+include 'funciones_notificaciones.php';
+
+// Obtener cursos recientes del usuario
+$cursos_recientes = obtenerCursosRecientes($conexion, $_SESSION['usuario_id']);
+
+// Obtener notificaciones no leídas
+$notificaciones = obtenerNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
+$total_notificaciones = contarNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
+
+// Procesar marcar como leídas si se envió el formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['marcar_todas_leidas'])) {
+        marcarTodasLeidas($conexion, $_SESSION['usuario_id']);
+        header("Location: dashboard.php");
+        exit();
+    }
+    
+    if (isset($_POST['marcar_leida'])) {
+        $notificacion_id = $_POST['notificacion_id'];
+        marcarNotificacionLeida($conexion, $notificacion_id, $_SESSION['usuario_id']);
+        // Responder para AJAX
+        if (isset($_POST['ajax'])) {
+            echo json_encode(['success' => true]);
+            exit();
+        }
+        header("Location: dashboard.php");
+        exit();
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -47,52 +80,54 @@ if (!isset($_SESSION['usuario_id'])) {
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
           </svg>
-          <div class="notification-badge">3</div>
+          <?php if ($total_notificaciones > 0): ?>
+            <div class="notification-badge"><?php echo $total_notificaciones; ?></div>
+          <?php endif; ?>
         </div>
         <div class="notifications-panel">
           <div class="notifications-header">
             <h3>Notificaciones</h3>
-            <button class="mark-read">Marcar todas como leídas</button>
+            <?php if ($total_notificaciones > 0): ?>
+              <form method="POST" style="display: inline;">
+                <button type="submit" name="marcar_todas_leidas" class="mark-read">
+                  Marcar todas como leídas
+                </button>
+              </form>
+            <?php endif; ?>
           </div>
           <div class="notifications-list">
-            <div class="notification-item unread">
-              <div class="notification-icon achievement">🏆</div>
-              <div class="notification-content">
-                <div class="notification-title">¡Nuevo logro desbloqueado!</div>
-                <div class="notification-message">Has completado 10 ejercicios de cálculo.</div>
-                <div class="notification-time">Hace 2 horas</div>
+            <?php if (!empty($notificaciones)): ?>
+              <?php foreach ($notificaciones as $notif): ?>
+                <div class="notification-item unread" data-id="<?php echo $notif['id']; ?>">
+                  <div class="notification-icon">
+                    <?php 
+                    switch($notif['tipo']) {
+                      case 'logro': echo '🏆'; break;
+                      case 'curso': echo '📚'; break;
+                      case 'sistema': echo '🔔'; break;
+                      case 'recordatorio': echo '⏰'; break;
+                      default: echo '🔔';
+                    }
+                    ?>
+                  </div>
+                  <div class="notification-content">
+                    <div class="notification-title"><?php echo htmlspecialchars($notif['titulo']); ?></div>
+                    <div class="notification-message"><?php echo htmlspecialchars($notif['mensaje']); ?></div>
+                    <div class="notification-time"><?php echo formatearTiempo($notif['fecha_creacion']); ?></div>
+                  </div>
+                  <div class="notification-dot"></div>
+                </div>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <div class="notification-item">
+                <div class="notification-content">
+                  <div class="notification-message">No tienes notificaciones nuevas</div>
+                </div>
               </div>
-              <div class="notification-dot"></div>
-            </div>
-            <div class="notification-item unread">
-              <div class="notification-icon course">📚</div>
-              <div class="notification-content">
-                <div class="notification-title">Nuevo contenido disponible</div>
-                <div class="notification-message">Se ha añadido un nuevo módulo a Programación Estructurada.</div>
-                <div class="notification-time">Hace 1 día</div>
-              </div>
-              <div class="notification-dot"></div>
-            </div>
-            <div class="notification-item unread">
-              <div class="notification-icon system">🔔</div>
-              <div class="notification-content">
-                <div class="notification-title">Recordatorio de estudio</div>
-                <div class="notification-message">No olvides practicar hoy para mantener tu racha.</div>
-                <div class="notification-time">Hace 3 días</div>
-              </div>
-              <div class="notification-dot"></div>
-            </div>
-            <div class="notification-item">
-              <div class="notification-icon achievement">⭐</div>
-              <div class="notification-content">
-                <div class="notification-title">Has subido de nivel</div>
-                <div class="notification-message">Felicidades, ahora eres Nivel 12.</div>
-                <div class="notification-time">Hace 5 días</div>
-              </div>
-            </div>
+            <?php endif; ?>
           </div>
           <div class="notifications-footer">
-            <a href="#" class="view-all">Ver todas las notificaciones</a>
+            <a href="todas_notificaciones.php" class="view-all">Ver todas las notificaciones</a>
           </div>
         </div>
       </div>
@@ -131,7 +166,10 @@ if (!isset($_SESSION['usuario_id'])) {
       <div class="hero-left">
         <h2>🎓 ¡Bienvenido de vuelta <?php echo htmlspecialchars($_SESSION['nombre']); ?>!</h2>
         <p>¡Continúa con tu racha! Hoy tienes 3 nuevos ejercicios y 1 retroalimentación de tu profesor(a) esperándote</p>
-        <button onclick="window.location.href='areas_disponibles.php'">Áreas disponibles</button>
+        <p class="info-text">Accede a todos los materiales, ejercicios y recursos de tus materias</p>
+        <button onclick="window.location.href='areas_disponibles.php'" class="primary-btn">
+            📚 Explorar Materiales de Estudio
+        </button>
       </div>
       <div class="hero-right">
         <div class="label">85%</div>
@@ -143,28 +181,42 @@ if (!isset($_SESSION['usuario_id'])) {
 
     <div class="grid">
       <div class="courses">
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop" alt="Programación Estructurada" class="course-image">
-          <div class="course-content">
-            <h4>Programación Estructurada</h4>
-            <button onclick="window.location.href='estructurada_pagina.php'">Ir al curso</button>
-          </div>
+        <div class="section-header">
+            <h3>Cursos Recientes</h3>
+            <p>Tus últimos cursos visitados</p>
         </div>
-
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop" alt="Introducción al cálculo" class="course-image">
-          <div class="course-content">
-            <h4>Introducción al cálculo</h4>
-            <button onclick="window.location.href='intro_calculo_pagina.php'">Ir al curso</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop" alt="Sistemas digitales" class="course-image">
-          <div class="course-content">
-            <h4>Sistemas digitales</h4>
-            <button onclick="window.location.href='sistemasDigitales_pagina.php'">Ir al curso</button>
-          </div>
+        
+        <?php if (!empty($cursos_recientes)): ?>
+            <div class="courses-grid">
+                <?php foreach ($cursos_recientes as $curso): ?>
+                <div class="course-card">
+                    <img src="<?php echo htmlspecialchars($curso['curso_imagen']); ?>" 
+                         alt="<?php echo htmlspecialchars($curso['curso_nombre']); ?>" 
+                         class="course-image">
+                    <div class="course-content">
+                        <h4><?php echo htmlspecialchars($curso['curso_nombre']); ?></h4>
+                        <button onclick="window.location.href='<?php echo htmlspecialchars($curso['curso_pagina']); ?>'">
+                            Continuar estudiando
+                        </button>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div class="no-courses-message">
+                <div class="no-courses-icon">📚</div>
+                <h3>Aún no has abierto ningún curso</h3>
+                <p>Comienza explorando nuestros materiales de estudio disponibles</p>
+                <button onclick="window.location.href='areas_disponibles.php'" class="primary-btn">
+                    Explorar Cursos Disponibles
+                </button>
+            </div>
+        <?php endif; ?>
+        
+        <div class="all-courses-link">
+            <a href="areas_disponibles.php" class="view-all-btn">
+                📚 Ver todos los materiales disponibles
+            </a>
         </div>
       </div>
 
@@ -223,8 +275,7 @@ if (!isset($_SESSION['usuario_id'])) {
       const notificationsIcon = document.querySelector('.notifications-icon');
       const notificationsPanel = document.querySelector('.notifications-panel');
       const notificationsOverlay = document.querySelector('.notifications-overlay');
-      const markReadButton = document.querySelector('.mark-read');
-      const notificationItems = document.querySelectorAll('.notification-item');
+      const notificationItems = document.querySelectorAll('.notification-item.unread');
       const notificationBadge = document.querySelector('.notification-badge');
       
       // Mostrar/ocultar panel de notificaciones
@@ -240,34 +291,36 @@ if (!isset($_SESSION['usuario_id'])) {
         notificationsOverlay.style.display = 'none';
       });
       
-      // Marcar todas como leídas
-      markReadButton.addEventListener('click', function() {
-        notificationItems.forEach(item => {
-          item.classList.remove('unread');
-          const dot = item.querySelector('.notification-dot');
-          if (dot) dot.remove();
-        });
-        
-        // Actualizar contador
-        notificationBadge.textContent = '0';
-        notificationBadge.style.display = 'none';
-      });
-      
-      // Marcar notificación leída una por una
-      notificationItems.forEach(item => {
+      // Marcar notificación leída una por una (AJAX)
+      document.querySelectorAll('.notification-item.unread').forEach(item => {
         item.addEventListener('click', function() {
-          if (this.classList.contains('unread')) {
-            this.classList.remove('unread');
-            const dot = this.querySelector('.notification-dot');
-            if (dot) dot.remove();
-            
-            // Actualizar el contador
-            const unreadCount = document.querySelectorAll('.notification-item.unread').length;
-            notificationBadge.textContent = unreadCount;
-            if (unreadCount === 0) {
-              notificationBadge.style.display = 'none';
+          const notificacionId = this.getAttribute('data-id');
+          
+          // Marcar como leída via AJAX
+          fetch('dashboard.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'marcar_leida=1&notificacion_id=' + notificacionId + '&ajax=1'
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              this.classList.remove('unread');
+              const dot = this.querySelector('.notification-dot');
+              if (dot) dot.remove();
+              
+              // Actualizar el contador
+              const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+              if (notificationBadge) {
+                notificationBadge.textContent = unreadCount;
+                if (unreadCount === 0) {
+                  notificationBadge.style.display = 'none';
+                }
+              }
             }
-          }
+          });
         });
       });
 

@@ -1,10 +1,28 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'conexion.php';
+
+if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
+    $curso_nombre = "Sistemas Digitales";
+    $curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+    $curso_pagina = "sistemasDigitales_pagina.php";
+    
+    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistemas Digitales - NumeraLogic</title>
-    <link rel="stylesheet" href="css/sistemasDigitales_pagina.css">
+    <link rel="stylesheet" href="css/cursos_azul.css">
 </head>
 <body>
     <div class="container">
@@ -21,37 +39,55 @@
                     <div class="topic-card">
                         <h3>Sistemas Numéricos</h3>
                         <p>Binario, octal, hexadecimal y conversiones entre sistemas</p>
-                        <a href="sistemas_numericos.html" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t1_sisDig.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
                         <h3>Álgebra Booleana</h3>
                         <p>Operaciones lógicas, teoremas y simplificación</p>
-                        <a href="algebra_booleana.html" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t2_sisDig.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
                         <h3>Compuertas Lógicas</h3>
                         <p>AND, OR, NOT, NAND, NOR, XOR y sus aplicaciones</p>
-                        <a href="compuertas_logicas.html" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t3_sisDig.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
                         <h3>Lógica Combinacional</h3>
                         <p>Sumadores, multiplexores, decodificadores y comparadores</p>
-                        <a href="logica_combinacional.html" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t4_sisDig.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
                         <h3>Circuitos Secuenciales</h3>
                         <p>Flip-flops, registros, contadores y máquinas de estado</p>
-                        <a href="circuitos_secuenciales.html" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t5_sisDig.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
 
                     <div class="topic-card">
                         <h3>Memorias Digitales</h3>
                         <p>RAM, ROM, tipos de memoria y arquitecturas</p>
-                        <a href="memorias_digitales.html" class="topic-btn">Acceder al tema</a>
+                        <div class="button-group">
+                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="t6_sisDig.php" class="topic-btn">📄 Notas</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,7 +103,7 @@
                 </ul>
             </div>
 
-            <a href="pagina_segunda.php" class="back-btn">← Explorar más cursos</a>
+            <a href="Ingeniería.php" class="back-btn">← Explorar más cursos</a>
         </div>
     </div>
 </body>

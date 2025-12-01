@@ -4,6 +4,35 @@ if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");
     exit();
 }
+
+// Incluir conexión y funciones de notificaciones
+include 'conexion.php';
+include 'funciones_notificaciones.php';
+
+// Obtener notificaciones no leídas
+$notificaciones = obtenerNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
+$total_notificaciones = contarNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
+
+// Procesar marcar como leídas si se envió el formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['marcar_todas_leidas'])) {
+        marcarTodasLeidas($conexion, $_SESSION['usuario_id']);
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    }
+    
+    if (isset($_POST['marcar_leida'])) {
+        $notificacion_id = $_POST['notificacion_id'];
+        marcarNotificacionLeida($conexion, $notificacion_id, $_SESSION['usuario_id']);
+        // Responder para AJAX
+        if (isset($_POST['ajax'])) {
+            echo json_encode(['success' => true]);
+            exit();
+        }
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,51 +76,54 @@ if (!isset($_SESSION['usuario_id'])) {
           <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
           <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
         </svg>
-        <div class="notification-badge">3</div>
+        <?php if ($total_notificaciones > 0): ?>
+          <div class="notification-badge"><?php echo $total_notificaciones; ?></div>
+        <?php endif; ?>
       </div>
       <div class="notifications-panel">
         <div class="notifications-header">
           <h3>Notificaciones</h3>
-          <button class="mark-read">Marcar todas como leídas</button>
+          <?php if ($total_notificaciones > 0): ?>
+            <form method="POST" style="display: inline;">
+              <button type="submit" name="marcar_todas_leidas" class="mark-read">
+                Marcar todas como leídas
+              </button>
+            </form>
+          <?php endif; ?>
         </div>
         <div class="notifications-list">
-          <div class="notification-item unread">
-            <div class="notification-icon achievement">🏆</div>
-            <div class="notification-content">
-              <div class="notification-title">¡Nuevo logro desbloqueado!</div>
-              <div class="notification-message">Has completado 10 ejercicios de cálculo.</div>
-              <div class="notification-time">Hace 2 horas</div>
+          <?php if (!empty($notificaciones)): ?>
+            <?php foreach ($notificaciones as $notif): ?>
+              <div class="notification-item unread" data-id="<?php echo $notif['id']; ?>">
+                <div class="notification-icon">
+                  <?php 
+                  switch($notif['tipo']) {
+                    case 'logro': echo '🏆'; break;
+                    case 'curso': echo '📚'; break;
+                    case 'sistema': echo '🔔'; break;
+                    case 'recordatorio': echo '⏰'; break;
+                    default: echo '🔔';
+                  }
+                  ?>
+                </div>
+                <div class="notification-content">
+                  <div class="notification-title"><?php echo htmlspecialchars($notif['titulo']); ?></div>
+                  <div class="notification-message"><?php echo htmlspecialchars($notif['mensaje']); ?></div>
+                  <div class="notification-time"><?php echo formatearTiempo($notif['fecha_creacion']); ?></div>
+                </div>
+                <div class="notification-dot"></div>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="notification-item">
+              <div class="notification-content">
+                <div class="notification-message">No tienes notificaciones nuevas</div>
+              </div>
             </div>
-            <div class="notification-dot"></div>
-          </div>
-          <div class="notification-item unread">
-            <div class="notification-icon course">📚</div>
-            <div class="notification-content">
-              <div class="notification-title">Nuevo contenido disponible</div>
-              <div class="notification-message">Se ha añadido un nuevo módulo a Programación Estructurada.</div>
-              <div class="notification-time">Hace 1 día</div>
-            </div>
-            <div class="notification-dot"></div>
-          </div>
-          <div class="notification-item">
-            <div class="notification-icon system">🔔</div>
-            <div class="notification-content">
-              <div class="notification-title">Recordatorio de estudio</div>
-              <div class="notification-message">No olvides practicar hoy para mantener tu racha.</div>
-              <div class="notification-time">Hace 3 días</div>
-            </div>
-          </div>
-          <div class="notification-item">
-            <div class="notification-icon achievement">⭐</div>
-            <div class="notification-content">
-              <div class="notification-title">Has subido de nivel</div>
-              <div class="notification-message">Felicidades, ahora eres Nivel 12.</div>
-              <div class="notification-time">Hace 5 días</div>
-            </div>
-          </div>
+          <?php endif; ?>
         </div>
         <div class="notifications-footer">
-          <a href="#" class="view-all">Ver todas las notificaciones</a>
+          <a href="todas_notificaciones.php" class="view-all">Ver todas las notificaciones</a>
         </div>
       </div>
     </div>
@@ -133,22 +165,22 @@ if (!isset($_SESSION['usuario_id'])) {
     </section>
 
     <div class="areas-grid">
-      <div class="area-card green" onclick="window.location.href='pagina_tres.php'">
+      <div class="area-card green" onclick="window.location.href='Formación_Inicial.php'">
         <div class="area-icon">👨‍🏫</div>
         <h3>Formación<br>inicial</h3>
-        <button onclick="event.stopPropagation(); window.location.href='pagina_tres.php'">Comenzar</button>
+        <button onclick="event.stopPropagation(); window.location.href='Formación_Inicial.php'">Comenzar</button>
       </div>
 
-      <div class="area-card red" onclick="window.location.href='principal_cuarta.php'">
+      <div class="area-card red" onclick="window.location.href='Matemáticas_apli.php'">
         <div class="area-icon">📐</div>
         <h3>Matemáticas aplicadas</h3>
-        <button onclick="event.stopPropagation(); window.location.href='principal_cuarta.php'">Comenzar</button>
+        <button onclick="event.stopPropagation(); window.location.href='Matemáticas_apli.php'">Comenzar</button>
       </div>
 
-      <div class="area-card blue" onclick="window.location.href='pagina_segunda.php'">
+      <div class="area-card blue" onclick="window.location.href='Ingeniería.php'">
         <div class="area-icon">💻</div>
         <h3>Ingeniería en computación</h3>
-        <button onclick="event.stopPropagation(); window.location.href='pagina_segunda.php'">Comenzar</button>
+        <button onclick="event.stopPropagation(); window.location.href='Ingeniería.php'">Comenzar</button>
       </div>
     </div>
   </main>
@@ -159,8 +191,7 @@ if (!isset($_SESSION['usuario_id'])) {
       const notificationsIcon = document.querySelector('.notifications-icon');
       const notificationsPanel = document.querySelector('.notifications-panel');
       const notificationsOverlay = document.querySelector('.notifications-overlay');
-      const markReadButton = document.querySelector('.mark-read');
-      const notificationItems = document.querySelectorAll('.notification-item');
+      const notificationItems = document.querySelectorAll('.notification-item.unread');
       const notificationBadge = document.querySelector('.notification-badge');
       
       // Mostrar/ocultar panel de notificaciones
@@ -176,34 +207,37 @@ if (!isset($_SESSION['usuario_id'])) {
         notificationsOverlay.style.display = 'none';
       });
       
-      // Marcar todas como leídas
-      markReadButton.addEventListener('click', function() {
-        notificationItems.forEach(item => {
-          item.classList.remove('unread');
-          const dot = item.querySelector('.notification-dot');
-          if (dot) dot.remove();
-        });
-        
-        // Actualizar contador
-        notificationBadge.textContent = '0';
-        notificationBadge.style.display = 'none';
-      });
-      
-      // Marcar notificación leída una por una
-      notificationItems.forEach(item => {
+      // Marcar notificación leída una por una (AJAX)
+      document.querySelectorAll('.notification-item.unread').forEach(item => {
         item.addEventListener('click', function() {
-          if (this.classList.contains('unread')) {
-            this.classList.remove('unread');
-            const dot = this.querySelector('.notification-dot');
-            if (dot) dot.remove();
-            
-            // Actualizar el contador
-            const unreadCount = document.querySelectorAll('.notification-item.unread').length;
-            notificationBadge.textContent = unreadCount;
-            if (unreadCount === 0) {
-              notificationBadge.style.display = 'none';
+          const notificacionId = this.getAttribute('data-id');
+          const currentFile = '<?php echo basename($_SERVER["PHP_SELF"]); ?>';
+          
+          // Marcar como leída via AJAX
+          fetch(currentFile, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'marcar_leida=1&notificacion_id=' + notificacionId + '&ajax=1'
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              this.classList.remove('unread');
+              const dot = this.querySelector('.notification-dot');
+              if (dot) dot.remove();
+              
+              // Actualizar el contador
+              const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+              if (notificationBadge) {
+                notificationBadge.textContent = unreadCount;
+                if (unreadCount === 0) {
+                  notificationBadge.style.display = 'none';
+                }
+              }
             }
-          }
+          });
         });
       });
 

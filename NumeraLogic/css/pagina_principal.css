@@ -6,11 +6,11 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #f8fafc;
+  background: #f8fafc;
   color: #1e293b;
-  line-height: 1.6;
 }
 
+/* HEADER - Fondo gris claro */
 header {
   background: #e2e8f0;
   padding: 1rem 2.5rem;
@@ -29,7 +29,14 @@ header {
 .logo {
   width: 45px;
   height: 45px;
+  background: #1e40af;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.4rem;
   overflow: hidden;
 }
 
@@ -86,6 +93,32 @@ nav a.active {
   color: #1e293b;
 }
 
+.logout-btn {
+  padding: 0.5rem 1rem;
+  background: #ef4444;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+.bell-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.bell-icon:hover {
+  transform: scale(1.1);
+}
+
 .avatar {
   width: 44px;
   height: 44px;
@@ -93,119 +126,131 @@ nav a.active {
   object-fit: cover;
   border: 2px solid #94a3b8;
 }
-
-.right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Notifications */
+/* NOTIFICATIONS - EXACTAMENTE IGUAL */
 .notifications-container {
   position: relative;
 }
 
 .notifications-icon {
-  position: relative;
   cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+  position: relative;
+  transition: transform 0.2s;
 }
 
 .notifications-icon:hover {
-  background-color: #f1f5f9;
+  transform: scale(1.1);
 }
 
 .notification-badge {
   position: absolute;
   top: -5px;
   right: -5px;
-  background: #ef4444;
+  background-color: #ef4444;
   color: white;
   border-radius: 50%;
   width: 18px;
   height: 18px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
 }
 
 .notifications-panel {
   position: absolute;
   top: 100%;
   right: 0;
-  width: 380px;
+  width: 320px;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  padding: 0;
+  margin-top: 10px;
+  z-index: 100;
+  display: none;
+  overflow: hidden;
 }
 
 .notifications-panel.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  display: block;
 }
 
 .notifications-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 1.5rem;
+  padding: 1rem;
   border-bottom: 1px solid #e2e8f0;
 }
 
 .notifications-header h3 {
-  font-weight: 600;
-  color: #1e293b;
+  margin: 0;
+  font-size: 1.1rem;
 }
 
 .mark-read {
   background: none;
   border: none;
-  color: #3b82f6;
-  font-size: 0.875rem;
+  color: #2563eb;
   cursor: pointer;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
 .mark-read:hover {
-  color: #2563eb;
+  text-decoration: underline;
 }
 
 .notifications-list {
-  max-height: 400px;
+  max-height: 300px;
   overflow-y: auto;
 }
 
 .notification-item {
-  display: flex;
-  padding: 1rem 1.5rem;
-  gap: 0.75rem;
+  padding: 1rem;
   border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  gap: 0.75rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  position: relative;
+  transition: background 0.2s;
 }
 
 .notification-item:hover {
-  background-color: #f8fafc;
+  background: #f8fafc;
 }
 
 .notification-item.unread {
-  background-color: #f0f9ff;
+  background: #f0f9ff;
+}
+
+.notification-item.unread:hover {
+  background: #e0f2fe;
 }
 
 .notification-icon {
-  font-size: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+}
+
+.notification-icon.achievement {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.notification-icon.course {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.notification-icon.system {
+  background: #f3e8ff;
+  color: #7c3aed;
 }
 
 .notification-content {
@@ -214,61 +259,159 @@ nav a.active {
 
 .notification-title {
   font-weight: 500;
-  color: #1e293b;
   margin-bottom: 0.25rem;
+  font-size: 0.9rem;
 }
 
 .notification-message {
   color: #64748b;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .notification-time {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 0.75rem;
+  margin-top: 0.25rem;
 }
 
 .notification-dot {
   width: 8px;
   height: 8px;
-  background: #3b82f6;
+  background: #2563eb;
   border-radius: 50%;
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+  flex-shrink: 0;
+  margin-top: 0.5rem;
 }
 
 .notifications-footer {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid #e2e8f0;
+  padding: 0.75rem;
   text-align: center;
+  border-top: 1px solid #e2e8f0;
 }
 
 .view-all {
-  color: #3b82f6;
+  color: #2563eb;
   text-decoration: none;
+  font-size: 0.9rem;
   font-weight: 500;
-  font-size: 0.875rem;
 }
 
 .view-all:hover {
-  color: #2563eb;
+  text-decoration: underline;
 }
 
 .notifications-overlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: transparent;
-  z-index: 999;
+  z-index: 99;
+  display: none;
 }
 
-/* Main content */
+/* MENÚ DE USUARIO - EXACTAMENTE IGUAL */
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-avatar:hover {
+  background-color: #f1f5f9;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #94a3b8;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.user-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  color: #475569;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.dropdown-item svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 1.5rem;
+  }
+
+  nav a {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* ========== A PARTIR DE AQUÍ SOLO ESTILOS DEL MAIN DE DASHBOARD ========== */
+
+/* MAIN CONTENT - ESTILOS ESPECÍFICOS DE DASHBOARD */
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -299,18 +442,19 @@ main {
   max-width: 500px;
 }
 
-.hero-left button {
+.primary-btn {
   background: white;
   color: #7c3aed;
   border: none;
-  padding: 0.75rem 2rem;
+  padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-.hero-left button:hover {
+.primary-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
@@ -337,8 +481,8 @@ main {
 }
 
 .courses {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 
@@ -373,9 +517,9 @@ main {
 
 .course-content button {
   width: 100%;
-  background: #97cbff;
-  color: #475569;
-  border: 1px solid #e2e8f0;
+  background: #3b82f6;
+  color: white;
+  border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 500;
@@ -384,7 +528,8 @@ main {
 }
 
 .course-content button:hover {
-  background: #e2e8f0;
+  background: #2563eb;
+  transform: translateY(-1px);
 }
 
 /* Sidebar */
@@ -492,122 +637,132 @@ aside {
   font-size: 0.875rem;
 }
 
-/* Estilos para el menú de usuario desplegable */
-.user-menu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* Texto informativo */
+.info-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin: 10px 0 20px 0;
+  font-style: italic;
 }
 
-.user-avatar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* Encabezado de sección */
+.section-header {
+  margin-bottom: 1.5rem;
 }
 
-.user-avatar:hover {
-  background-color: #f1f5f9;
-}
-
-.avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.user-name {
-  font-weight: 500;
+.section-header h3 {
+  margin: 0 0 5px 0;
   color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
-.user-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 8px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e2e8f0;
-  min-width: 180px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
+.section-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
 }
 
-.user-dropdown.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+/* Grid de cursos mejorado */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
-.dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
+/* Enlace para ver todos los cursos */
+.all-courses-link {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.view-all-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #f8fafc;
   color: #475569;
   text-decoration: none;
-  transition: background-color 0.3s ease;
-  border-bottom: 1px solid #f1f5f9;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
-.dropdown-item:last-child {
-  border-bottom: none;
+.view-all-btn:hover {
+  background-color: #e2e8f0;
+  color: #334155;
+  transform: translateY(-1px);
 }
 
-.dropdown-item:hover {
-  background-color: #f8fafc;
+/* Estilos para el mensaje cuando no hay cursos */
+.no-courses-message {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.no-courses-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.no-courses-message h3 {
   color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-.dropdown-item svg {
-  flex-shrink: 0;
+.no-courses-message p {
+  color: #64748b;
+  margin-bottom: 2rem;
+  font-size: 1rem;
 }
 
-/* Responsive */
+.no-courses-message .primary-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.no-courses-message .primary-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive específico del main */
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;
   }
   
-  .courses {
+  .courses-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  nav {
-    gap: 1rem;
-  }
-  
   .hero-card {
     flex-direction: column;
     text-align: center;
     gap: 1.5rem;
   }
   
-  .notifications-panel {
-    width: 300px;
-    right: -50px;
-  }
-  
-  .user-name {
-    display: none;
+  .courses-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -616,11 +771,23 @@ aside {
     padding: 1rem;
   }
   
-  .courses {
+  .courses-grid {
     grid-template-columns: 1fr;
   }
   
   .stats {
     grid-template-columns: 1fr;
+  }
+  
+  .hero-card {
+    padding: 1.5rem;
+  }
+  
+  .hero-left h2 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-left p {
+    font-size: 1rem;
   }
 }
