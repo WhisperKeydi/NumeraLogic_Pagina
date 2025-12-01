@@ -5,17 +5,22 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
+// Incluir conexión y funciones de notificaciones
 include 'conexion.php';
+include 'funciones_notificaciones.php';
 
-// Verificar que el usuario existe antes de registrar el curso
-if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
-    // Registrar el acceso a este curso
-    $curso_nombre = "Arquitectura de Computadoras";
-    $curso_imagen = "https://i0.wp.com/architecnologia.es/wp-content/uploads/2019/05/microprocesador.redimensionado.jpg?resize=800%2C450";
-    $curso_pagina = "arqui_pagina.php";
-    
-    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
-}
+// Actualizar racha del usuario al acceder al curso
+actualizarRacha($conexion, $_SESSION['usuario_id']);
+
+// Registrar visita a este curso específico (curso_id 4 para arqui)
+registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 4);
+
+// Registrar el acceso a este curso
+$curso_nombre = "Arquitectura de Computadoras";
+$curso_imagen = "https://i0.wp.com/architecnologia.es/wp-content/uploads/2019/05/microprocesador.redimensionado.jpg?resize=800%2C450";
+$curso_pagina = "arqui_pagina.php";
+
+registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
 ?>
 
 <!DOCTYPE html>

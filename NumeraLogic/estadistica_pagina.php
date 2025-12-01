@@ -5,15 +5,22 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
+// Incluir conexión y funciones de notificaciones
 include 'conexion.php';
+include 'funciones_notificaciones.php';
 
-if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
-    $curso_nombre = "Estadística";
-    $curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
-    $curso_pagina = "estadistica_pagina.php";
-    
-    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
-}
+// Actualizar racha del usuario al acceder al curso
+actualizarRacha($conexion, $_SESSION['usuario_id']);
+
+// Registrar visita a este curso específico (curso_id 10 para estadística)
+registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 10);
+
+// Registrar el acceso a este curso
+$curso_nombre = "Estadística";
+$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_pagina = "estadistica_pagina.php";
+
+registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
 ?>
 
 <!DOCTYPE html>

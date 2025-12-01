@@ -5,18 +5,24 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
+// Incluir conexión y funciones de notificaciones
 include 'conexion.php';
+include 'funciones_notificaciones.php';
 
-// Verificar que el usuario existe antes de registrar el curso
-if (usuarioExiste($conexion, $_SESSION['usuario_id'])) {
-    // Registrar el acceso a este curso
-    $curso_nombre = "Bases de Datos";
-    $curso_imagen = "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=300&fit=crop";
-    $curso_pagina = "basesDatos_pagina.php";
-    
-    registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
-}
+// Actualizar racha del usuario al acceder al curso
+actualizarRacha($conexion, $_SESSION['usuario_id']);
+
+// Registrar visita a este curso específico (curso_id 5 para bases)
+registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 5);
+
+// Registrar el acceso a este curso
+$curso_nombre = "Bases de Datos";
+$curso_imagen = "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=300&fit=crop";
+$curso_pagina = "basesDatos_pagina.php";
+
+registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
