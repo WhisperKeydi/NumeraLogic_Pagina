@@ -1,43 +1,9 @@
 <?php
 session_start();
-include 'conexion.php';
-
-// Procesar el formulario cuando se envía
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $matricula = trim($_POST['matricula']);
-    $contrasena = trim($_POST['contrasena']);
-    
-    // Validar campos vacíos
-    if (empty($matricula) || empty($contrasena)) {
-        $error = "Por favor, completa todos los campos";
-    } else {
-        // Buscar usuario en la base de datos
-        $stmt = $conexion->prepare("SELECT id, nombre, matricula, contrasena FROM usuarios WHERE matricula = ?");
-        $stmt->bind_param("s", $matricula);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($result->num_rows === 1) {
-            $usuario = $result->fetch_assoc();
-            
-            // Verificar contraseña (en texto plano para el ejemplo)
-            if ($contrasena === $usuario['contrasena']) {
-                // Iniciar sesión
-                $_SESSION['usuario_id'] = $usuario['id'];
-                $_SESSION['nombre'] = $usuario['nombre'];
-                $_SESSION['matricula'] = $usuario['matricula'];
-                
-                // Redirigir al dashboard
-                header("Location: dashboard.php");
-                exit();
-            } else {
-                $error = "Contraseña incorrecta";
-            }
-        } else {
-            $error = "Usuario no encontrado";
-        }
-        $stmt->close();
-    }
+$error = '';
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']); // Limpiar el error después de mostrarlo
 }
 ?>
 
@@ -67,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <h1>BIENVENIDO NUMERAL LOGIC</h1>
       <h2>Iniciar sesión</h2>
       
-      <?php if (isset($error)): ?>
+     <?php if (!empty($error)): ?>
         <div class="error-message">
-          <?php echo $error; ?>
+          <?php echo htmlspecialchars($error); ?>
         </div>
       <?php endif; ?>
       
-      <form id="loginForm" method="POST" action="">
+      <form id="loginForm" method="POST" action="validar_login.php">
         <div class="form-group">
           <label for="matricula">matrícula</label>
           <input type="text" id="matricula" name="matricula" value="00" required>
