@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 5);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Bases de Datos";
-$curso_imagen = "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=300&fit=crop";
+$curso_imagen = "https://img.datacentermarket.es/wp-content/uploads/2025/01/16115523/Bases-de-datos-como-Servicio-3.jpeg";
 $curso_pagina = "basesDatos_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

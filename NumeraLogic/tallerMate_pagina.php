@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 18);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Taller de Matemáticas";
-$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_imagen = "https://matematicasiesoja.wordpress.com/wp-content/uploads/2021/12/0a1-61.png";
 $curso_pagina = "tallerMate_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 9);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Ecuaciones Diferenciales";
-$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_imagen = "https://ecuaciondiferencialejerciciosresueltos.com/wp-content/uploads/2014/05/atptL.png";
 $curso_pagina = "ecuacionesDif_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

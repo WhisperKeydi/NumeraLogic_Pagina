@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 4);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Arquitectura de Computadoras";
-$curso_imagen = "https://i0.wp.com/architecnologia.es/wp-content/uploads/2019/05/microprocesador.redimensionado.jpg?resize=800%2C450";
+$curso_imagen = "https://images.unsplash.com/photo-1700427296131-0cc4c4610fc6?fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000";
 $curso_pagina = "arqui_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

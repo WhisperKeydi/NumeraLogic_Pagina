@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 17);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Taller de Algoritmos";
-$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_imagen = "https://tecnologia-informatica.com/wp-content/uploads/2022/02/programacion-estructurada.jpg";
 $curso_pagina = "tallerAlgo_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

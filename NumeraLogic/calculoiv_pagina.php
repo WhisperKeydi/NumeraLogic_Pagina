@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 8);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Cálculo IV";
-$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_imagen = "https://tedi.acatlan.unam.mx/b-learning/pluginfile.php/19187/course/summary/image072.gif";
 $curso_pagina = "calculoiv_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

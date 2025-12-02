@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 1);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Programación Orientada a Objetos";
-$curso_imagen = "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop";
+$curso_imagen = "https://media.tutellus.com/libraries/22/16/lib/1466774399567_8.jpg?size=854x493s&ext=jpg";
 $curso_pagina = "poo_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 3);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Álgebra Lineal";
-$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_imagen = "https://miro.medium.com/0%2AMx8BKI7T7F2mAGqo";
 $curso_pagina = "algebraLineal_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

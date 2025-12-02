@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 7);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Cálculo II";
-$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_imagen = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf9CRP19lvredOb7jN748K0DHJj2to-v25JA&s";
 $curso_pagina = "calculo2_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
