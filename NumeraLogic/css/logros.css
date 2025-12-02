@@ -436,16 +436,17 @@ main {
 /* === MEJORAS PARA LOS LOGROS === */
 .achievements {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Cambiado de 280px a 320px */
+  gap: 30px; /* Aumentado de 25px a 30px */
   margin: 40px auto 60px;
-  max-width: 1200px;
+  max-width: 1400px; /* Aumentado de 1200px a 1400px */
 }
 
+/* 2. Aumentar el tamaño de cada logro individual */
 .achievement {
   background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
   border-radius: 20px;
-  padding: 30px 25px;
+  padding: 35px 30px; /* Aumentado de 30px 25px */
   text-align: center;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
@@ -453,22 +454,95 @@ main {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(226, 232, 240, 0.5);
-  height: 280px;
+  height: 350px; /* Aumentado de 280px a 350px */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
+/* 3. Aumentar el tamaño del contenedor de imagen */
+.achievement-img-container {
+  width: 120px; /* Aumentado de 100px */
+  height: 120px; /* Aumentado de 100px */
+  margin: 0 auto 25px; /* Aumentado de 20px a 25px */
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px; /* Aumentado de 20px */
+  transition: all 0.3s ease;
+}
+
+/* 4. Aumentar el tamaño de la imagen */
+.achievement img {
+  width: 70px; /* Aumentado de 60px */
+  height: 70px; /* Aumentado de 60px */
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+/* 5. Aumentar tamaño del texto */
+.achievement h3 {
+  font-size: 1.3rem; /* Aumentado de 1.2rem */
+  color: #1e293b;
+  margin-bottom: 12px; /* Aumentado de 10px */
+  font-weight: 600;
+  transition: color 0.3s ease;
+  line-height: 1.4;
+}
+
+.achievement p {
+  font-size: 1rem; /* Aumentado de 0.95rem */
+  color: #64748b;
+  line-height: 1.6; /* Aumentado de 1.5 */
+  margin-bottom: 20px; /* Aumentado de 15px */
+}
+
+/* 6. Ajustar el espacio para el progreso */
+.achievement-progress {
+  width: 100%;
+  height: 8px; /* Aumentado de 6px */
+  background: #e2e8f0;
+  border-radius: 4px; /* Aumentado de 3px */
+  overflow: hidden;
+  margin-top: 20px; /* Aumentado de 15px */
+}
+
+/* 7. Aumentar tamaño del estado */
+.achievement-status {
+  display: inline-block;
+  padding: 6px 15px; /* Aumentado de 4px 12px */
+  background: #dbeafe;
+  color: #2563eb;
+  border-radius: 15px; /* Aumentado de 12px */
+  font-size: 0.85rem; /* Aumentado de 0.8rem */
+  font-weight: 500;
+  margin-top: 15px; /* Aumentado de 10px */
+}
+
+/* 8. Agregar más espacio para puntos si los tienes */
+.achievement-points {
+  background: #FFD700;
+  color: #333;
+  padding: 4px 10px; /* Aumentado de 2px 8px */
+  border-radius: 15px; /* Aumentado de 12px */
+  font-size: 0.85rem; /* Aumentado de 0.8rem */
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+/* 9. Mejorar el efecto hover */
 .achievement:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.15);
+  transform: translateY(-10px) scale(1.03); /* Aumentado de -8px y 1.02 */
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.18); /* Aumentado de 12px 30px */
   border-color: rgba(102, 126, 234, 0.3);
 }
 
 .achievement.active {
-  transform: scale(1.05);
-  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.25);
+  transform: scale(1.08); /* Aumentado de 1.05 */
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3); /* Aumentado de 15px 35px */
   border-color: #667eea;
   z-index: 10;
 }
@@ -847,74 +921,56 @@ main {
 }
 
 /* === RESPONSIVE MEJORADO === */
-@media (max-width: 768px) {
-  header {
-    padding: 1rem 1.5rem;
-  }
-
-  nav a {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  main {
-    padding: 1.5rem 1rem;
-  }
-
+@media (max-width: 1024px) {
   .achievements {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  
+  .achievement {
+    height: 320px;
+    padding: 30px 25px;
+  }
+  
+  .achievement-img-container {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 20px;
+  }
+  
+  .achievement img {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 768px) {
+  .achievements {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
   }
   
   .achievement {
-    height: 250px;
+    height: 300px; /* Aumentado de 250px */
     padding: 25px 20px;
   }
   
   .achievement-img-container {
-    width: 80px;
-    height: 80px;
+    width: 100px; /* Aumentado de 80px */
+    height: 100px; /* Aumentado de 80px */
   }
   
   .achievement img {
-    width: 50px;
-    height: 50px;
+    width: 55px; /* Aumentado de 50px */
+    height: 55px; /* Aumentado de 50px */
   }
   
-  .modal-content {
-    width: 95%;
-    max-height: 90vh;
+  .achievement h3 {
+    font-size: 1.2rem;
   }
   
-  .modal-body {
-    padding: 30px 20px;
-  }
-  
-  .modal-icon {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .modal-icon img {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .modal-title {
-    font-size: 1.6rem;
-  }
-  
-  .stats {
-    gap: 15px;
-  }
-  
-  .stat {
-    padding: 15px 20px;
-    font-size: 1rem;
-  }
-  
-  .stat span {
-    font-size: 1.1rem;
+  .achievement p {
+    font-size: 0.95rem;
   }
 }
 
@@ -923,18 +979,18 @@ main {
     grid-template-columns: 1fr;
   }
   
-  .modal-icon {
-    width: 80px;
-    height: 80px;
-    padding: 20px;
+  .achievement {
+    height: 280px; /* Aumentado de 250px */
+    padding: 25px 20px;
   }
   
-  .modal-icon img {
+  .achievement-img-container {
+    width: 95px;
+    height: 95px;
+  }
+  
+  .achievement img {
     width: 50px;
     height: 50px;
-  }
-  
-  .modal-title {
-    font-size: 1.4rem;
   }
 }

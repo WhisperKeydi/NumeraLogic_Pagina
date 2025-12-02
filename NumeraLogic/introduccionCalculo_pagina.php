@@ -12,7 +12,7 @@ actualizarRacha($conexion, $_SESSION['usuario_id']);
 registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 2); // curso_id 2 para Cálculo
 
 $curso_nombre = "Introducción al cálculo";
-$curso_imagen = "https://www.uclases.cl/cursos/detalle/264/11?srsltid=AfmBOopnmbRrAnLE_wNEF4y_Lezg4z6g2mOgycshPHn5DKHhIlYPkPmo";
+$curso_imagen = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTViThG8n-FveIk0zABfYQg1UKXiIQAq8F6g&s";
 $curso_pagina = "introduccionCalculo_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

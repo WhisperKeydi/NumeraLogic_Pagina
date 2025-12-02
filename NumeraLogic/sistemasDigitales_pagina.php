@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 15);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Sistemas Digitales";
-$curso_imagen = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop";
+$curso_imagen = "https://tecnoelite.co/wp-content/uploads/2023/01/ejemplo-conversion-logica.png";
 $curso_pagina = "sistemasDigitales_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);
