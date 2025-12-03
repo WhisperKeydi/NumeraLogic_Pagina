@@ -101,7 +101,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                     <div class="topic-card">
                         <h3>Intervalos de Confianza</h3>
                         <p>Estimación por intervalos para la media, proporción y diferencia de medias</p>
-                        <<div class="button-group">
+                        <div class="button-group">
                             <a href="v7_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t7_estad.php" class="topic-btn">📄 Notas</a>
                         </div>

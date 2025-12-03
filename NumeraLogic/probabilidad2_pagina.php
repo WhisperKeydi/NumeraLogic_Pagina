@@ -102,7 +102,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Distribuciones Multivariadas</h3>
                         <p>La distribución Normal multivariada, contornos de densidad y propiedades geométricas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v7_proba2.php" class="topic-btn">▶ Videos</a>
                             <a href="t7_proba2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -111,10 +111,12 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Convergencia</h3>
                         <p>Convergencia en probabilidad, en distribución y leyes límite (TCL)</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v8_proba2.php" class="topic-btn">▶ Videos</a>
                             <a href="t8_proba2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
+
+                    
                 </div>
             </div>
 
