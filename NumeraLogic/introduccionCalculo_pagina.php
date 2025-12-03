@@ -44,7 +44,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Funciones y Precálculo</h3>
                         <p>Repaso de funciones, dominio, rango, composición de funciones y funciones inversas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_intCal.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_introCal.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Límites Intuitivos</h3>
                         <p>Concepto intuitivo de límite, interpretación gráfica y evaluación básica</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_intCal.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_introCal.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Propiedades de Límites</h3>
                         <p>Leyes de los límites, límites laterales, límites al infinito</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_intCal.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_introCal.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Continuidad</h3>
                         <p>Definición de continuidad, tipos de discontinuidades, teorema del valor intermedio</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_intCal.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_introCal.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -76,7 +76,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Introducción a la Derivada</h3>
                         <p>Concepto de razón de cambio, pendiente de la recta tangente, definición de derivada </p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_intCal.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_introCal.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Aplicaciones Básicas</h3>
                         <p>Problemas de tasas de cambio en contextos reales y preparación para cálculo diferencial </p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_intCal.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_introCal.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>

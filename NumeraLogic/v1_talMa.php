@@ -21,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=ql3lLSwsr98&pp=ygUWTsO6bWVyb3MgeSBPcGVyYWNpb25lcw%3D%3D" 
+                        src="https://www.youtube.com/embed/ql3lLSwsr98?si=Vs9FgqqG_pllhzCw" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
