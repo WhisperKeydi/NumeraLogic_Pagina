@@ -84,7 +84,6 @@ main {
 .form-group label {
   font-weight: 500;
   color: #374151;
-  text-transform: lowercase;
 }
 
 input {

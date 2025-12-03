@@ -35,7 +35,7 @@ header {
 .logo {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #3c78d8 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -56,7 +56,7 @@ header {
 .brand h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #3c78d8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -111,7 +111,7 @@ nav a:hover {
 }
 
 nav a.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #3c78d8 100%);
   color: white;
   border: 2px solid rgba(102, 126, 234, 0.3);
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
@@ -408,9 +408,8 @@ main {
   padding: 2rem;
 }
 
-/* HERO CARD - Rosa con mensaje de bienvenida */
 .hero-card {
-  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #3c78d8 100%);
   border-radius: 20px;
   padding: 2.5rem;
   margin-bottom: 2.5rem;
@@ -422,12 +421,12 @@ main {
 .hero-card h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #ffffff;
   margin-bottom: 0.75rem;
 }
 
 .hero-card p {
-  color: #475569;
+  color: #b2b2b2;
   font-size: 1rem;
   line-height: 1.6;
   max-width: 700px;
@@ -555,7 +554,7 @@ main {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #1e3c72 0%, #3c78d8 100%);
   border-radius: 20px 20px 0 0;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -626,7 +625,7 @@ main {
 
 .achievement-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #1e3c72 0%, #3c78d8 100%);
   border-radius: 3px;
   width: 100%;
   transition: width 1s ease;

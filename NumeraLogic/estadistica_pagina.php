@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Matemáticas_apli.php" class="back-btn">←</a>
             <div class="icon">📊</div>
             <h1>Estadística</h1>
             <p>Análisis descriptivo e inferencial</p>
@@ -47,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Organización de Datos</h3>
                         <p>Clasificación de variables, codificación y estructuras básicas de datos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_estad.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Variables Cualitativas</h3>
                         <p>Frecuencias, tablas de contingencia y representaciones gráficas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_estad.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Variables Cuantitativas</h3>
                         <p>Media, mediana, varianza, desviación estándar y medidas de posición</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_estad.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -74,7 +75,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Análisis Exploratorio</h3>
                         <p>Histogramas y análisis de distribución</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_estad.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Distribuciones Muestrales</h3>
                         <p>Comportamiento de la media muestral, proporciones y Teorema del Límite Central</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_estad.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -92,7 +93,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Estimación Puntual</h3>
                         <p>Propiedades de los estimadores: insesgadez, consistencia y eficiencia</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_estad.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -101,7 +102,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Intervalos de Confianza</h3>
                         <p>Estimación por intervalos para la media, proporción y diferencia de medias</p>
                         <<div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v7_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t7_estad.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -110,7 +111,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Errores e Inferencia</h3>
                         <p>Error estándar, margen de error e interpretación de conclusiones estadísticas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v8_estad.php" class="topic-btn">▶ Videos</a>
                             <a href="t8_estad.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -128,7 +129,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Matemáticas_apli.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

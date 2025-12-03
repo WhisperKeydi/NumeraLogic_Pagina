@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Formación_inicial.php" class="back-btn">←</a>
             <div class="icon">📐</div>
             <h1>Taller de Matemáticas</h1>
             <p>Fortalece tus bases matemáticas con ejercicios prácticos y teoría fundamental</p>
@@ -48,7 +49,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Números y Operaciones</h3>
                         <p>Números naturales, enteros, racionales e irracionales. Operaciones fundamentales.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_talMa.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_talMa.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -57,7 +58,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Álgebra Básica</h3>
                         <p>Expresiones algebraicas, ecuaciones lineales, factorización y productos notables.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_talMa.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_talMa.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -66,7 +67,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Geometría Plana</h3>
                         <p>Figuras geométricas, teorema de Pitágoras, áreas, perímetros y triángulos.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_talMa.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_talMa.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -75,7 +76,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Funciones y Gráficas</h3>
                         <p>Concepto de función, dominio y rango, funciones lineales y cuadráticas.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_talMa.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_talMa.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -84,7 +85,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Trigonometría Básica</h3>
                         <p>Razones trigonométricas, triángulos rectángulos e identidades fundamentales.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_talMa.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_talMa.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -93,7 +94,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Estadística Descriptiva</h3>
                         <p>Medidas de tendencia central, dispersión y representación gráfica de datos.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_talMa.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_talMa.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -114,7 +115,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
             
-            <a href="Formación_inicial.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

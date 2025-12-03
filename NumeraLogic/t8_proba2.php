@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="probabilidad2_pagina.php" class="back-btn">←</a>
         <div class="header">
             <div class="icon">📄</div>
             <h1>Probabilidad II</h1>
@@ -18,10 +19,10 @@
         <div class="content">
             <div class="document-section">
                 <div class="pdf-container">
-                    <embed src="----.pdf" type="application/pdf" width="100%" height="100%">
+                    <embed src="Temas/Matemáticas Aplicadas/Probabilidad II/Probabilidad II.pdf" type="application/pdf" width="100%" height="100%">
                 </div>
             </div>
-            <a href="probabilidad2_pagina.php" class="back-btn">← Volver a los temas</a>
+            
         </div>
     </div>
 </body>

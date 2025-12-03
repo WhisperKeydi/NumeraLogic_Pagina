@@ -36,6 +36,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Matemáticas_apli.php" class="back-btn">←</a>
             <div class="icon">📐</div>
             <h1>Ecuaciones Diferenciales</h1>
             <p>Domina las técnicas analíticas y numéricas para problemas complejos</p>
@@ -50,7 +51,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Introducción a EDOs</h3>
                         <p>Conceptos básicos, tipos y aplicaciones en ciencias e ingeniería.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_ecDif.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_ecDif.php" class="topic-btn">📄 Textos</a>
                         </div>
                     </div>
@@ -59,7 +60,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>EDOs de primer orden</h3>
                         <p>Métodos de solución: variables separables, lineales y exactas.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_ecDif.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_ecDif.php" class="topic-btn">📄 Textos</a>
                         </div>
                     </div>
@@ -68,7 +69,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>EDOs de segundo orden</h3>
                         <p>Solución de ecuaciones lineales con coeficientes constantes y homogéneas.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_ecDif.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_ecDif.php" class="topic-btn">📄 Textos</a>
                         </div>
                     </div>
@@ -77,7 +78,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>EDOs de orden n</h3>
                         <p>Extensión de métodos para ecuaciones lineales de orden superior.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_ecDif.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_ecDif.php" class="topic-btn">📄 Textos</a>
                         </div>
                     </div>
@@ -86,7 +87,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Sistemas de ecuaciones</h3>
                         <p>Análisis y solución de sistemas lineales usando métodos matriciales.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_ecDif.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_ecDif.php" class="topic-btn">📄 Textos</a>
                         </div>
                     </div>
@@ -95,7 +96,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Introducción a EDP</h3>
                         <p>Concepto básico, diferencias con EDO y ejemplos típicos.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_ecDif.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_ecDif.php" class="topic-btn">📄 Textos</a>
                         </div>
                     </div>
@@ -114,7 +115,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Matemáticas_apli.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

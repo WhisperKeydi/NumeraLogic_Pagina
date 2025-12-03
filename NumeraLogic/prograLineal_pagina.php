@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Matemáticas_apli.php" class="back-btn">←</a>
             <div class="icon">⚙️</div>
             <h1>Programación Lineal</h1>
             <p>Optimización de recursos y toma de decisiones efectiva</p>
@@ -47,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Fundamentos</h3>
                         <p>Introducción a los problemas de optimización y formulación de modelos matemáticos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_progLi.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_proLi.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Formulación de Modelos</h3>
                         <p>Identificación de variables, restricciones y función objetivo en problemas reales</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_progLi.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_proLi.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Método Gráfico</h3>
                         <p>Resolución de problemas con dos variables mediante representación gráfica</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_progLi.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_proLi.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -74,7 +75,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Método Simplex</h3>
                         <p>Algoritmo fundamental para resolver problemas de programación lineal de n variables</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_progLi.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_proLi.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Dualidad y Sensibilidad</h3>
                         <p>Teoría de dualidad, precios sombra y análisis post-óptimo</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_progLi.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_proLi.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -92,7 +93,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Transporte</h3>
                         <p>Optimización de rutas de distribución y asignación de recursos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_progLi.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_proLi.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -101,7 +102,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Software y Excel</h3>
                         <p>Uso de Solver y herramientas computacionales para resolver problemas reales</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v7_progLi.php" class="topic-btn">▶ Videos</a>
                             <a href="t7_proLi.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -119,7 +120,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Matemáticas_apli.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

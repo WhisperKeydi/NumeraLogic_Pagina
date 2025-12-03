@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Ingeniería.php" class="back-btn">←</a>
             <div class="icon">💻</div>
             <h1>Sistemas Digitales</h1>
             <p>Fundamentos de circuitos y lógica digital</p>
@@ -47,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Sistemas Numéricos</h3>
                         <p>Binario, octal, hexadecimal y conversiones entre sistemas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_sisDig.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_sisDig.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Álgebra Booleana</h3>
                         <p>Operaciones lógicas, teoremas y simplificación</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_sisDig.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_sisDig.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Compuertas Lógicas</h3>
                         <p>AND, OR, NOT, NAND, NOR, XOR y sus aplicaciones</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_sisDig.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_sisDig.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -74,7 +75,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Lógica Combinacional</h3>
                         <p>Sumadores, multiplexores, decodificadores y comparadores</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_sisDig.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_sisDig.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Circuitos Secuenciales</h3>
                         <p>Flip-flops, registros, contadores y máquinas de estado</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_sisDig.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_sisDig.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -92,7 +93,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Memorias Digitales</h3>
                         <p>RAM, ROM, tipos de memoria y arquitecturas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_sisDig.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_sisDig.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -110,7 +111,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Ingeniería.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

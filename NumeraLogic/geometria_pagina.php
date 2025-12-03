@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Matemáticas_apli.php" class="back-btn">←</a>
             <div class="icon">📐</div>
             <h1>Geometría Analítica</h1>
             <p>Análisis algebraico de figuras y espacios geométricos</p>
@@ -47,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Introducción e Historia</h3>
                         <p>Panorama general del desarrollo de la geometría y su importancia actual</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_geo.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_geo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Álgebra en la Geometría</h3>
                         <p>Uso de ecuaciones, coordenadas y representación algebraica de objetos geométricos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_geo.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_geo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Rectas y Planos</h3>
                         <p>Ecuaciones, intersecciones y distancias en 2D y 3D</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_geo.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_geo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -74,7 +75,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Secciones Cónicas</h3>
                         <p>Análisis y ecuaciones de parábola, hipérbola y elipse</p>
                         <<div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_geo.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_geo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Superficies Cuadráticas</h3>
                         <p>Identificación y representación de esferas, cilindros, conos, elipsoides y paraboloides</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_geo.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_geo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -92,7 +93,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Transformaciones Rígidas</h3>
                         <p>Traslaciones, rotaciones, simetrías y análisis de la ecuación cuadrática general</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_geo.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_geo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -110,7 +111,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Matemáticas_apli.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

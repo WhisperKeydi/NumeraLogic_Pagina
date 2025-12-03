@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Matemáticas_apli.php" class="back-btn">←</a>
             <div class="icon">∫</div>
             <h1>Cálculo IV</h1>
             <p>Análisis vectorial e integración múltiple en espacios euclidianos</p>
@@ -47,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Integración Múltiple</h3>
                         <p>Introducción a integrales dobles y triples y sus aplicaciones</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_caliv.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_caliv.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Cambio de Variables</h3>
                         <p>Transformaciones como coordenadas polares, cilíndricas y esféricas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_caliv.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_caliv.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Curvas y Campos</h3>
                         <p>Representación, longitud de arco y análisis de campos en el plano y espacio</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_caliv.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_caliv.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -74,7 +75,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Integración en Curvas</h3>
                         <p>Integrales de línea para campos escalares y vectoriales</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_caliv.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_caliv.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Superficies</h3>
                         <p>Áreas, orientación y flujos de campos vectoriales en superficies parametrizadas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_caliv.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_caliv.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -92,7 +93,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Teoremas Fundamentales</h3>
                         <p>Green, Gauss y Stokes, con aplicaciones físicas y geométricas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_caliv.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_caliv.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -110,7 +111,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Matemáticas_apli.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

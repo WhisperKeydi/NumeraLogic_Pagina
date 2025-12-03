@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Formación_inicial.php" class="back-btn">←</a>
             <div class="icon">2️⃣</div>
             <h1>Cálculo II</h1>
             <p>Técnicas avanzadas de integración, series y sucesiones</p>
@@ -48,7 +49,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Técnicas de Integración</h3>
                         <p>Integración por partes, sustitución trigonométrica, fracciones parciales </p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_cal2.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_c2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Aplicaciones de la Integral</h3>
                         <p>Cálculo de áreas, volúmenes de revolución, longitud de arco, trabajo </p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_cal2.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_c2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -64,7 +65,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Integrales Impropias</h3>
                         <p>Integrales con límites infinitos, integrales con discontinuidades </p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_cal2.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_c2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -72,7 +73,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Sucesiones y Series</h3>
                         <p>Convergencia de sucesiones, series infinitas, criterios de convergencia </p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_cal2.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_c2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -80,7 +81,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Series de Potencias</h3>
                         <p>eries de Taylor y Maclaurin, radio de convergencia, aplicaciones </p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_cal2.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_c2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -88,7 +89,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Ecuaciones Paramétricas y Polares</h3>
                         <p>Curvas paramétricas, coordenadas polares, áreas en coordenadas polares </p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_cal2.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_c2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -107,7 +108,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Formación_inicial.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Formación_inicial.php" class="back-btn">←</a>
             <div class="icon">💻</div>
             <h1>Taller de Algoritmos</h1>
             <p>Aprende a diseñar soluciones eficientes y desarrolla pensamiento lógico computacional/p>
@@ -48,7 +49,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Introducción a Algortimos</h3>
                         <p>Conceptos básicos, características de un algoritmo, pseudocódigo y diagramas de flujo</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_talAl.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_talAlg.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Estructuras de Control</h3>
                         <p>Secuencia, selección (if-else, switch) y repetición (while, for, do-while)</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_talAl.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_talAlg.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -64,7 +65,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Estructuras de Datos Básicas</h3>
                         <p>Arrays, listas, pilas, colas y sus operaciones fundamentales</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_talAl.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_talAlg.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -72,7 +73,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Algoritmos de Búsqueda</h3>
                         <p>Búsqueda lineal, búsqueda binaria y análisis de complejidad temporal.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_talAl.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_talAlg.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -80,7 +81,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Algoritmos de Ordenamiento</h3>
                         <p>Bubble sort, selection sort, insertion sort, merge sort y quicksort</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_talAl.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_talAlg.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -88,7 +89,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Recursividad</h3>
                         <p>Concepto de recursión, casos base, problemas recursivos clásicos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_talAl.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_talAlg.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -108,7 +109,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Formación_inicial.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

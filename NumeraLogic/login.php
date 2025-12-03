@@ -41,14 +41,14 @@ if (isset($_SESSION['error'])) {
       
       <form id="loginForm" method="POST" action="validar_login.php">
         <div class="form-group">
-          <label for="matricula">matrícula</label>
-          <input type="text" id="matricula" name="matricula" value="00" required>
+          <label for="matricula">Matrícula</label>
+          <input type="text" id="matricula" name="matricula" autocomplete="off" required>
         </div>
         
         <div class="form-group password-group">
-          <label for="contrasena">contraseña</label>
+          <label for="contrasena">Contraseña</label>
           <div class="password-wrapper">
-            <input type="password" id="contrasena" name="contrasena" value="123" required>
+            <input type="password" id="contrasena" name="contrasena" autocomplete="off" required>
             <button type="button" class="toggle-password" onclick="togglePassword()">
               <span class="eye-icon">👁️</span>
             </button>
@@ -59,11 +59,6 @@ if (isset($_SESSION['error'])) {
           <button type="submit">Iniciar Sesión</button>
         </div>
       </form>
-
-      <div class="demo-info">
-        <p><strong>Credenciales de prueba:</strong></p>
-        <p>Matrícula: <strong>00</strong> | Contraseña: <strong>123</strong></p>
-      </div>
     </div>
   </main>
 

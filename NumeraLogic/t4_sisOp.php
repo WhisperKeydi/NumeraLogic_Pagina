@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <a href="sistemaOp_pagina.php" class="back-btn">←</a>
             <div class="icon">📄</div>
             <h1>Sistemas Operativos</h1>
             <p>Tema 4: Gestión de Memoria</p>
@@ -18,10 +19,10 @@
         <div class="content">
             <div class="document-section">
                 <div class="pdf-container">
-                    <embed src="----.pdf" type="application/pdf" width="100%" height="100%">
+                    <embed src="Temas/Ingeniería en Computación/Sistemas Operativos/Introduccion a los sistemas operativos.pdf" type="application/pdf" width="100%" height="100%">
                 </div>
             </div>
-            <a href="sistemaOp_pagina.php" class="back-btn">← Volver a los temas</a>
+           
         </div>
     </div>
 </body>

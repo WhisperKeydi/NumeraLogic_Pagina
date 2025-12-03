@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <a href="poo_pagina.php" class="back-btn">←</a>
             <div class="icon">📄</div>
             <h1>Programación Orientada a Objetos</h1>
             <p>Tema 2: Clases y Objetos</p>
@@ -18,10 +19,10 @@
         <div class="content">
             <div class="document-section">
                 <div class="pdf-container">
-                    <embed src="----.pdf" type="application/pdf" width="100%" height="100%">
+                    <embed src="Temas/Ingeniería en Computación/Programación Orientada a Objetos/Introducción a la programación orientada a objetos.pdf" type="application/pdf" width="100%" height="100%">
                 </div>
             </div>
-            <a href="poo_pagina.php" class="back-btn">← Volver a los temas</a>
+            
         </div>
     </div>
 </body>

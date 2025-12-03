@@ -34,7 +34,7 @@ header {
 .logo {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #3c78d8 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -73,7 +73,7 @@ header {
 .brand h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #3c78d8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -128,7 +128,7 @@ nav a:hover {
 }
 
 nav a.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #3c78d8 100%);
   color: white;
   border: 2px solid rgba(102, 126, 234, 0.3);
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
@@ -206,7 +206,7 @@ nav a.active {
 .mark-read {
   background: none;
   border: none;
-  color: #2563eb;
+  color:  #2a5298;
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;
@@ -264,7 +264,7 @@ nav a.active {
 
 .notification-icon.system {
   background: #f3e8ff;
-  color: #7c3aed;
+  color: #2a5298;
 }
 
 .notification-content {
@@ -419,7 +419,6 @@ nav a.active {
   flex-shrink: 0;
 }
 
-/* El resto del CSS se mantiene igual desde aquí... */
 main {
   max-width: 1600px;
   margin: 0 auto;
@@ -444,11 +443,12 @@ main {
   border-radius: 16px;
   padding: 2rem 1.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
   align-items: center;
   text-align: center;
   transition: all 0.3s;
   cursor: pointer;
+  align-items: center !important;
 }
 
 .course-card:hover {
@@ -457,15 +457,16 @@ main {
 }
 
 .course-icon {
-  width: 120px;
-  height: 120px;
+  width: 120px !important;
+  height: 120px !important;
   background: white;
   border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  font-size: 4rem;
+  display: grid !important;
+  place-items: center !important; 
+  font-size: 64px !important; 
+  line-height: 1 !important;  
+  margin: 0 auto 1.5rem auto !important;
+  padding: 0 !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
@@ -617,7 +618,7 @@ main {
 }
 
 .nav-button.areas-button {
-  border-left: 4px solid #8b5cf6;
+  border-left: 4px solid #2a5298;
 }
 
 .nav-button.areas-button:hover {
@@ -648,7 +649,7 @@ main {
   text-align: center;
   margin-bottom: 1.5rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #3b7dd3 0%, #2638dc 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   border-radius: 16px;
   box-shadow: 
     0 8px 20px rgba(0,0,0,0.1),

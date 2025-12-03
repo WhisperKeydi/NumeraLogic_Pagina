@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Ingeniería.php" class="back-btn">←</a>
             <div class="icon">🖥️</div>
             <h1>Arquitectura de Computadoras</h1>
             <p>Organización y diseño de sistemas computacionales</p>
@@ -48,7 +49,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Modelo de Von Neumann</h3>
                         <p>Arquitectura básica, CPU, memoria y buses de datos.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_arqui.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_arqui.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -57,7 +58,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Unidad Central de Proceso</h3>
                         <p>ALU, registros, unidad de control y ciclo de instrucción.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_arqui.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_arqui.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -66,7 +67,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Ensamblador</h3>
                         <p>Lenguaje máquina, instrucciones y programación en bajo nivel.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_arqui.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_arqui.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -75,7 +76,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Jerarquía de Memoria</h3>
                         <p>Cache, RAM, memoria virtual y gestión de memoria.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_arqui.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_arqui.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -84,7 +85,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Segmentación y Pipeline</h3>
                         <p>Procesamiento paralelo, hazards y optimización.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_arqui.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_arqui.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -93,7 +94,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Entrada/Salida</h3>
                         <p>Dispositivos periféricos, DMA y controladores.</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_arqui.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_arqui.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -112,7 +113,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
             
-            <a href="dashboard.php" class="back-btn">← Volver al Dashboard</a>
+            
         </div>
     </div>
 </body>

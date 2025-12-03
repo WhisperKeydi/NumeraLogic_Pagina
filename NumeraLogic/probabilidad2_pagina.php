@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Matemáticas_apli.php" class="back-btn">←</a>
             <div class="icon">🎲</div>
             <h1>Probabilidad II</h1>
             <p>Variables continuas, distribuciones multivariadas y teoría límite</p>
@@ -47,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Variables Continuas</h3>
                         <p>Propiedades, integrales de probabilidad y transformaciones de variables aleatorias</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_proba2.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_proba2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Distribuciones Clave</h3>
                         <p>Normal, exponencial, gamma, beta, chi-cuadrada y sus aplicaciones</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_proba2.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_proba2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Vectores Aleatorios</h3>
                         <p>Densidad conjunta, dependencias y cálculo de probabilidades en regiones</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_proba2.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_proba2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -74,7 +75,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Marginales y Condicionales</h3>
                         <p>Relaciones entre componentes de un vector aleatorio y distribuciones derivadas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_proba2.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_proba2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Independencia y Correlación</h3>
                         <p>Indicadores estadísticos para el análisis de variabilidad y dependencia lineal</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_proba2.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_proba2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -92,7 +93,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Momentos</h3>
                         <p>Media, varianza, covarianza y matrices de momentos de orden superior</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_proba2.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_proba2.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -128,7 +129,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Matemáticas_apli.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

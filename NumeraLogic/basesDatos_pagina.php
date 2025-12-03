@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Ingeniería.php" class="back-btn">←</a>
             <div class="icon">🗄️</div>
             <h1>Bases de Datos</h1>
             <p>Gestión y diseño de sistemas de información</p>
@@ -47,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Fundamentos de BD</h3>
                         <p>Conceptos básicos, tipos de bases de datos y SGBD</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_bd.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_bd.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -55,7 +56,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Modelo Relacional</h3>
                         <p>Tablas, relaciones, claves primarias y foráneas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_bd.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_bd.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -63,7 +64,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>SQL</h3>
                         <p>Consultas, DDL, DML y gestión de datos con SQL</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_bd.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_bd.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -71,7 +72,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Normalización</h3>
                         <p>Formas normales y optimización de estructuras</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_bd.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_bd.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -79,7 +80,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Diseño de BD</h3>
                         <p>Modelo Entidad-Relación y diagramas ER</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_bd.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_bd.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -87,7 +88,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Transacciones</h3>
                         <p>ACID, concurrencia y recuperación de datos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_bd.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_bd.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -105,7 +106,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
 
-            <a href="Ingeniería.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

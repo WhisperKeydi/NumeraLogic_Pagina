@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <a href="sistemasDigitales_pagina.php" class="back-btn">←</a>
             <div class="icon">📄</div>
             <h1>Sistemas Digitales</h1>
             <p>Tema 5: Circuitos Secuenciales</p>
@@ -18,10 +19,10 @@
         <div class="content">
             <div class="document-section">
                 <div class="pdf-container">
-                    <embed src="----.pdf" type="application/pdf" width="100%" height="100%">
+                    <embed src="Temas/Ingeniería en Computación/Sistemas Digitales/Sistemas Digitales.pdf" type="application/pdf" width="100%" height="100%">
                 </div>
             </div>
-            <a href="sistemasDigitales_pagina.php" class="back-btn">← Volver a los temas</a>
+            
         </div>
     </div>
 </body>

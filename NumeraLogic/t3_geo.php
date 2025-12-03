@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <a href="geometria_pagina.php" class="back-btn">←</a>
             <div class="icon">📄</div>
             <h1>Geometría</h1>
             <p>Tema 3: Rectas y Planos</p>
@@ -18,10 +19,10 @@
         <div class="content">
             <div class="document-section">
                 <div class="pdf-container">
-                    <embed src="----.pdf" type="application/pdf" width="100%" height="100%">
+                    <embed src="Temas/Matemáticas Aplicadas/Geometría/Geometría.pdf" type="application/pdf" width="100%" height="100%">
                 </div>
             </div>
-            <a href="geometria_pagina.php" class="back-btn">← Volver a los temas</a>
+            
         </div>
     </div>
 </body>

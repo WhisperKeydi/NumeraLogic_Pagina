@@ -21,10 +21,11 @@ body{
 }
 
 .header{
-    background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
+    background: linear-gradient(135deg, #331b4b 0%, #7738ca 100%);
     color: white;
     padding: 40px;
     text-align: center;
+    position: relative;
 }
 
 .header h1{
@@ -120,17 +121,30 @@ body{
 }
 
 .back-btn{
-    display: inline-block;
-    background: #4c1d95;
+    position: absolute !important;
+    top: 20px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    padding: 15px 30px;
-    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s;
-    margin-top: 20px;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding-bottom: 3px;
+    transition: all 0.3s ease;
+    z-index: 10;
 }
 
 .back-btn:hover{
-    background: #2e1065;
+    background: white;
+    color: #4c1d95;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }

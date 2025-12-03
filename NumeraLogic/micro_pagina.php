@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Ingeniería.php" class="back-btn">←</a>
             <div class="icon">🔧</div>
             <h1>Microcontroladores</h1>
             <p>Programación y aplicaciones de sistemas embebidos</p>
@@ -105,7 +106,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
             
-            <a href="Ingeniería.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>

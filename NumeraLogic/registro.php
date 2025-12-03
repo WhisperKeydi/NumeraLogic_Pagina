@@ -27,12 +27,12 @@
 
       <form id="signupForm" method="POST" action="procesar_registro.php" onsubmit="return validarContrasena()">
         <div class="form-group">
-          <label for="matricula">matrícula</label>
+          <label for="matricula">Matrícula</label>
           <input type="text" id="matricula" name="matricula" required>
         </div>
 
         <div class="form-group">
-          <label for="contrasena">contraseña</label>
+          <label for="contrasena">Contraseña</label>
           <div class="password-container">
             <input type="password" id="contrasena" name="contrasena" required>
             <span class="toggle-password" id="toggleContrasena">👁️</span>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="form-group">
-          <label for="confirmar_contrasena">confirmar contraseña</label>
+          <label for="confirmar_contrasena">Confirmar contraseña</label>
           <div class="password-container">
             <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required>
             <span class="toggle-password" id="toggleConfirmar">👁️</span>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="form-group">
-          <label for="nombre">nombre completo</label>
+          <label for="nombre">Nombre completo</label>
           <input type="text" id="nombre" name="nombre" required>
         </div>
 

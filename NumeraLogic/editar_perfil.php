@@ -6,7 +6,7 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 include 'conexion.php';
-include 'funciones_notificaciones.php'; // Añade esta línea
+include 'funciones_notificaciones.php'; 
 
 $mensaje = '';
 $tipo_mensaje = '';
@@ -225,18 +225,18 @@ $conexion->close();
         </div>
         
         <div class="form-group">
-          <label for="contrasena_actual">contraseña actual</label>
+          <label for="contrasena_actual">Contraseña actual</label>
           <input type="password" id="contrasena_actual" name="contrasena_actual" placeholder="Ingresa tu contraseña actual">
           <small>Solo necesaria si quieres cambiar la contraseña</small>
         </div>
         
         <div class="form-group">
-          <label for="nueva_contrasena">nueva contraseña</label>
+          <label for="nueva_contrasena">Nueva contraseña</label>
           <input type="password" id="nueva_contrasena" name="nueva_contrasena" placeholder="Ingresa nueva contraseña">
         </div>
         
         <div class="form-group">
-          <label for="confirmar_contrasena">confirmar contraseña</label>
+          <label for="confirmar_contrasena">Confirmar contraseña</label>
           <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" placeholder="Confirma la nueva contraseña">
         </div>
         

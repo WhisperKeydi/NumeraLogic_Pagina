@@ -35,7 +35,7 @@ header {
 .logo {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1c4587 0%, #3c78d8 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -74,7 +74,7 @@ header {
 .brand h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1c4587 0%, #3c78d8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -129,7 +129,7 @@ nav a:hover {
 }
 
 nav a.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #114b38 0%, #1e6b52 100%);
   color: white;
   border: 2px solid rgba(102, 126, 234, 0.3);
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
@@ -420,7 +420,6 @@ nav a.active {
   flex-shrink: 0;
 }
 
-/* El resto del CSS se mantiene igual desde aquí... */
 main {
   max-width: 1600px;
   margin: 0 auto;
@@ -445,8 +444,8 @@ main {
   border-radius: 16px;
   padding: 2rem 1.5rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column !important;
+  align-items: center !important;
   text-align: center;
   transition: all 0.3s;
   cursor: pointer;
@@ -458,15 +457,16 @@ main {
 }
 
 .course-icon {
-  width: 120px;
-  height: 120px;
+  width: 120px !important;
+  height: 120px !important;
   background: white;
   border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  font-size: 4rem;
+  display: grid !important;
+  place-items: center !important;
+  font-size: 64px !important;
+  line-height: 1 !important;
+  margin: 0 auto 1.5rem auto !important;
+  padding: 0 !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
@@ -511,7 +511,6 @@ main {
   margin-bottom: 0;
 }
 
-/* === BOTONES DE NAVEGACIÓN (IGUAL A PAGINA_SEGUNDA) === */
 .navigation-buttons {
   margin-top: 1.5rem;
 }
@@ -650,13 +649,12 @@ main {
   gap: 0.5rem;
 }
 
-/* === ENCABEZADO COMPACTO CON ESTILO PREMIUM === */
 .page-header {
   grid-column: 1 / -1;
   text-align: center;
   margin-bottom: 1.5rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #1c9b26 0%, #19aa19 100%);
+  background: linear-gradient(135deg, #114b38 0%, #1e6b52 100%);
   border-radius: 16px;
   box-shadow: 
     0 8px 20px rgba(0,0,0,0.1),
@@ -741,7 +739,6 @@ main {
   100% { background-position: 0% 50%; }
 }
 
-/* Ajustar el grid para que el header ocupe toda la fila */
 .courses-section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -749,7 +746,6 @@ main {
   align-content: start;
 }
 
-/* === RESPONSIVE === */
 @media (max-width: 1200px) {
   .content-wrapper {
     grid-template-columns: 1fr;

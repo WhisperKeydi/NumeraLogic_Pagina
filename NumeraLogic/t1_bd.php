@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <a href="basesDatos_pagina.php" class="back-btn">←</a>
             <div class="icon">📄</div>
             <h1>Bases de Datos</h1>
             <p>Tema 1: Fundamentos de BD</p>
@@ -18,10 +19,10 @@
         <div class="content">
             <div class="document-section">
                 <div class="pdf-container">
-                    <embed src="----.pdf" type="application/pdf" width="100%" height="100%">
+                    <embed src="Temas/Ingeniería en Computación/Bases de Datos/Bases de datos.pdf" type="application/pdf" width="100%" height="100%">
                 </div>
             </div>
-            <a href="basesDatos_pagina.php" class="back-btn">← Volver a los temas</a>
+            
         </div>
     </div>
 </body>

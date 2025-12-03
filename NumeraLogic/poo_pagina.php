@@ -34,6 +34,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
 <body>
     <div class="container">
         <div class="header">
+            <a href="Ingeniería.php" class="back-btn">←</a>
             <div class="icon">🔷</div>
             <h1>Programación Orientada a Objetos</h1>
             <p>Paradigma de programación moderno y eficiente</p>
@@ -47,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Conceptos Básicos POO</h3>
                         <p>Paradigmas, abstracción y pensamiento orientado a objetos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_poo.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_poo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -55,7 +56,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Clases y Objetos</h3>
                         <p>Definición, instanciación, atributos y métodos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_poo.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_poo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -63,7 +64,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Encapsulamiento</h3>
                         <p>Modificadores de acceso, getters, setters y ocultamiento</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_poo.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_poo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -71,7 +72,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Herencia</h3>
                         <p>Jerarquías de clases, superclases y subclases</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_poo.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_poo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -79,7 +80,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Polimorfismo</h3>
                         <p>Sobrecarga, sobreescritura e interfaces</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_poo.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_poo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -87,7 +88,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Patrones de Diseño</h3>
                         <p>Singleton, Factory, Observer y mejores prácticas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_poo.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_poo.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -105,7 +106,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                 </ul>
             </div>
             
-            <a href="Ingeniería.php" class="back-btn">← Explorar más cursos</a>
+            
         </div>
     </div>
 </body>
