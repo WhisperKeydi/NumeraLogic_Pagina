@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="sistemasDigitales_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Sistemas Digitales</h1>
             <p>Tema 3: Compuertas Lógicas</p>
         </div>
@@ -21,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=shcAMLESVrE&pp=ygUTQ29tcHVlcnRhcyBMw7NnaWNhcw%3D%3D" 
+                        src="https://www.youtube.com/embed/shcAMLESVrE?si=9Sfaup54nIYj7wPc" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

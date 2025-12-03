@@ -74,7 +74,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                     <div class="topic-card">
                         <h3>Secciones Cónicas</h3>
                         <p>Análisis y ecuaciones de parábola, hipérbola y elipse</p>
-                        <<div class="button-group">
+                        <div class="button-group">
                             <a href="v4_geo.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_geo.php" class="topic-btn">📄 Notas</a>
                         </div>

@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="estadistica_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Estadística</h1>
             <p>Tema 4: Análisis Exploratorio</p>
         </div>

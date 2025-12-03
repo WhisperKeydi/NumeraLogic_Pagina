@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="ecuacionesDif_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Ecuaciones Diferenciales</h1>
             <p>Tema 5: Sistemas de Ecuaciones</p>
         </div>

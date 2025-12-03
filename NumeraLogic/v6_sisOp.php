@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="sistemaOp_pagina.php" class="back-btn">←</a>
+        <div class="header">
+            <a href="sistemaOp_pagina.php" class="back-btn">←</a>
             <div class="icon">▶</div>
             <h1>Sistemas Operativos</h1>
             <p>Tema 6: Seguridad y Protección</p>
@@ -20,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/TU_ID_DEL_VIDEO" 
+                        src="https://www.youtube.com/embed/pOeel_jsdVo?si=YMgaFsLLqw3kk-QB" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="algebraLineal_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Álgebra Lineal</h1>
             <p>Tema 3: Matrices</p>
         </div>

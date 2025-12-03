@@ -8,8 +8,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="sistemaOp_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+        <div class="header">
+            <a href="sistemaOp_pagina.php" class="back-btn">←</a>
+            <div class="icon">▶</div>
             <h1>Sistemas Operativos</h1>
             <p>Tema 2: Gestión de Procesos</p>
         </div>
@@ -20,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=iG2Spybc89U&pp=ygUnZ2VzdGlvbiBkZSBwcm9jZXNvcyBzaXN0ZW1hcyBvcGVyYXRpdm9z" 
+                        src="https://www.youtube.com/embed/iG2Spybc89U?si=cCCUew3Y5lK14QlQ" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

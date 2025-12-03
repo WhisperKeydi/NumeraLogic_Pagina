@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="basesDatos_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Bases de Datos</h1>
             <p>Tema 5: Diseño de BD</p>
         </div>

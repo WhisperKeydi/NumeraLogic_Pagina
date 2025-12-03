@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="calculoiv_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Cálculo IV</h1>
             <p>Tema 2: Cambio de Variables</p>
         </div>

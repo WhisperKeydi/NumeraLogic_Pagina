@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="geometria_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Geometría Analítica</h1>
             <p>Tema 5: Superficies Cuadráticas</p>
         </div>

@@ -48,7 +48,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Introducción a MCU</h3>
                         <p>Arquitectura, familias de microcontroladores y aplicaciones</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v1_micro.php" class="topic-btn">▶ Videos</a>
                             <a href="t1_micro.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -56,7 +56,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Puertos de E/S</h3>
                         <p>Configuración de pines digitales, lectura y escritura</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v2_micro.php" class="topic-btn">▶ Videos</a>
                             <a href="t2_micro.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Interrupciones</h3>
                         <p>Vectores de interrupción, prioridades y manejo de eventos</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v3_micro.php" class="topic-btn">▶ Videos</a>
                             <a href="t3_micro.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -72,7 +72,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Timers y Contadores</h3>
                         <p>Temporizadores, PWM y generación de señales</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v4_micro.php" class="topic-btn">▶ Videos</a>
                             <a href="t4_micro.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -80,7 +80,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Comunicación Serial</h3>
                         <p>UART, SPI, I2C y protocolos de comunicación</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v5_micro.php" class="topic-btn">▶ Videos</a>
                             <a href="t5_micro.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_i
                         <h3>Conversión A/D y D/A</h3>
                         <p>ADC, DAC y procesamiento de señales analógicas</p>
                         <div class="button-group">
-                            <a href="#" class="topic-btn">▶ Videos</a>
+                            <a href="v6_micro.php" class="topic-btn">▶ Videos</a>
                             <a href="t6_micro.php" class="topic-btn">📄 Notas</a>
                         </div>
                     </div>

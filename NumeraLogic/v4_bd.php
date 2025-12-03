@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="basesDatos_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Bases de Datos</h1>
             <p>Tema 4: Normalización</p>
         </div>
@@ -21,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=QUWrKd9vK28&pp=ygUgbm9ybWFsaXphY2nDs24gZGUgYmFzZXMgZGUgZGF0b3M%3D" 
+                        src="https://www.youtube.com/embed/QUWrKd9vK28?si=qgA65WwCEe7MMlXk" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

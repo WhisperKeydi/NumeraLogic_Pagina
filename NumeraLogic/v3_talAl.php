@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="tallerAlgo_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Taller de Algortimos</h1>
             <p>Tema 3: Estructuras de Datos Básicas</p>
         </div>

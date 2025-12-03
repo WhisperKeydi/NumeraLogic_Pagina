@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="tallerMate_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Taller de Matemáticas</h1>
             <p>Tema 3: Geometría Plana</p>
         </div>

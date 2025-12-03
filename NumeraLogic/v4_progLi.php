@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="prograLineal_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Programación Lineal</h1>
             <p>Tema 4: Método Simplex</p>
         </div>

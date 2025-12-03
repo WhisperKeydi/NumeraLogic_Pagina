@@ -8,8 +8,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="sistemaOp_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+        <div class="header">
+            <a href="sistemaOp_pagina.php" class="back-btn">←</a>
+            <div class="icon">▶</div>
             <h1>Sistemas Operativos</h1>
             <p>Tema 3: Concurrencia</p>
         </div>
@@ -20,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=jw_vraxfnQw&pp=ygUgY29uY3VycmVuY2lhIHNpc3RlbWFzIG9wZXJhdGl2b3M%3D" 
+                        src="https://www.youtube.com/embed/e-GKPPtgc3w?si=VBa4G_y48CVrZp7f" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

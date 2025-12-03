@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="sistemasDigitales_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Sistemas Digitales</h1>
             <p>Tema 4: Lógica Combinacional</p>
         </div>
@@ -21,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=OAA2B50e9nA&pp=ygUVTMOzZ2ljYSBDb21iaW5hY2lvbmFs" 
+                        src="https://www.youtube.com/embed/OAA2B50e9nA?si=He52EZXAzS_U8ok0" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

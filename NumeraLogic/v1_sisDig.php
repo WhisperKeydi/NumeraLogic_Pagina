@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="sistemasDigitales_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Sistemas Digitales</h1>
             <p>Tema 1: Sistemas Numéricos</p>
         </div>
@@ -21,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=g9-MRBBcvdg&pp=ygUTU2lzdGVtYXMgTnVtw6lyaWNvc9IHCQkiCgGHKiGM7w%3D%3D" 
+                        src="https://www.youtube.com/embed/g9-MRBBcvdg?si=v8u1nxwP0V3Zwz_c" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

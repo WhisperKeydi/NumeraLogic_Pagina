@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="micro_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Microcontroladores</h1>
             <p>Tema 4: Timers y Contadores</p>
         </div>
@@ -21,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=PYCYAJ_3E4w&pp=ygUTVGltZXJzIHkgQ29udGFkb3Jlcw%3D%3D" 
+                        src="https://www.youtube.com/embed/PYCYAJ_3E4w?si=D96Dzc50gDnr2-1r" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

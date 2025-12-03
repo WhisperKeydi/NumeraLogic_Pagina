@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <a href="arqui_pagina.php" class="back-btn">←</a>
-            <div class="icon">>▶</div>
+            <div class="icon">▶</div>
             <h1>Arquitectura de Computadoras</h1>
             <p>Tema 3: Ensamblador</p>
         </div>
@@ -21,7 +21,7 @@
                     <iframe 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=WpYFQ_WiL5g&pp=ygULRW5zYW1ibGFkb3I%3D" 
+                        src="https://www.youtube.com/embed/WpYFQ_WiL5g?si=PCoE6fyX8Q9WSLOD" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
