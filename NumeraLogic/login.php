@@ -33,7 +33,7 @@ if (isset($_SESSION['error'])) {
       <h1>BIENVENIDO NUMERAL LOGIC</h1>
       <h2>Iniciar sesión</h2>
       
-     <?php if (!empty($error)): ?>
+      <?php if (!empty($error)): ?>
         <div class="error-message">
           <?php echo htmlspecialchars($error); ?>
         </div>
@@ -57,6 +57,11 @@ if (isset($_SESSION['error'])) {
         
         <div class="button-group">
           <button type="submit">Iniciar Sesión</button>
+        </div>
+        
+        <!-- RECUPERAR CONTRASEÑA -->
+        <div class="forgot-password-link">
+          <a href="olvide_contrasena.php">¿Olvidaste tu contraseña?</a>
         </div>
       </form>
     </div>

@@ -1,5 +1,3 @@
-/* Estilos generales para login, recuperación y reset de contraseña */
-
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +11,6 @@ body {
   color: #1e293b;
 }
 
-/* HEADER */
 header {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -42,17 +39,20 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 1.4rem;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
   transition: transform 0.3s ease;
-  position: relative;
 }
 
 .logo:hover {
   transform: scale(1.05) rotate(5deg);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .brand h2 {
@@ -64,7 +64,6 @@ header {
   background-clip: text;
 }
 
-/* MAIN CONTENT */
 main {
   display: flex;
   justify-content: center;
@@ -73,9 +72,6 @@ main {
   padding: 20px;
 }
 
-/* Tarjetas de formulario */
-.login-card,
-.recovery-card,
 .reset-card {
   background: white;
   border-radius: 20px;
@@ -86,8 +82,6 @@ main {
   margin: 20px;
 }
 
-.login-card h1,
-.recovery-card h1,
 .reset-card h1 {
   color: #1e3c72;
   text-align: center;
@@ -95,24 +89,49 @@ main {
   font-size: 2rem;
 }
 
-.login-card h2,
-.recovery-card h2,
 .reset-card h2 {
   color: #3c78d8;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.recovery-card p {
-  color: #64748b;
+.demo-notice {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
   text-align: center;
-  margin-bottom: 30px;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  border: 1px solid #bae6fd;
 }
 
-/* Formularios */
+.simulation-steps {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-left: 4px solid #3c78d8;
+}
+
+.simulation-steps h3 {
+  color: #1e3c72;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.simulation-steps ol {
+  padding-left: 20px;
+}
+
+.simulation-steps li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
 .form-group {
   margin-bottom: 25px;
 }
@@ -142,11 +161,6 @@ main {
   box-shadow: 0 0 0 3px rgba(60, 120, 216, 0.1);
 }
 
-/* Contenedor de contraseña */
-.password-group {
-  position: relative;
-}
-
 .password-wrapper {
   position: relative;
 }
@@ -169,7 +183,6 @@ main {
   justify-content: center;
 }
 
-/* Botones */
 .button-group {
   margin-top: 30px;
 }
@@ -192,15 +205,21 @@ main {
   box-shadow: 0 8px 20px rgba(60, 120, 216, 0.3);
 }
 
-/* Mensajes */
-.error-message {
-  background: #fee2e2;
-  color: #991b1b;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  font-size: 0.95rem;
-  border: 1px solid #fecaca;
+.back-link {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.back-link a {
+  color: #3c78d8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
 }
 
 .message {
@@ -208,6 +227,7 @@ main {
   border-radius: 12px;
   margin-bottom: 20px;
   font-size: 0.95rem;
+  text-align: center;
   line-height: 1.5;
 }
 
@@ -223,105 +243,50 @@ main {
   border: 1px solid #fecaca;
 }
 
-/* Enlaces */
-.forgot-password-link {
-  text-align: center;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #e2e8f0;
-}
-
-.forgot-password-link a {
-  color: #3c78d8;
+.message a {
+  color: #1e3c72;
+  font-weight: bold;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-
-.forgot-password-link a:hover {
-  text-decoration: underline;
-}
-
-.back-link {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.back-link a {
-  color: #3c78d8;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.back-link a:hover {
-  text-decoration: underline;
-}
-
-/* Requisitos de contraseña */
-.requirements {
-  background: #f8fafc;
-  padding: 15px;
-  border-radius: 12px;
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #64748b;
-}
-
-.requirements ul {
-  margin-left: 20px;
   margin-top: 10px;
+  display: inline-block;
 }
 
-.requirements li {
-  margin-bottom: 5px;
+.message a:hover {
+  text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   header {
     padding: 1rem;
   }
   
-  .login-card,
-  .recovery-card,
   .reset-card {
     padding: 30px 20px;
     margin: 10px;
   }
   
-  .login-card h1,
-  .recovery-card h1,
   .reset-card h1 {
     font-size: 1.8rem;
   }
   
-  .login-card h2,
-  .recovery-card h2,
   .reset-card h2 {
     font-size: 1.3rem;
   }
-}
-
-@media (max-width: 480px) {
-  .brand h2 {
-    font-size: 1.2rem;
+  
+  .demo-notice {
+    font-size: 0.8rem;
+    padding: 10px;
   }
   
-  .logo {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
+  .simulation-steps {
+    padding: 12px;
   }
   
-  .login-card h1,
-  .recovery-card h1,
-  .reset-card h1 {
-    font-size: 1.5rem;
+  .simulation-steps h3 {
+    font-size: 0.9rem;
   }
   
-  .login-card h2,
-  .recovery-card h2,
-  .reset-card h2 {
-    font-size: 1.1rem;
+  .simulation-steps li {
+    font-size: 0.8rem;
   }
 }

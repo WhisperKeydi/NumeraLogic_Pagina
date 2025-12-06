@@ -1,5 +1,3 @@
-/* Estilos generales para login, recuperación y reset de contraseña */
-
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +11,6 @@ body {
   color: #1e293b;
 }
 
-/* HEADER */
 header {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -38,21 +35,24 @@ header {
   width: 50px;
   height: 50px;
   background: linear-gradient(135deg, #1e3c72 0%, #3c78d8 100%);
-  border-radius: 12px;
+  border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 1.4rem;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
   transition: transform 0.3s ease;
-  position: relative;
 }
 
 .logo:hover {
   transform: scale(1.05) rotate(5deg);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .brand h2 {
@@ -64,7 +64,6 @@ header {
   background-clip: text;
 }
 
-/* MAIN CONTENT */
 main {
   display: flex;
   justify-content: center;
@@ -73,10 +72,7 @@ main {
   padding: 20px;
 }
 
-/* Tarjetas de formulario */
-.login-card,
-.recovery-card,
-.reset-card {
+.recovery-card {
   background: white;
   border-radius: 20px;
   padding: 40px;
@@ -86,18 +82,14 @@ main {
   margin: 20px;
 }
 
-.login-card h1,
-.recovery-card h1,
-.reset-card h1 {
+.recovery-card h1 {
   color: #1e3c72;
   text-align: center;
   margin-bottom: 10px;
   font-size: 2rem;
 }
 
-.login-card h2,
-.recovery-card h2,
-.reset-card h2 {
+.recovery-card h2 {
   color: #3c78d8;
   text-align: center;
   margin-bottom: 30px;
@@ -112,7 +104,6 @@ main {
   line-height: 1.6;
 }
 
-/* Formularios */
 .form-group {
   margin-bottom: 25px;
 }
@@ -142,34 +133,6 @@ main {
   box-shadow: 0 0 0 3px rgba(60, 120, 216, 0.1);
 }
 
-/* Contenedor de contraseña */
-.password-group {
-  position: relative;
-}
-
-.password-wrapper {
-  position: relative;
-}
-
-.toggle-password {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: #64748b;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Botones */
 .button-group {
   margin-top: 30px;
 }
@@ -192,56 +155,6 @@ main {
   box-shadow: 0 8px 20px rgba(60, 120, 216, 0.3);
 }
 
-/* Mensajes */
-.error-message {
-  background: #fee2e2;
-  color: #991b1b;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  font-size: 0.95rem;
-  border: 1px solid #fecaca;
-}
-
-.message {
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.message.success {
-  background: #d1fae5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
-}
-
-.message.error {
-  background: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
-}
-
-/* Enlaces */
-.forgot-password-link {
-  text-align: center;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #e2e8f0;
-}
-
-.forgot-password-link a {
-  color: #3c78d8;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-
-.forgot-password-link a:hover {
-  text-decoration: underline;
-}
-
 .back-link {
   text-align: center;
   margin-top: 20px;
@@ -257,71 +170,41 @@ main {
   text-decoration: underline;
 }
 
-/* Requisitos de contraseña */
-.requirements {
-  background: #f8fafc;
+.message {
   padding: 15px;
   border-radius: 12px;
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #64748b;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  text-align: center;
 }
 
-.requirements ul {
-  margin-left: 20px;
-  margin-top: 10px;
+.message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
 }
 
-.requirements li {
-  margin-bottom: 5px;
+.message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   header {
     padding: 1rem;
   }
   
-  .login-card,
-  .recovery-card,
-  .reset-card {
+  .recovery-card {
     padding: 30px 20px;
     margin: 10px;
   }
   
-  .login-card h1,
-  .recovery-card h1,
-  .reset-card h1 {
+  .recovery-card h1 {
     font-size: 1.8rem;
   }
   
-  .login-card h2,
-  .recovery-card h2,
-  .reset-card h2 {
+  .recovery-card h2 {
     font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .brand h2 {
-    font-size: 1.2rem;
-  }
-  
-  .logo {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
-  
-  .login-card h1,
-  .recovery-card h1,
-  .reset-card h1 {
-    font-size: 1.5rem;
-  }
-  
-  .login-card h2,
-  .recovery-card h2,
-  .reset-card h2 {
-    font-size: 1.1rem;
   }
 }

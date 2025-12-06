@@ -22,9 +22,7 @@ function usuarioExiste($conexion, $usuario_id) {
     return $existe;
 }
 
-// Función para obtener cursos recientes (MySQLi)
 function obtenerCursosRecientes($conexion, $usuario_id, $limite = 4) {
-    // Primero verificar si el usuario existe
     if (!usuarioExiste($conexion, $usuario_id)) {
         return [];
     }
@@ -49,15 +47,12 @@ function obtenerCursosRecientes($conexion, $usuario_id, $limite = 4) {
     return $cursos;
 }
 
-// Función para registrar acceso a curso (MySQLi) - CORREGIDA
 function registrarAccesoCurso($conexion, $usuario_id, $curso_nombre, $curso_imagen, $curso_pagina) {
-    // Verificar que el usuario existe antes de continuar
     if (!usuarioExiste($conexion, $usuario_id)) {
         error_log("Error: Usuario con ID $usuario_id no existe");
         return false;
     }
     
-    // Primero verificar si ya existe un registro reciente
     $stmt = $conexion->prepare("
         SELECT id FROM usuario_cursos_recientes 
         WHERE usuario_id = ? AND curso_pagina = ?
@@ -67,7 +62,6 @@ function registrarAccesoCurso($conexion, $usuario_id, $curso_nombre, $curso_imag
     $result = $stmt->get_result();
     
     if ($result->num_rows > 0) {
-        // Actualizar fecha de acceso
         $stmt = $conexion->prepare("
             UPDATE usuario_cursos_recientes 
             SET fecha_acceso = CURRENT_TIMESTAMP 
@@ -78,7 +72,6 @@ function registrarAccesoCurso($conexion, $usuario_id, $curso_nombre, $curso_imag
         $stmt->close();
         return $resultado;
     } else {
-        // Insertar nuevo registro
         $stmt = $conexion->prepare("
             INSERT INTO usuario_cursos_recientes (usuario_id, curso_nombre, curso_imagen, curso_pagina) 
             VALUES (?, ?, ?, ?)
@@ -87,7 +80,6 @@ function registrarAccesoCurso($conexion, $usuario_id, $curso_nombre, $curso_imag
         $resultado = $stmt->execute();
         
         if ($resultado) {
-            // Mantener solo los 4 más recientes
             $stmt = $conexion->prepare("
                 DELETE FROM usuario_cursos_recientes 
                 WHERE usuario_id = ? AND id NOT IN (
