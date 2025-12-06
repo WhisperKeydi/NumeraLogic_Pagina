@@ -6,18 +6,24 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 include 'conexion.php';
-include 'funciones_notificaciones.php'; 
+include 'funciones_notificaciones.php';
 
 $mensaje = '';
 $tipo_mensaje = '';
-
-// Añade estas líneas para obtener notificaciones
 $notificaciones = obtenerNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
 $total_notificaciones = contarNotificacionesNoLeidas($conexion, $_SESSION['usuario_id']);
 
+// Obtener datos actuales del usuario
+$usuario_id = $_SESSION['usuario_id'];
+$stmt = $conexion->prepare("SELECT nombre FROM usuarios WHERE id = ?");
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$usuario_actual = $result->fetch_assoc();
+
 // Procesar actualización de datos
-if ($_POST) {
-    // Añade este bloque para manejar acciones de notificaciones
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Manejar notificaciones
     if (isset($_POST['marcar_todas_leidas'])) {
         marcarTodasLeidas($conexion, $_SESSION['usuario_id']);
         header("Location: editar_perfil.php");
@@ -35,35 +41,51 @@ if ($_POST) {
         exit();
     }
     
-    // Tu código original continúa aquí...
-    $nombre = $conexion->real_escape_string($_POST['nombre']);
-    $contrasena_actual = $_POST['contrasena_actual'];
-    $nueva_contrasena = $_POST['nueva_contrasena'];
-    $confirmar_contrasena = $_POST['confirmar_contrasena'];
+    // Obtener datos del formulario
+    $nombre = trim($_POST['nombre'] ?? '');
+    $contrasena_actual = $_POST['contrasena_actual'] ?? '';
+    $nueva_contrasena = $_POST['nueva_contrasena'] ?? '';
+    $confirmar_contrasena = $_POST['confirmar_contrasena'] ?? '';
     
-    $usuario_id = $_SESSION['usuario_id'];
-    
-    // Verificar contraseña actual
-    $sql_verificar = "SELECT contrasena FROM usuarios WHERE id = $usuario_id";
-    $resultado = $conexion->query($sql_verificar);
-    
-    if ($resultado->num_rows > 0) {
-        $usuario = $resultado->fetch_assoc();
+    // Validar nombre
+    if (empty($nombre)) {
+        $mensaje = 'El nombre no puede estar vacío.';
+        $tipo_mensaje = 'error';
+    } else {
+        // Determinar si se quiere cambiar la contraseña
+        $cambiar_contrasena = !empty($nueva_contrasena);
         
-        // Si se quiere cambiar la contraseña, verificar la actual
-        if (!empty($nueva_contrasena)) {
-            if ($contrasena_actual !== $usuario['contrasena']) {
-                $mensaje = 'La contraseña actual es incorrecta';
+        if ($cambiar_contrasena) {
+            // Se quiere cambiar la contraseña, validar contraseña actual
+            $stmt = $conexion->prepare("SELECT contrasena FROM usuarios WHERE id = ?");
+            $stmt->bind_param("i", $usuario_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $usuario = $result->fetch_assoc();
+            
+            if (empty($contrasena_actual)) {
+                $mensaje = 'Debes ingresar tu contraseña actual para cambiar la contraseña.';
+                $tipo_mensaje = 'error';
+            } elseif (!password_verify($contrasena_actual, $usuario['contrasena'])) {
+                $mensaje = 'La contraseña actual es incorrecta.';
+                $tipo_mensaje = 'error';
+            } elseif (strlen($nueva_contrasena) < 6) {
+                $mensaje = 'La nueva contraseña debe tener al menos 6 caracteres.';
                 $tipo_mensaje = 'error';
             } elseif ($nueva_contrasena !== $confirmar_contrasena) {
-                $mensaje = 'Las nuevas contraseñas no coinciden';
+                $mensaje = 'Las nuevas contraseñas no coinciden.';
                 $tipo_mensaje = 'error';
             } else {
+                // Hash de la nueva contraseña
+                $nueva_contrasena_hash = password_hash($nueva_contrasena, PASSWORD_DEFAULT);
+                
                 // Actualizar nombre y contraseña
-                $sql_actualizar = "UPDATE usuarios SET nombre = '$nombre', contrasena = '$nueva_contrasena' WHERE id = $usuario_id";
-                if ($conexion->query($sql_actualizar)) {
+                $stmt = $conexion->prepare("UPDATE usuarios SET nombre = ?, contrasena = ? WHERE id = ?");
+                $stmt->bind_param("ssi", $nombre, $nueva_contrasena_hash, $usuario_id);
+                
+                if ($stmt->execute()) {
                     $_SESSION['nombre'] = $nombre;
-                    $mensaje = 'Datos actualizados correctamente';
+                    $mensaje = 'Nombre y contraseña actualizados correctamente.';
                     $tipo_mensaje = 'success';
                 } else {
                     $mensaje = 'Error al actualizar los datos: ' . $conexion->error;
@@ -71,11 +93,13 @@ if ($_POST) {
                 }
             }
         } else {
-            // Solo actualizar el nombre
-            $sql_actualizar = "UPDATE usuarios SET nombre = '$nombre' WHERE id = $usuario_id";
-            if ($conexion->query($sql_actualizar)) {
+            // Solo actualizar el nombre (NO requiere contraseña actual)
+            $stmt = $conexion->prepare("UPDATE usuarios SET nombre = ? WHERE id = ?");
+            $stmt->bind_param("si", $nombre, $usuario_id);
+            
+            if ($stmt->execute()) {
                 $_SESSION['nombre'] = $nombre;
-                $mensaje = 'Nombre actualizado correctamente';
+                $mensaje = 'Nombre actualizado correctamente.';
                 $tipo_mensaje = 'success';
             } else {
                 $mensaje = 'Error al actualizar el nombre: ' . $conexion->error;
@@ -83,9 +107,14 @@ if ($_POST) {
             }
         }
     }
+    
+    // Actualizar datos del usuario después de la modificación
+    $stmt = $conexion->prepare("SELECT nombre FROM usuarios WHERE id = ?");
+    $stmt->bind_param("i", $usuario_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usuario_actual = $result->fetch_assoc();
 }
-
-$conexion->close();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -221,23 +250,40 @@ $conexion->close();
       <form method="POST" class="profile-form">
         <div class="form-group">
           <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($_SESSION['nombre']); ?>" required>
+          <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($usuario_actual['nombre'] ?? ''); ?>" required>
         </div>
         
-        <div class="form-group">
-          <label for="contrasena_actual">Contraseña actual</label>
-          <input type="password" id="contrasena_actual" name="contrasena_actual" placeholder="Ingresa tu contraseña actual">
-          <small>Solo necesaria si quieres cambiar la contraseña</small>
-        </div>
-        
-        <div class="form-group">
-          <label for="nueva_contrasena">Nueva contraseña</label>
-          <input type="password" id="nueva_contrasena" name="nueva_contrasena" placeholder="Ingresa nueva contraseña">
-        </div>
-        
-        <div class="form-group">
-          <label for="confirmar_contrasena">Confirmar contraseña</label>
-          <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" placeholder="Confirma la nueva contraseña">
+        <div class="highlight-section">
+          <h3>Cambiar contraseña </h3>
+          <div class="help-text">
+          </div>
+          
+          <div class="form-group">
+            <label for="contrasena_actual"><br>🔑 Contraseña actual (requerida solo para cambiar contraseña)</label>
+            <div class="password-field">
+              <input type="password" id="contrasena_actual" name="contrasena_actual" 
+                     placeholder="Contraseña actual">
+              <button type="button" class="toggle-password-btn" data-target="contrasena_actual">👁️</button>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="nueva_contrasena">Nueva contraseña</label>
+            <div class="password-field">
+              <input type="password" id="nueva_contrasena" name="nueva_contrasena" 
+                     placeholder="Ingresa nueva contraseña">
+              <button type="button" class="toggle-password-btn" data-target="nueva_contrasena">👁️</button>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmar_contrasena">Confirmar nueva contraseña</label>
+            <div class="password-field">
+              <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" 
+                     placeholder="Confirma contraseña">
+              <button type="button" class="toggle-password-btn" data-target="confirmar_contrasena">👁️</button>
+            </div>
+          </div>
         </div>
         
         <div class="form-actions">
@@ -255,7 +301,7 @@ $conexion->close();
       const notificationsPanel = document.querySelector('.notifications-panel');
       const notificationsOverlay = document.querySelector('.notifications-overlay');
       const markReadButton = document.querySelector('.mark-read');
-      const notificationItems = document.querySelectorAll('.notification-item');
+      const notificationItems = document.querySelectorAll('.notification-item.unread');
       const notificationBadge = document.querySelector('.notification-badge');
       
       if (notificationsIcon && notificationsPanel) {
@@ -342,6 +388,65 @@ $conexion->close();
           e.stopPropagation();
         });
       }
+      
+      // Funcionalidad para mostrar/ocultar contraseña
+      document.querySelectorAll('.toggle-password-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-target');
+          const passwordInput = document.getElementById(targetId);
+          
+          if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            this.textContent = '🙈';
+          } else {
+            passwordInput.type = 'password';
+            this.textContent = '👁️';
+          }
+        });
+      });
+      
+      // Validación del formulario
+      const form = document.querySelector('.profile-form');
+      form.addEventListener('submit', function(e) {
+        const nuevaContrasena = document.getElementById('nueva_contrasena').value;
+        const confirmarContrasena = document.getElementById('confirmar_contrasena').value;
+        const contrasenaActual = document.getElementById('contrasena_actual').value;
+        
+        // Si se intenta cambiar la contraseña
+        if (nuevaContrasena || confirmarContrasena) {
+          // Verificar que se haya ingresado la contraseña actual
+          if (!contrasenaActual) {
+            e.preventDefault();
+            alert('⚠️ ¡ATENCIÓN!\n\nPara cambiar tu contraseña debes ingresar tu CONTRASEÑA ACTUAL.');
+            document.getElementById('contrasena_actual').focus();
+            return false;
+          }
+          
+          // Verificar que la nueva contraseña tenga al menos 6 caracteres
+          if (nuevaContrasena.length < 6) {
+            e.preventDefault();
+            alert('La nueva contraseña debe tener al menos 6 caracteres.');
+            document.getElementById('nueva_contrasena').focus();
+            return false;
+          }
+          
+          // Verificar que las nuevas contraseñas coincidan
+          if (nuevaContrasena !== confirmarContrasena) {
+            e.preventDefault();
+            alert('Las nuevas contraseñas no coinciden.\n\nPor favor, verifica que hayas escrito la misma contraseña en ambos campos.');
+            document.getElementById('confirmar_contrasena').focus();
+            return false;
+          }
+          
+          // Confirmar cambio de contraseña
+          if (!confirm('¿Estás seguro de que quieres cambiar tu contraseña?\n\n✅ Tu nueva contraseña se guardará encriptada\n✅ Podrás iniciar sesión con tu nueva contraseña\n✅ Asegúrate de recordarla')) {
+            e.preventDefault();
+            return false;
+          }
+        }
+        
+        return true;
+      });
     });
   </script>
 </body>

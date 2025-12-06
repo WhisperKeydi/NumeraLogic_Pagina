@@ -402,7 +402,7 @@ nav a.active {
   flex-shrink: 0;
 }
 
-/* El resto del CSS se mantiene igual desde aquí... */
+/* MAIN CONTENT */
 main {
   max-width: 800px;
   margin: 2rem auto;
@@ -480,6 +480,116 @@ main {
   font-size: 0.875rem;
 }
 
+/* ESTILOS NUEVOS PARA CAMPOS DE CONTRASEÑA */
+.password-field {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 45px;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.toggle-password-btn:hover {
+  color: #3b82f6;
+}
+
+.password-requirements {
+  background: #f8f9fa;
+  border-left: 4px solid #4f46e5;
+  padding: 12px 16px;
+  margin: 15px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.password-requirements p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.password-requirements strong {
+  color: #4f46e5;
+}
+
+.highlight-section {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 2px solid #0ea5e9;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+}
+
+.highlight-section h3 {
+  color: #0369a1;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.highlight-section h3::before {
+  content: "🔐";
+  font-size: 24px;
+}
+
+.help-text {
+  background: #fffbeb;
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+  color: #92400e;
+}
+
+.help-text strong {
+  color: #d97706;
+}
+
+/* Contraseña actual destacada */
+.form-group label[for="contrasena_actual"] {
+  color: #dc2626;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group label[for="contrasena_actual"]::before {
+  content: "🔑";
+  font-size: 20px;
+}
+
+/* Form actions */
 .form-actions {
   display: flex;
   gap: 1rem;
@@ -487,39 +597,47 @@ main {
 }
 
 .btn-primary {
-  background-color: #3b82f6;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem;
   border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-}
-
-.btn-primary:hover {
-  background-color: #2563eb;
-}
-
-.btn-secondary {
-  background-color: #f1f5f9;
-  color: #475569;
-  border: 1px solid #e2e8f0;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
   text-align: center;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #475569;
+  border: 2px solid #e2e8f0;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
 }
 
 .btn-secondary:hover {
-  background-color: #e2e8f0;
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive */
@@ -555,5 +673,13 @@ main {
   
   .profile-card {
     padding: 1.5rem;
+  }
+  
+  .highlight-section {
+    padding: 15px;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
   }
 }
