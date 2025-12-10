@@ -19,7 +19,7 @@
         <div class="content">
             <div class="document-section">
                 <div class="pdf-container">
-                    <embed src="Temas/Matemáticas Aplicadas/Programación Lineal/Programación Lineal.pdf" type="application/pdf" width="100%" height="100%">
+                    <embed src="Temas/Matemáticas Aplicadas/Programación Lineal/Programacion Lineal.pdf" type="application/pdf" width="100%" height="100%">
                 </div>
             </div>
             

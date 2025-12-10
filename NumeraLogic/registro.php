@@ -27,7 +27,7 @@ if (isset($_SESSION['exito_registro'])) {
     <div class="brand">
       <a href="index.php" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
         <div class="logo">
-          <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 50%;">
+          <img src="imagenes/logo.jpg" alt="Logo" style="width: 100%; height: 100%; border-radius: 30%;">
         </div>
         <h2>NumeraLogic</h2>
       </a>

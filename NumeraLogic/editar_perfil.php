@@ -252,14 +252,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <label for="nombre">Nombre completo</label>
           <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($usuario_actual['nombre'] ?? ''); ?>" required>
         </div>
-        
-        <div class="highlight-section">
-          <h3>Cambiar contraseña </h3>
-          <div class="help-text">
-          </div>
+      
           
           <div class="form-group">
-            <label for="contrasena_actual"><br>🔑 Contraseña actual (requerida solo para cambiar contraseña)</label>
+            <label for="contrasena_actual"><br> Contraseña actual (requerida solo para cambiar contraseña)</label>
             <div class="password-field">
               <input type="password" id="contrasena_actual" name="contrasena_actual" 
                      placeholder="Contraseña actual">
