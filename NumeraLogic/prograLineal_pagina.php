@@ -17,7 +17,7 @@ registrarVisitaCurso($conexion, $_SESSION['usuario_id'], 13);
 
 // Registrar el acceso a este curso
 $curso_nombre = "Programación Lineal";
-$curso_imagen = "https://www.questionpro.com/blog/wp-content/uploads/2023/04/2344-Portada-programacion-lineal.jpg";
+$curso_imagen = "https://definicion.de/wp-content/uploads/2013/08/programacion-lineal.jpg";
 $curso_pagina = "prograLineal_pagina.php";
 
 registrarAccesoCurso($conexion, $_SESSION['usuario_id'], $curso_nombre, $curso_imagen, $curso_pagina);

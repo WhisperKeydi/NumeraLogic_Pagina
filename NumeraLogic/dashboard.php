@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <section class="hero-card">
       <div class="hero-left">
         <h2>🎓 ¡Bienvenido de vuelta <?php echo htmlspecialchars($_SESSION['nombre']); ?>!</h2>
-        <p>¡Continúa con tu racha! Hoy tienes 3 nuevos ejercicios y 1 retroalimentación de tu profesor(a) esperándote</p>
+        <p>¡Continúa con tu racha!</p>
         <p class="info-text">Accede a todos los materiales, ejercicios y recursos de tus materias</p>
         <button onclick="window.location.href='areas_disponibles.php'" class="primary-btn">
             📚 Explorar Materiales de Estudio
